@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 
-    'closet-swap-cswebdev.herokuapp.com',
+    'closet-swap.herokuapp.com',
 ]
 
 
