@@ -46,10 +46,6 @@ INSTALLED_APPS = [
  
 
 
-    #local
-    'accounts.apps.AccountsConfig',
-    'frontend.apps.FrontendConfig',
-
     #3rd party
     'rest_framework',
     'rest_framework.authtoken',
@@ -59,7 +55,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
 
+   
 
+ #local
+    'accounts.apps.AccountsConfig',
+    'frontend.apps.FrontendConfig',
+    'api.apps.ApiConfig', 
+    'closet.apps.ClosetConfig', 
 ]
 
 
@@ -185,3 +187,9 @@ SITE_ID = 1
 
 # https://docs.djangoproject.com/en/4.1/topics/email/#console-backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# MEDIA_ROOT is the path to the root directory where the files are getting stored
+# MEDIA_URL is the URL that will serve the media files
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
