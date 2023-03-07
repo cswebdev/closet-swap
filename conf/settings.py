@@ -163,8 +163,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 #Import the static url for frontend dir. This tells django to look for static files elsewhere
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend/static/build/static'),)
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static')
-STATICFILES_DIRS =(os.path.join(BASE_DIR, "frontend/static/build/static"),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./components/App/App";
-import HomePage from "./components/Pages/HomePage";
+import HomePage from "./components/App/HomePage";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import reportWebVitals from "./reportWebVitals";
+
 /*  */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,9 +18,17 @@ root.render(
          <Routes>
             <Route path="/" element={<App />}>
                <Route path="home" element={<HomePage />} />
-               <Route path="login" element={<Login />} />
-               <Route path="register" element={<Register />} />
+               {/* <Route path="login" element={<Login />} /> */}
+               {/* <Route path="register" element={<Register />} /> */}
             </Route>
+            <Route
+               path="*"
+               element={
+                  <main>
+                     <p className="text-center">404</p>
+                  </main>
+               }
+            />
          </Routes>
       </Router>
    </React.StrictMode>

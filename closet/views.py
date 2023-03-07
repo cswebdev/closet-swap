@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from rest_framework import generics
 from django.urls import path, include
-from .models import Category, ClothingItem
-from .serializers import CategorySerializer, ClothingItemSerializer
+from .models import  ClothingItem
+from .serializers import  ClothingItemSerializer
 
 # Create your views here.
 
-class CategoryListAPIView(generics.ListCreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+
 
 class ClothingItemListAPIView(generics.ListCreateAPIView):
     queryset = ClothingItem.objects.all()
@@ -20,4 +18,3 @@ class ClothingItemListAPIView(generics.ListCreateAPIView):
 class ClothingItemDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ClothingItem.objects.all()
     serializer_class = ClothingItemSerializer
-    

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Outlet, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../../Header/Header";
 import "../Styles/App.css";
+
 function App() {
    const [isAuth, setAuth] = useState(false);
 
