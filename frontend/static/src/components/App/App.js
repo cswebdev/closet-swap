@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../Header/Header";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import "../Styles/App.css";
 
 function App() {

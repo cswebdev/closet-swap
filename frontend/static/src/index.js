@@ -8,6 +8,7 @@ import HomePage from "./components/App/HomePage";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import reportWebVitals from "./reportWebVitals";
+import DonationForm from "./components/DonationForm/DonationForm";
 
 /*  */
 
@@ -18,8 +19,9 @@ root.render(
          <Routes>
             <Route path="/" element={<App />}>
                <Route path="home" element={<HomePage />} />
-               {/* <Route path="login" element={<Login />} /> */}
-               {/* <Route path="register" element={<Register />} /> */}
+               <Route path="login" element={<Login />} />
+               <Route path="register" element={<Register />} />
+               <Route path="donate" element={<DonationForm />} />
             </Route>
             <Route
                path="*"
