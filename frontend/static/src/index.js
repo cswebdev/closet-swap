@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./components/App/App";
 import HomePage from "./components/App/HomePage";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
+import Login from "./components/Auth/LoginForm";
+import Register from "./components/Auth/RegistrationForm";
 import reportWebVitals from "./reportWebVitals";
 import DonationForm from "./components/DonationForm/DonationForm";
 

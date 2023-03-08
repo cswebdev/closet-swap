@@ -1,0 +1,13 @@
+#container-registration {
+
+    background-color: #00cffb;
+    height: 100vh;
+    max-width: 60%;
+}
+
+#gender {
+    border: 3px solid;
+    font-weight: bold;
+    text-align: center;
+
+}
