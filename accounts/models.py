@@ -17,8 +17,9 @@ class User(AbstractUser):
         ('IS', 'Intersex'),
         ('NA', 'Other'), 
     )
-    phone_number=models.CharField(max_length=10)
+    # phone_number=models.CharField(max_length=10)
     gender=models.CharField(max_length=3, choices=GENDER_CHOICES)
+    pass
 
 
 class Profile(models.Model):

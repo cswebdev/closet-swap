@@ -1,13 +1,11 @@
 from django.shortcuts import render
-
-# Create your views here.
-# Create your views here.
 from django.contrib.auth import get_user_model
 from rest_framework import generics
 from dj_rest_auth.registration.views import RegisterView
 from rest_framework.response import Response
 from .serializer import ProfileSerializer
 from .models import Profile
+
 
 
 
