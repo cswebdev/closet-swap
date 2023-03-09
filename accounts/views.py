@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import generics
 from dj_rest_auth.registration.views import RegisterView
 from rest_framework.response import Response
-from .serializer import ProfileSerializer
+from .serializers import ProfileSerializer
 from .models import Profile
 
 

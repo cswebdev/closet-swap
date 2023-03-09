@@ -3,8 +3,9 @@ import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "../Styles/DonationFormStyles.css";
+import { IconPhotoPlus } from "@tabler/icons-react";
+import { IconShirt } from "@tabler/icons-react";
 
 function DonationForm() {
    const [clothingItem] = useState({
@@ -21,9 +22,11 @@ function DonationForm() {
       <div>
          <Container id="container-donation">
             <Container id="container-donation-image">
-               <Container id="image-container"></Container>
+               <Container id="image-container">
+                  <IconShirt className="w-100 h-100 text-muted" />
+               </Container>
                <Button type="submit" className="d-block m-auto">
-                  Add Image
+                  Add Image <IconPhotoPlus />
                </Button>
             </Container>
             <Container id="container-donation-form">
