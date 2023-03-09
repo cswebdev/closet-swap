@@ -4,8 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../Styles/RegistrationStyles.css";
 import Cookies from "js-cookie";
+import { IconEye } from "@tabler/icons-react";
 
-function Registration({}) {
+function Registration() {
    const [user, setUser] = useState({
       username: "",
       password1: "",
@@ -15,6 +16,7 @@ function Registration({}) {
    });
 
    const [setError] = useState(null);
+   const [showPassword, setShowPassword] = useState(false);
 
    const handleInput = (event) => {
       const { name, value } = event.target;
@@ -26,6 +28,14 @@ function Registration({}) {
          [name]: value.trim(),
       }));
    };
+
+   // https://www.w3schools.com/howto/howto_js_toggle_password.asp
+   // https://www.javascripttutorial.net/javascript-dom/javascript-toggle-password-visibility/
+   // How to create a show password toggle button
+   const handleShowPassword = () => {
+      setShowPassword(!showPassword);
+   };
+
    const handleGenderInput = (event) => {
       const { value } = event.target;
 
@@ -102,24 +112,44 @@ function Registration({}) {
 
                <Form.Group className="d-flex mt-4 m-auto">
                   <Form.Label htmlFor="password1"></Form.Label>
-                  <input
-                     className="me-3 form-control"
-                     type="password"
-                     name="password1"
-                     placeholder="password"
-                     value={user.password1}
-                     onChange={handleInput}
-                  />
+                  <div className="input-group">
+                     <input
+                        className=" form-control"
+                        type={showPassword ? "text" : "password"}
+                        name="password1"
+                        placeholder="password"
+                        value={user.password1}
+                        onChange={handleInput}
+                     />
+                     <span
+                        className={`me-2 input-group-text ${
+                           showPassword ? "show-password" : ""
+                        }`}
+                        onClick={handleShowPassword}
+                     >
+                        <IconEye />
+                     </span>
+                  </div>
 
                   <Form.Label htmlFor="password2"></Form.Label>
-                  <input
-                     className="ms-3 form-control"
-                     type="password"
-                     name="password2"
-                     placeholder="re-enter password"
-                     value={user.password2}
-                     onChange={handleInput}
-                  />
+                  <div className="  input-group">
+                     <input
+                        className=" ms-2 form-control"
+                        type={showPassword ? "text" : "password"}
+                        name="password2"
+                        placeholder="password"
+                        value={user.password2}
+                        onChange={handleInput}
+                     />
+                     <span
+                        className={`input-group-text ${
+                           showPassword ? "show-password" : ""
+                        }`}
+                        onClick={handleShowPassword}
+                     >
+                        <IconEye />
+                     </span>
+                  </div>
                </Form.Group>
                <Form.Group className="mt-4 w-25 float-end">
                   <Form.Label htmlFor="gender">

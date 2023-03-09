@@ -52,3 +52,16 @@ Game plan: from hardest to least hardest:
 - users upload items
     implementing forms and choices
     
+
+
+Day 2: 
+
+- Worked on creating models for the ClothingItems
+- Basic UI 
+- Basic setup for react router
+
+Day 3
+
+- Worked on registration form
+- Worked on User model
+- Created Registration page

@@ -75,4 +75,13 @@ CLOSET SWAP READ ME
 Closet swap is a website designed to allow users to donate or sell their clothes to support the LGBTQ community. 
 
 
+Javascript 3rd Party Packages
+            - Added JS-Cookies
+            https://www.npmjs.com/package/js-cookie
+            - Added Tabler-Icons
+            https://tabler.io/docs/icons/react
+            - Added React Boostrap
+            https://www.npmjs.com/package/react-bootstrap
+            - Added React Router 
+            https://reactrouter.com/en/main/start/tutorial
     
