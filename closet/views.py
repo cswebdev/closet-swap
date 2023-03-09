@@ -13,7 +13,7 @@ class ClothingItemListAPIView(generics.ListCreateAPIView):
     serializer_class = ClothingItemSerializer
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(user=self.request.user)
 
 class ClothingItemDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ClothingItem.objects.all()

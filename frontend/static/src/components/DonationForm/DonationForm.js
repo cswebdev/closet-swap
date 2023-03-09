@@ -6,9 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/DonationFormStyles.css";
 import { IconPhotoPlus } from "@tabler/icons-react";
 import { IconShirt } from "@tabler/icons-react";
+import Cookies from "js-cookie";
 
 function DonationForm() {
-   const [clothingItem] = useState({
+   const [clothingItem, setClothingItem] = useState({
       title: "",
       category: "",
       brand: "",
@@ -18,6 +19,82 @@ function DonationForm() {
       gender: "",
    });
 
+   const [setError] = useState(null);
+
+   const handleInput = (event) => {
+      const { name, value } = event.target;
+
+      console.log(`name: ${name}, value: ${value}`);
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         [name]: value,
+      }));
+   };
+
+   const handleSubmit = async (event) => {
+      event.preventDefault();
+      const options = {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": Cookies.get("csrftoken"),
+         },
+         body: JSON.stringify(clothingItem),
+      };
+
+      const response = await fetch(`/api_v1/closets/items/`, options).catch(
+         handleError
+      );
+
+      if (response.ok) {
+      }
+      if (!response.ok) {
+         throw new Error("Network is not ok");
+      }
+      const data = await response.json();
+      Cookies.set("Authorization", `Token ${data.key}`);
+   };
+
+   const handleError = (err) => {
+      console.warn.log(err);
+   };
+
+   const handleCategoryInput = (event) => {
+      const { value } = event.target;
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         category: value,
+      }));
+   };
+
+   const handleItemGenderInput = (event) => {
+      const { value } = event.target;
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         gender: value,
+      }));
+   };
+
+   const handleSizeInput = (event) => {
+      const { value } = event.target;
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         size: value,
+      }));
+   };
+
+   const handleConditionInput = (event) => {
+      const { value } = event.target;
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         condition: value,
+      }));
+   };
    return (
       <div>
          <Container id="container-donation">
@@ -30,7 +107,7 @@ function DonationForm() {
                </Button>
             </Container>
             <Container id="container-donation-form">
-               <Form onSubmit={""}>
+               <Form onSubmit={handleSubmit}>
                   <Form.Group className="d-flex mt-4">
                      <Form.Label htmlFor="title"></Form.Label>
                      <input
@@ -40,6 +117,7 @@ function DonationForm() {
                         type="text"
                         placeholder="title"
                         value={clothingItem.title}
+                        onChange={handleInput}
                      />
                      {/* * */}
                      <Form.Label htmlFor="category"></Form.Label>
@@ -47,7 +125,7 @@ function DonationForm() {
                         as="select"
                         className="w-25"
                         value={clothingItem.category}
-                        // onChange={handleCategoryInput}
+                        onChange={handleCategoryInput}
                      >
                         <option value="" disabled>
                            Select a category
@@ -68,14 +146,14 @@ function DonationForm() {
                         type="text"
                         placeholder="brand"
                         value={clothingItem.brand}
-                        // onChange={handleInput}
+                        onChange={handleInput}
                      />
                      <Form.Label htmlFor="gender"></Form.Label>
                      <Form.Control
                         as="select"
                         className="w-25"
                         value={clothingItem.gender}
-                        // onChange={handleItemGender}
+                        onChange={handleItemGenderInput}
                      >
                         <option value="" disabled>
                            Item Gender
@@ -93,7 +171,7 @@ function DonationForm() {
                         name="color"
                         placeholder="color"
                         value={clothingItem.color}
-                        // onChange={handleInput}
+                        onChange={handleInput}
                      />
 
                      <Form.Label htmlFor="size"></Form.Label>
@@ -101,7 +179,7 @@ function DonationForm() {
                         as="select"
                         className="w-25"
                         value={clothingItem.size}
-                        // onChange={handleSizeInput}
+                        onChange={handleSizeInput}
                      >
                         <option value="" disabled>
                            Choose Size
@@ -117,6 +195,7 @@ function DonationForm() {
                         as="select"
                         className="w-25 ms-2"
                         value={clothingItem.condition}
+                        onChange={handleConditionInput}
                      >
                         <option value="" disabled>
                            Condition
@@ -128,6 +207,9 @@ function DonationForm() {
                         <option value="P">Poor</option>
                      </Form.Control>
                   </Form.Group>
+                  <Button type="submit" onClick={handleSubmit}>
+                     Submit
+                  </Button>
                </Form>
             </Container>
          </Container>
