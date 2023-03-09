@@ -112,21 +112,13 @@ function RegistrationForm() {
                   <Form.Label htmlFor="password1"></Form.Label>
                   <div className="input-group">
                      <input
-                        className=" form-control"
+                        className=" form-control me-2"
                         type={showPassword ? "text" : "password"}
                         name="password1"
                         placeholder="password"
                         value={user.password1}
                         onChange={handleInput}
                      />
-                     <span
-                        className={`me-2 input-group-text ${
-                           showPassword ? "show-password" : ""
-                        }`}
-                        onClick={handleShowPassword}
-                     >
-                        <IconEye />
-                     </span>
                   </div>
 
                   <Form.Label htmlFor="password2"></Form.Label>

@@ -1,0 +1,16 @@
+#container-donation {
+    background-color: #00acff;
+    height: 100vh;
+    max-width: 60%;
+}
+
+#container-donation-form {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background-color: #00cffb;
+    height: 80vh;
+    width: 60%;
+}
