@@ -6,7 +6,7 @@ import "../Styles/RegistrationStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
 
-function Registration() {
+function RegistrationForm() {
    const [user, setUser] = useState({
       username: "",
       password1: "",
@@ -187,4 +187,4 @@ function Registration() {
       </Container>
    );
 }
-export default Registration;
+export default RegistrationForm;

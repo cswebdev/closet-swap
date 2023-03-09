@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./components/App/App";
 import HomePage from "./components/App/HomePage";
-// import Login from "./components/Auth/LoginForm";
-import Register from "./components/Auth/RegistrationForm";
+import LoginForm from "./components/Auth/LoginForm";
+import RegisterForm from "./components/Auth/RegistrationForm";
 import reportWebVitals from "./reportWebVitals";
 import DonationForm from "./components/DonationForm/DonationForm";
 
@@ -19,8 +19,8 @@ root.render(
          <Routes>
             <Route path="/" element={<App />}>
                <Route path="home" element={<HomePage />} />
-               {/* <Route path="login" element={<Login />} /> */}
-               <Route path="register" element={<Register />} />
+               <Route path="login" element={<LoginForm />} />
+               <Route path="register" element={<RegisterForm />} />
                <Route path="donate" element={<DonationForm />} />
             </Route>
             <Route
