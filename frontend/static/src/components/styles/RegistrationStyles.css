@@ -16,11 +16,7 @@
     position: relative;
 }
 
-span.me-2.input-group-text:active,
+
 span.input-group-text:active {
     box-shadow: inset 1px 1px 10px 10px rgba(0, 0, 0, 0.077);
-}
-
-tabler-icon{
-    fill: solid;
 }

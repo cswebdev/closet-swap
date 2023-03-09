@@ -73,9 +73,7 @@ function RegistrationForm() {
       }
 
       if (!response.ok) {
-         throw new Error(
-            "Network is im not okay im not okayyyyy you wear me out"
-         );
+         throw new Error("Network is not ok");
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`);
@@ -85,7 +83,7 @@ function RegistrationForm() {
    return (
       <Container id="container-registration">
          <Form onSubmit={handleSubmit}>
-            <Form.Group className="w-75 m-auto">
+            <Form.Group className="w-50 m-auto">
                <Form.Label htmlFor="username"></Form.Label>
                <input
                   id="text"
@@ -134,7 +132,7 @@ function RegistrationForm() {
                   <Form.Label htmlFor="password2"></Form.Label>
                   <div className="  input-group">
                      <input
-                        className=" ms-2 form-control"
+                        className=" form-control"
                         type={showPassword ? "text" : "password"}
                         name="password2"
                         placeholder="password"
@@ -151,10 +149,8 @@ function RegistrationForm() {
                      </span>
                   </div>
                </Form.Group>
-               <Form.Group className="mt-4 w-25 float-end">
-                  <Form.Label htmlFor="gender">
-                     <h6>What is your gender identity?</h6>
-                  </Form.Label>
+               <Form.Group className="mt-4 w-50 float-end">
+                  <Form.Label htmlFor="gender"></Form.Label>
                   <Form.Control
                      as="select"
                      className="float-end"
