@@ -20,6 +20,12 @@ function DonationForm() {
    return (
       <div>
          <Container id="container-donation">
+            <Container id="container-donation-image">
+               <Container id="image-container"></Container>
+               <Button type="submit" className="d-block m-auto">
+                  Add Image
+               </Button>
+            </Container>
             <Container id="container-donation-form">
                <Form onSubmit={""}>
                   <Form.Group className="d-flex mt-4">
@@ -75,9 +81,49 @@ function DonationForm() {
                         <option value="F">Female</option>
                         <option value="U">Unisex</option>
                      </Form.Control>
-                     <Form.Group className="d-flex mt-4">
-                        <Form.Label htmlFor=""></Form.Label>
-                     </Form.Group>
+                  </Form.Group>
+                  <Form.Group className="d-flex mt-4">
+                     <Form.Label htmlFor="color"></Form.Label>
+                     <input
+                        className="form-control w-50 me-2"
+                        type="text"
+                        name="color"
+                        placeholder="color"
+                        value={clothingItem.color}
+                        // onChange={handleInput}
+                     />
+
+                     <Form.Label htmlFor="size"></Form.Label>
+                     <Form.Control
+                        as="select"
+                        className="w-25"
+                        value={clothingItem.size}
+                        // onChange={handleSizeInput}
+                     >
+                        <option value="" disabled>
+                           Choose Size
+                        </option>
+                        <option value="XS">Extra Small</option>
+                        <option value="S">Small</option>
+                        <option value="M">Medium</option>
+                        <option value="L">Large</option>
+                        <option value="XL">Extra Large</option>
+                     </Form.Control>
+                     <Form.Label htmlFor="condition"></Form.Label>
+                     <Form.Control
+                        as="select"
+                        className="w-25 ms-2"
+                        value={clothingItem.condition}
+                     >
+                        <option value="" disabled>
+                           Condition
+                        </option>
+                        <option value="N">New</option>
+                        <option value="VG">Very Good</option>
+                        <option value="G">Good</option>
+                        <option value="F">Fair</option>
+                        <option value="P">Poor</option>
+                     </Form.Control>
                   </Form.Group>
                </Form>
             </Container>

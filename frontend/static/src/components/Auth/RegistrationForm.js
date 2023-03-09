@@ -122,9 +122,9 @@ function RegistrationForm() {
                   </div>
 
                   <Form.Label htmlFor="password2"></Form.Label>
-                  <div className="  input-group">
+                  <div className="input-group">
                      <input
-                        className=" form-control"
+                        className="form-control"
                         type={showPassword ? "text" : "password"}
                         name="password2"
                         placeholder="password"
