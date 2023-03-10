@@ -1,3 +1,10 @@
 body {
     background-color: #23beee;
 }
+
+#container-homepage {
+    background-color: #00acff;
+    height: 100vh;
+    max-width: 60%;
+}
+

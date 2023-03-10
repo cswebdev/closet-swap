@@ -1,19 +1,20 @@
 #container-donation {
     background-color: #00acff;
-    
+
     height: 100vh;
     max-width: 60%;
-    
+
 }
 
 #container-donation-image {
     float: left;
-    margin: 5% 10px 10px 10px;
+    margin: 5% 10px 10px 5px;
     border: 1px solid transparent;
     border-radius: 14px;
     background-color: #00cffb;
     height: 50vh;
     width: 35%;
+    object-fit: contain;
 
 }
 
@@ -24,20 +25,32 @@
     border: 1px solid transparent;
     border-radius: 14px;
     height: 40vh;
+
+}
+
+#image-container>img {
+    /* max-height: 40vh; */
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: auto;
+
 }
 
 
 #container-donation-form {
     float: right;
     margin-top: 5%;
-    margin-right: 10px;
+    margin-right: 5px;
 
     border: 1px solid transparent;
     border-radius: 14px;
     background-color: #00cffb;
     height: 50vh;
-    width: 60%;
+    width: 62%;
 }
+
 #container-donation-form>Form {
     max-width: 90%;
     margin: auto;

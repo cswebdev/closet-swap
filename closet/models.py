@@ -42,8 +42,7 @@ class ClothingItem(models.Model):
     condition = models.CharField(max_length=2, choices=CONDITION_CHOICES)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     is_active = models.BooleanField(default=True)
+    image=models.ImageField(upload_to='media/', blank=True, null=True)
 
     def __str__(self):
         return self.title
-    
-    

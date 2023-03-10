@@ -6,3 +6,5 @@ class ClothingItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClothingItem   
         fields = '__all__'
+
+

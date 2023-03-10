@@ -7,6 +7,7 @@ import "../Styles/DonationFormStyles.css";
 import { IconPhotoPlus } from "@tabler/icons-react";
 import { IconShirt } from "@tabler/icons-react";
 import Cookies from "js-cookie";
+import Resizer from "react-image-file-resizer";
 
 function DonationForm() {
    const [clothingItem, setClothingItem] = useState({
@@ -17,8 +18,9 @@ function DonationForm() {
       size: "",
       condition: "",
       gender: "",
+      image: null,
    });
-
+   const [preview, setPreview] = useState("");
    const [setError] = useState(null);
 
    const handleInput = (event) => {
@@ -34,13 +36,18 @@ function DonationForm() {
 
    const handleSubmit = async (event) => {
       event.preventDefault();
+      const formData = new FormData();
+
+      for (const property in clothingItem) {
+         formData.append(property, clothingItem[property]);
+      }
+
       const options = {
          method: "POST",
          headers: {
-            "Content-Type": "application/json",
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
-         body: JSON.stringify(clothingItem),
+         body: formData,
       };
 
       const response = await fetch(`/api_v1/closets/items/`, options).catch(
@@ -54,6 +61,7 @@ function DonationForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`);
+      console.log({ data });
    };
 
    const handleError = (err) => {
@@ -95,20 +103,86 @@ function DonationForm() {
          condition: value,
       }));
    };
+
+   // const handleImageInput = (event) => {
+   //    //files like images are not event.target. They are event.target.files[0]
+   //    const file = event.target.files[0];
+   //    console.log(file.size);
+   //    setClothingItem((prevState) => ({
+   //       ...prevState,
+   //       image: file,
+   //    }));
+
+   //    const reader = new FileReader();
+   //    reader.onloadend = () => {
+   //       setPreview(reader.result);
+   //    };
+   //    reader.readAsDataURL(file);
+   // };
+
+   const resizeFile = (file) =>
+      new Promise((resolve) => {
+         Resizer.imageFileResizer(
+            file,
+            300,
+            300,
+            "JPEG",
+            100,
+            0,
+            (uri) => {
+               console.log({ size: uri.size });
+               resolve(uri);
+            },
+            "file"
+         );
+      });
+
+   const handleImageInput = async (event) => {
+      try {
+         const file = event.target.files[0];
+         const image = await resizeFile(file);
+         console.log({ image });
+
+         setClothingItem((prevState) => ({
+            ...prevState,
+            image,
+         }));
+
+         const reader = new FileReader();
+         reader.onloadend = () => {
+            setPreview(reader.result);
+         };
+         reader.readAsDataURL(image);
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
    return (
       <div>
          <Container id="container-donation">
             <Container id="container-donation-image">
-               <Container id="image-container">
-                  <IconShirt className="w-100 h-100 text-muted" />
-               </Container>
-               <Button type="submit" className="d-block m-auto">
-                  Add Image <IconPhotoPlus />
-               </Button>
+               <Form onSubmit={handleSubmit}>
+                  <Container id="image-container">
+                     {clothingItem.image && <img src={preview} alt="" />}
+                     {/* <IconShirt className="w-100 h-100 text-muted" /> */}
+                  </Container>
+                  <div className="d-flex">
+                     <Form.Label htmlFor="item_image"></Form.Label>
+                     <Form.Control
+                        type="file"
+                        id="item_image"
+                        name="item_image"
+                        accept="image/*"
+                        className="m-auto w-75"
+                        onChange={handleImageInput}
+                     ></Form.Control>
+                  </div>
+               </Form>
             </Container>
             <Container id="container-donation-form">
-               <Form onSubmit={handleSubmit}>
-                  <Form.Group className="d-flex mt-4">
+               <Form onSubmit={handleSubmit} className="p-0">
+                  <Form.Group className="d-flex mt-4 ">
                      <Form.Label htmlFor="title"></Form.Label>
                      <input
                         id="text"
@@ -128,7 +202,7 @@ function DonationForm() {
                         onChange={handleCategoryInput}
                      >
                         <option value="" disabled>
-                           Select a category
+                           category select
                         </option>
                         <option value="TOPS">Tops</option>
                         <option value="BOTTOMS">Bottoms</option>
@@ -207,7 +281,11 @@ function DonationForm() {
                         <option value="P">Poor</option>
                      </Form.Control>
                   </Form.Group>
-                  <Button type="submit" onClick={handleSubmit}>
+                  <Button
+                     type="submit"
+                     className="mt-4 float-end"
+                     onClick={handleSubmit}
+                  >
                      Submit
                   </Button>
                </Form>
