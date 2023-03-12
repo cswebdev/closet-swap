@@ -8,8 +8,22 @@ import "./Header.css";
 import { IconUserCircle } from "@tabler/icons-react";
 import { IconSearch } from "@tabler/icons-react";
 import Button from "react-bootstrap/esm/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import Cookies from "js-cookie";
 
 function Header() {
+   const handleLogout = async () => {
+      const response = await fetch("/dj-rest-auth/logout/", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": Cookies.get("csrftoken"),
+         },
+         body: "",
+      });
+      const data = await response.json();
+      Cookies.remove("Authorization", `Token ${data.key}`);
+   };
    return (
       <Navbar bg="light" expand="md">
          <Container>
@@ -33,9 +47,27 @@ function Header() {
                      Store
                   </NavLink>
                </Nav>
-               <Button variant="outline-info">
-                  <IconUserCircle className="p-0" id="header-dropdown" />
-               </Button>
+               <Dropdown>
+                  <Dropdown.Toggle
+                     variant="outline-primary"
+                     id="dropdown-basic"
+                     className="border-0 p-2"
+                  >
+                     <IconUserCircle className="p-0" id="header-dropdown" />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                     <Dropdown.Item href="#/action-1" className="p-3">
+                        Profile
+                     </Dropdown.Item>
+                     <Dropdown.Item
+                        href="#/action-2"
+                        className="p-3"
+                        onClick={handleLogout}
+                     >
+                        logout
+                     </Dropdown.Item>
+                  </Dropdown.Menu>
+               </Dropdown>
 
                {/* <input
                   type="text"

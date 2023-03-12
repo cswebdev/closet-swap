@@ -2,18 +2,18 @@
     background-color: #00acff;
 
     height: 100vh;
-    max-width: 60%;
+    max-width: 70%;
 
 }
 
 #container-donation-image {
-    float: left;
+
     margin: 5% 10px 10px 5px;
     border: 1px solid transparent;
     border-radius: 14px;
     background-color: #00cffb;
     height: 50vh;
-    width: 35%;
+    width: 30%;
     object-fit: contain;
 
 }
@@ -21,26 +21,33 @@
 #image-container {
     background-color: white;
     margin: 15px auto;
-    max-width: 90%;
+    max-width: 75%;
     border: 1px solid transparent;
     border-radius: 14px;
     height: 40vh;
+    padding: 1px;
+
+
+
+
 
 }
 
 #image-container>img {
     /* max-height: 40vh; */
-    object-fit: contain;
+    object-fit: cover;
     height: 100%;
     width: 100%;
     padding: 0;
     margin: auto;
+    border: 1px solid transparent;
+    border-radius: 14px;
 
 }
 
 
 #container-donation-form {
-    float: right;
+
     margin-top: 5%;
     margin-right: 5px;
 
@@ -48,7 +55,7 @@
     border-radius: 14px;
     background-color: #00cffb;
     height: 50vh;
-    width: 62%;
+    width: 68%;
 }
 
 #container-donation-form>Form {

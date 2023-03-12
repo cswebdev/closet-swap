@@ -207,7 +207,7 @@ function DonationForm() {
 
    return (
       <div>
-         <Container id="container-donation">
+         <Container id="container-donation" className="d-flex">
             <Container id="container-donation-image">
                <Form onSubmit={handleSubmit}>
                   <Container id="image-container">

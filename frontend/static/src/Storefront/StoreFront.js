@@ -22,7 +22,7 @@ function StoreFront() {
 
    return (
       <Container id="container-storefront">
-         <div id="searchbar" className="col-7 d-flex pt-4 float-end">
+         <div id="searchbar" className="col-9 d-flex p-5 float-end">
             <input type="text" className="form-control"></input>
             <span>
                <IconSearch className="ms-2" />
