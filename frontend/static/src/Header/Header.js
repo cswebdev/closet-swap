@@ -7,12 +7,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { IconUserCircle } from "@tabler/icons-react";
 import { IconSearch } from "@tabler/icons-react";
+import Button from "react-bootstrap/esm/Button";
 
 function Header() {
    return (
       <Navbar bg="light" expand="md">
          <Container>
-            <IconUserCircle className="me-2" />
             <Navbar.Brand href="#home">Closet Swap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -33,6 +33,10 @@ function Header() {
                      Store
                   </NavLink>
                </Nav>
+               <Button variant="outline-info">
+                  <IconUserCircle className="p-0" id="header-dropdown" />
+               </Button>
+
                {/* <input
                   type="text"
                   className="form-control w-25 float-left"

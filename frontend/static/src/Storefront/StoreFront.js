@@ -9,9 +9,13 @@ function StoreFront() {
       male: false,
       female: false,
       unisex: false,
+      tops: false,
+      bottoms: false,
+      dresses: false,
+      skirts: false,
    });
 
-   const handleCheckboxChange = (event) => {
+   const handleFilterInput = (event) => {
       const { name } = event.target;
       setIsChecked({ ...isChecked, [name]: !isChecked[name] });
    };
@@ -30,35 +34,98 @@ function StoreFront() {
                <Container id="panel-filter">
                   <section id="filter-section1">
                      <h6>Filter item here</h6>
-                     <Form className="ps-5">
+                     <div className="ps-3">
+                        <p className="mb-0">Gender:</p>
                         <Form.Check
                            type="checkbox"
                            label="Male"
                            name="male"
                            checked={isChecked.male}
-                           onChange={handleCheckboxChange}
+                           onChange={handleFilterInput}
                         />
                         <Form.Check
                            type="checkbox"
                            label="Female"
                            name="female"
                            checked={isChecked.female}
-                           onChange={handleCheckboxChange}
+                           onChange={handleFilterInput}
                         />
                         <Form.Check
                            type="checkbox"
                            label="Unisex"
                            name="unisex"
                            checked={isChecked.unisex}
-                           onChange={handleCheckboxChange}
+                           onChange={handleFilterInput}
                         />
-                     </Form>
+                     </div>
                   </section>
                   <section id="filter-section2">
                      <h6>Filter item here</h6>
+                     <div className="ps-3">
+                        <p className="m-0">Category:</p>
+                        <Form.Check
+                           type="checkbox"
+                           label="Tops"
+                           name="tops"
+                           checked={isChecked.tops}
+                           onChange={handleFilterInput}
+                        />
+                        <Form.Check
+                           type="checkbox"
+                           label="Bottoms"
+                           name="bottoms"
+                           check={isChecked.bottoms}
+                           onChange={handleFilterInput}
+                        />
+                        <Form.Check
+                           type="checkbox"
+                           label="Dresses"
+                           name="dresses"
+                           check={isChecked.dresses}
+                           onChange={handleFilterInput}
+                        />
+                        <Form.Check
+                           type="checkbox"
+                           label="Skirts"
+                           name="skirts"
+                           check={isChecked.skirts}
+                           onChange={handleFilterInput}
+                        />
+                     </div>
                   </section>
                   <section id="filter-section3">
                      <h6>Filter item here</h6>
+                     <div className="ps-3">
+                        <p className="m-0">Category:</p>
+                        <Form.Check
+                           type="checkbox"
+                           label=""
+                           name=""
+                           checked={isChecked.pass}
+                           onChange={handleFilterInput}
+                        />
+                        <Form.Check
+                           type="checkbox"
+                           label=""
+                           name=""
+                           check={isChecked.pass}
+                           onChange={handleFilterInput}
+                        />
+                        <Form.Check
+                           type="checkbox"
+                           label=""
+                           name=""
+                           check={isChecked.pass}
+                           onChange={handleFilterInput}
+                        />
+                        <Form.Check
+                           type="checkbox"
+                           label=""
+                           name=""
+                           check={isChecked.pass}
+                           onChange={handleFilterInput}
+                        />
+                     </div>
                   </section>
                </Container>
             </Form>

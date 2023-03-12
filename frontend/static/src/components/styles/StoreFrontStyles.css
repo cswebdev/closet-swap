@@ -1,5 +1,5 @@
 #container-storefront {
-    height: 100vh;
+    height: 1;
 
     /* big contender for backgroud color */
     background-color: rgb(246, 218, 255);
@@ -7,8 +7,15 @@
 
 .w-25.bg-info,
 #panel-filter {
-    height: 85vh;
+    height: 100%;
+    padding-bottom: 10%;
+    border: 1px solid transparent;
+    border-radius: 14px 0 0;
 
+}
+
+#panel-filter {
+    position: sticky;
 }
 
 #filter-section1 {
@@ -16,7 +23,10 @@
     background-color: aqua;
     height: 25vh;
     margin-top: 15%;
+    border: 1px solid transparent;
+    border-radius: 14px 14px 0 0;
     border-bottom: 4px solid cadetblue;
+
 }
 
 #filter-section2 {
@@ -30,7 +40,8 @@
     background-color: aqua;
     height: 25vh;
     margin-top: 0;
-
+    border-bottom: 1px solid transparent;
+    border-radius: 0 0 14px 14px;
 }
 
 h6 {
