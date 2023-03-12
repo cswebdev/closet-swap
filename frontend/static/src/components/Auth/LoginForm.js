@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../Styles/LoginStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
+import { Navigate } from "react-router-dom";
 
 function LoginForm() {
    const [user, setUser] = useState({
@@ -55,6 +56,7 @@ function LoginForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token${data.key}`);
+      Navigate("/");
    };
 
    return (

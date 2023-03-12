@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../Styles/RegistrationStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
+import { Navigate } from "react-router-dom";
 
 function RegistrationForm() {
    const [user, setUser] = useState({
@@ -17,6 +18,7 @@ function RegistrationForm() {
 
    const [setError] = useState(null);
    const [showPassword, setShowPassword] = useState(false);
+   const [setAuth] = useState(false);
 
    const handleInput = (event) => {
       const { name, value } = event.target;
@@ -77,7 +79,8 @@ function RegistrationForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`);
-      //   setAuth(true);
+      setAuth(true);
+      Navigate("/");
    };
 
    return (

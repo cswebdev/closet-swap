@@ -11,7 +11,7 @@ import Button from "react-bootstrap/esm/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from "js-cookie";
 
-function Header() {
+function Header(user) {
    const handleLogout = async () => {
       const response = await fetch("/dj-rest-auth/logout/", {
          method: "POST",
@@ -28,6 +28,7 @@ function Header() {
       <Navbar bg="light" expand="md">
          <Container>
             <Navbar.Brand href="#home">Closet Swap</Navbar.Brand>
+
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">
@@ -56,8 +57,9 @@ function Header() {
                      <IconUserCircle className="p-0" id="header-dropdown" />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                     <Dropdown.Item href="#/action-1" className="p-3">
-                        Profile
+                     <h6>hell`${user.username}</h6>
+                     <Dropdown.Item className="p-3">
+                        <NavLink to="/profile">Profile</NavLink>
                      </Dropdown.Item>
                      <Dropdown.Item
                         href="#/action-2"
