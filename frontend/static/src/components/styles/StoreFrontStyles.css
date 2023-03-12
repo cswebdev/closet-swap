@@ -1,0 +1,41 @@
+#container-storefront {
+    height: 100vh;
+
+    /* big contender for backgroud color */
+    background-color: rgb(246, 218, 255);
+}
+
+.w-25.bg-info,
+#panel-filter {
+    height: 85vh;
+
+}
+
+#filter-section1 {
+
+    background-color: aqua;
+    height: 25vh;
+    margin-top: 15%;
+    border-bottom: 4px solid cadetblue;
+}
+
+#filter-section2 {
+    background-color: aliceblue;
+    height: 25vh;
+    margin-top: 0;
+    border-bottom: 4px solid cadetblue;
+}
+
+#filter-section3 {
+    background-color: aqua;
+    height: 25vh;
+    margin-top: 0;
+
+}
+
+h6 {
+    padding-top: 10%;
+    font-variant: small-caps;
+    text-align: center;
+    padding-bottom: 5%;
+}

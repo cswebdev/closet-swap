@@ -9,6 +9,7 @@ import LoginForm from "./components/Auth/LoginForm";
 import RegisterForm from "./components/Auth/RegistrationForm";
 import reportWebVitals from "./reportWebVitals";
 import DonationForm from "./components/DonationForm/DonationForm";
+import StoreFront from "./Storefront/StoreFront";
 
 /*  */
 
@@ -22,6 +23,7 @@ root.render(
                <Route path="login" element={<LoginForm />} />
                <Route path="register" element={<RegisterForm />} />
                <Route path="donate" element={<DonationForm />} />
+               <Route path="store" element={<StoreFront />} />
             </Route>
             <Route
                path="*"

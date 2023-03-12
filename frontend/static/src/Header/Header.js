@@ -29,14 +29,17 @@ function Header() {
                   <NavLink to="/donate" className="m-2">
                      Donate
                   </NavLink>
+                  <NavLink to="/store" className="m-2">
+                     Store
+                  </NavLink>
                </Nav>
-               <input
+               {/* <input
                   type="text"
                   className="form-control w-25 float-left"
                ></input>
                <span>
                   <IconSearch className="ms-2" />
-               </span>
+               </span> */}
             </Navbar.Collapse>
          </Container>
       </Navbar>
