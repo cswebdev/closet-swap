@@ -52,3 +52,36 @@ h6 {
     text-align: center;
     padding-bottom: 5%;
 }
+
+#panel-store {
+
+    border: 1px solid transparent;
+    border-radius: 0px 14px 0px 0px;
+
+}
+
+#filter-section1,
+#filter-section2,
+#filter-section3 {
+    width: 100%;
+}
+
+#filter-section1 div,
+#filter-section2 div,
+#filter-section3 div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#filter-section1 div p,
+#filter-section2 div p,
+#filter-section3 div p {
+    flex-basis: 100%;
+}
+
+#filter-section1 div label,
+#filter-section2 div label,
+#filter-section3 div label {
+    flex-basis: 33.33%;
+    margin-bottom: 0;
+}

@@ -57,7 +57,7 @@ function Header(user) {
                      <IconUserCircle className="p-0" id="header-dropdown" />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                     <h6>hell`${user.username}</h6>
+                     {/* <p>hello${user.username}</p> */}
                      <Dropdown.Item className="p-3">
                         <NavLink to="/profile">Profile</NavLink>
                      </Dropdown.Item>

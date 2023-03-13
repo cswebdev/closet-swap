@@ -1,0 +1,42 @@
+#profile-page {
+    height: 100vh;
+}
+
+
+#container-profile {
+    height: 40vh;
+}
+
+#section-avatar {
+    width: 120px;
+    height: 120px;
+    border: 6px solid #a5a0ff;
+    border-radius: 50%;
+    position: relative;
+    object-fit: contain;
+    text-align: center;
+    display: inline-flex;
+
+
+
+}
+
+img {
+
+    border: 1px solid transparent;
+    border-radius: 50%;
+    max-height: 100px;
+    max-width: 100px;
+    margin: auto;
+
+}
+
+div.col {
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 14px;
+}
+
+svg#report {
+    color: red;
+}
