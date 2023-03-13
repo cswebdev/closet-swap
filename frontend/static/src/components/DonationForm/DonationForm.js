@@ -107,6 +107,7 @@ function DonationForm() {
       }));
    };
 
+   // Resizes the file using react-image-file-resizer react-image-file-resizer
    const resizeFile = (file) =>
       new Promise((resolve) => {
          Resizer.imageFileResizer(
@@ -120,10 +121,12 @@ function DonationForm() {
                console.log({ size: uri.size });
                resolve(uri);
             },
-            "file"
+            // "file"
+            "base64"
          );
       });
 
+   //Passes image from react-image-file-resizer to the clarfAI api
    const handleImageInput = async (event) => {
       try {
          const file = event.target.files[0];
@@ -160,12 +163,13 @@ function DonationForm() {
       // Change these to whatever model and image URL you want to use
       const MODEL_ID = "apparel-classification-v2";
       const MODEL_VERSION_ID = "651c5412d53c408fa3b4fe3dcc060be7";
-      // const IMAGE_URL = clothingItem.image ? clothingItem.image.uri : "";
-      const IMAGE_URL =
-         "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
+      const IMAGE_URL = resizedImage.uri;
+      // const IMAGE_URL =
+      //    "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
       ///////////////////////////////////////////////////////////////////////////////////
       // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
       ///////////////////////////////////////////////////////////////////////////////////
+      // This section constructs the request body using the parameters defined above
 
       const raw = JSON.stringify({
          user_app_id: {
@@ -182,6 +186,7 @@ function DonationForm() {
             },
          ],
       });
+      // This section defines the options for the API request using the request body and headers
 
       const requestOptions = {
          method: "POST",
@@ -195,7 +200,10 @@ function DonationForm() {
       // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
       // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
       // this will default to the latest version_id
-
+      // This section makes the API request to the Clarifai API using fetch()
+      // It passes in the options defined above and retrieves the response as JSON
+      // The response is then filtered to only include tags with a confidence score above 0.5
+      // The resulting tags are stored in outputData state and rendered as a list of buttons using tagsHTML
       fetch(
          "https://api.clarifai.com/v2/models/" +
             MODEL_ID +
@@ -210,21 +218,25 @@ function DonationForm() {
             const filteredOutputs = outputs.filter(
                (output) => output.value > 0.5
             );
-            const test = filteredOutputs.map((output) => ({
+            const analysisOutput = filteredOutputs.map((output) => ({
                name: output.name,
                score: output.value,
             }));
-            setoutputData(test);
-            console.log(test)
+            setoutputData(analysisOutput);
+            console.log(analysisOutput);
             console.log(outputData);
          })
          .catch((error) => console.log("error", error));
    };
+
+   // This section renders the tags stored in outputData state as a list of buttons
+   // The nanoid() function is used to generate unique keys for each button
    const tagsHTML = outputData.map((tag) => (
       <li id="tag" key={nanoid()}>
          <Button variant="outline-primary">{tag.name}</Button>
       </li>
    ));
+
    return (
       <div>
          {/* <div>`${outputData.name}`</div> */}
