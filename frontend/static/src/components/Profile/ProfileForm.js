@@ -1,10 +1,26 @@
 import "../Styles/ProfileStyles.css";
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { IconFlagFilled } from "@tabler/icons-react";
 
 function ProfileForm() {
+   const [activeUser, setActiveUser] = useState({});
+
+   useEffect(() => {
+      const getActiveUser = async () => {
+         const response = await fetch("/dj-rest-auth/user");
+         if (!response.ok) {
+            throw new Error("Network response not okay - user not found");
+         }
+         const data = await response.json();
+         console.log(data);
+         setActiveUser(data);
+      };
+      getActiveUser();
+   }, []);
+   console.log("this is", activeUser.username);
    return (
       <Container id="profile-page" className="bg-white">
          <Container id="container-profile" className="d-flex bg-white pt-5">

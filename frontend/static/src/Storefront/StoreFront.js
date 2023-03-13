@@ -3,6 +3,7 @@ import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { IconCheckbox, IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
+import StoreItem from "./StoreItem";
 
 function StoreFront() {
    const [isChecked, setIsChecked] = useState({
@@ -134,6 +135,7 @@ function StoreFront() {
                <section>
                   <h2>Browse Items here</h2>
                </section>
+               
             </Container>
          </Container>
       </Container>

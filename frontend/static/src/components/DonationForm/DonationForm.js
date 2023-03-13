@@ -107,18 +107,18 @@ function DonationForm() {
       }));
    };
 
-   // Resizes the file using react-image-file-resizer react-image-file-resizer
+   // Resizes the file using react-image-file-resizer
    const resizeFile = (file) =>
       new Promise((resolve) => {
          Resizer.imageFileResizer(
             file,
-            300,
-            300,
+            400,
+            400,
             "JPEG",
             100,
             0,
             (uri) => {
-               console.log({ size: uri.size });
+               console.log({ uri });
                resolve(uri);
             },
             // "file"
@@ -126,27 +126,8 @@ function DonationForm() {
          );
       });
 
-   //Passes image from react-image-file-resizer to the clarfAI api
-   const handleImageInput = async (event) => {
-      try {
-         const file = event.target.files[0];
-         const image = await resizeFile(file);
-         console.log({ image });
-
-         setClothingItem((prevState) => ({
-            ...prevState,
-            image,
-         }));
-
-         const reader = new FileReader();
-         reader.onloadend = () => {
-            setPreview(reader.result);
-         };
-         reader.readAsDataURL(image);
-      } catch (err) {
-         console.log(err);
-      }
-
+   const fetchImageTags = (image) => {
+      console.log({ image });
       // API request works with URL. Currently image input throws an error, possibly because the image isn't Base64. May need to convert image into Base 64
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,9 +144,9 @@ function DonationForm() {
       // Change these to whatever model and image URL you want to use
       const MODEL_ID = "apparel-classification-v2";
       const MODEL_VERSION_ID = "651c5412d53c408fa3b4fe3dcc060be7";
-      const IMAGE_URL = resizedImage.uri;
-      // const IMAGE_URL =
-      //    "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
+      // const IMAGE_URL = image;
+      const IMAGE_URL =
+         "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
       ///////////////////////////////////////////////////////////////////////////////////
       // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
       ///////////////////////////////////////////////////////////////////////////////////
@@ -229,6 +210,27 @@ function DonationForm() {
          .catch((error) => console.log("error", error));
    };
 
+   //Passes image from react-image-file-resizer to the clarfAI api
+   const handleImageInput = async (event) => {
+      try {
+         const file = event.target.files[0];
+         const resizedImage = await resizeFile(file);
+         fetchImageTags(resizedImage);
+         setClothingItem((prevState) => ({
+            ...prevState,
+            image: file,
+         }));
+
+         const reader = new FileReader();
+         reader.onloadend = () => {
+            setPreview(reader.result);
+         };
+         reader.readAsDataURL(file);
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
    // This section renders the tags stored in outputData state as a list of buttons
    // The nanoid() function is used to generate unique keys for each button
    const tagsHTML = outputData.map((tag) => (
@@ -239,7 +241,6 @@ function DonationForm() {
 
    return (
       <div>
-         {/* <div>`${outputData.name}`</div> */}
          <Container id="container-donation" className="d-flex">
             <Container id="container-donation-image">
                <Form onSubmit={handleSubmit}>
