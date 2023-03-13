@@ -33,13 +33,14 @@
 
 }
 
-#image-container>img {
+#image-container>#donation-image {
     /* max-height: 40vh; */
-    object-fit: cover;
+    object-fit: contain;
     height: 100%;
     width: 100%;
     padding: 0;
-    margin: auto;
+    margin: top 0;
+    margin-bottom: 0;
     border: 1px solid transparent;
     border-radius: 14px;
 
@@ -61,4 +62,35 @@
 #container-donation-form>Form {
     max-width: 90%;
     margin: auto;
+}
+
+#recommended-tags {
+    background-color: white;
+    height: 10vh;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+#recommended-tags>#tag-list {
+    list-style: none;
+    margin: 0;
+    padding: 0%;
+}
+
+#tag>div {
+    margin: 2px;
+    border: 2px solid black;
+    border-radius: 14px;
+
+    padding: 5px;
+    background-color: #00acff;
+    color: white;
+    min-width: 10px;
+}
+
+#tag>div:hover {
+    background-color: white;
+    color: #00acff;
 }

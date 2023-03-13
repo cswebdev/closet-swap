@@ -21,7 +21,7 @@
 
 }
 
-img {
+img#avatar-image {
 
     border: 1px solid transparent;
     border-radius: 50%;

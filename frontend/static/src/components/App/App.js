@@ -13,6 +13,7 @@ function App() {
       <>
          <Header isAuth={isAuth} />
          <Outlet context={[setAuth]} />
+         
       </>
    );
 }

@@ -12,7 +12,10 @@ function ProfileForm() {
                <IconFlagFilled className="float-end  me-5" id="report" />
 
                <div id="section-avatar" className="m-0 p-0">
-                  <img src="https://openclipart.org/image/800px/277089" />
+                  <img
+                     src="https://openclipart.org/image/800px/277089"
+                     id="avatar-image"
+                  />
                </div>
             </Container>
             <Container id="container-userinfo" className="bg-info">
