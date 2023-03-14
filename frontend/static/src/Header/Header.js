@@ -47,6 +47,9 @@ function Header(user) {
                   <NavLink to="/store" className="m-2">
                      Store
                   </NavLink>
+                  <NavLink to="/item" className="m-2">
+                     Item
+                  </NavLink>
                </Nav>
                <Dropdown>
                   <Dropdown.Toggle

@@ -3,6 +3,12 @@ from django.conf import settings
 
 # Create your models here.
 
+class Image(models.Model):
+    url = models.ImageField(upload_to='clothing/')
+
+    def __str__(self):
+        return str(self.url)
+
 #what is a ClothingItem - It's a product listing
 class ClothingItem(models.Model): 
     SIZE_CHOICES = (
@@ -42,7 +48,8 @@ class ClothingItem(models.Model):
     condition = models.CharField(max_length=2, choices=CONDITION_CHOICES)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     is_active = models.BooleanField(default=True)
-    image=models.ImageField(upload_to='media/', blank=True, null=True)
-
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, related_name="clothing_item")
+    
     def __str__(self):
         return self.title
+

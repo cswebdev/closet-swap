@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import Resizer from "react-image-file-resizer";
 import Badge from "react-bootstrap/Badge";
 import { nanoid } from "nanoid";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 
 function DonationForm() {
    const [clothingItem, setClothingItem] = useState({
@@ -20,8 +21,17 @@ function DonationForm() {
       size: "",
       condition: "",
       gender: "",
-      image: null,
    });
+
+   // const colorOptions = [
+   //    { name: "Red", code: "#ff0000" },
+   //    { name: "Blue", code: "#0000ff" },
+   //    { name: "Green", code: "#00ff00" },
+   //    { name: "Yellow", code: "#ffff00" },
+   //    { name: "Orange", code: "#ffa500" },
+   //    { name: "Purple", code: "#800080" },
+   // ];
+   const [image, setImage] = useState(null);
    const [preview, setPreview] = useState("");
    const [setError] = useState(null);
    const [outputData, setoutputData] = useState([]);
@@ -63,7 +73,6 @@ function DonationForm() {
          throw new Error("Network is not ok");
       }
       const data = await response.json();
-      Cookies.set("Authorization", `Token ${data.key}`);
       console.log({ data });
    };
 
@@ -108,7 +117,7 @@ function DonationForm() {
    };
 
    // Resizes the file using react-image-file-resizer
-   const resizeFile = (file) =>
+   const resizeImage = (file) =>
       new Promise((resolve) => {
          Resizer.imageFileResizer(
             file,
@@ -118,15 +127,13 @@ function DonationForm() {
             100,
             0,
             (uri) => {
-               console.log({ uri });
                resolve(uri);
             },
-            // "file"
-            "base64"
+            "file"
          );
       });
 
-   const fetchImageTags = (image) => {
+   const fetchTags = (url) => {
       console.log({ image });
       // API request works with URL. Currently image input throws an error, possibly because the image isn't Base64. May need to convert image into Base 64
 
@@ -134,7 +141,6 @@ function DonationForm() {
       // In this section, we set the user authentication, user and app ID, model details, and the URL
       // of the image we want as an input. Change these strings to run your own example.
       //////////////////////////////////////////////////////////////////////////////////////////////////
-
       // Your PAT (Personal Access Token) can be found in the portal under Authentification
       const PAT = "2db209982998400a86c0eb512dd78dc8";
       // Specify the correct user_id/app_id pairings
@@ -145,8 +151,8 @@ function DonationForm() {
       const MODEL_ID = "apparel-classification-v2";
       const MODEL_VERSION_ID = "651c5412d53c408fa3b4fe3dcc060be7";
       // const IMAGE_URL = image;
-      const IMAGE_URL =
-         "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
+      // const IMAGE_URL =
+      // "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
       ///////////////////////////////////////////////////////////////////////////////////
       // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
       ///////////////////////////////////////////////////////////////////////////////////
@@ -161,7 +167,7 @@ function DonationForm() {
             {
                data: {
                   image: {
-                     url: IMAGE_URL,
+                     url: url,
                   },
                },
             },
@@ -172,8 +178,8 @@ function DonationForm() {
       const requestOptions = {
          method: "POST",
          headers: {
+            Authorization: `Key ${PAT}`,
             Accept: "application/json",
-            Authorization: "Key " + PAT,
          },
          body: raw,
       };
@@ -210,26 +216,66 @@ function DonationForm() {
          .catch((error) => console.log("error", error));
    };
 
-   //Passes image from react-image-file-resizer to the clarfAI api
    const handleImageInput = async (event) => {
-      try {
-         const file = event.target.files[0];
-         const resizedImage = await resizeFile(file);
-         fetchImageTags(resizedImage);
-         setClothingItem((prevState) => ({
-            ...prevState,
-            image: file,
-         }));
+      const file = event.target.files[0];
 
-         const reader = new FileReader();
-         reader.onloadend = () => {
-            setPreview(reader.result);
-         };
-         reader.readAsDataURL(file);
-      } catch (err) {
-         console.log(err);
+      // resize selected image
+      const resizedImage = await resizeImage(file);
+
+      // Generate image preview
+      const reader = new FileReader();
+      reader.onloadend = () => {
+         setPreview(reader.result);
+      };
+      reader.readAsDataURL(resizedImage);
+
+      // Save selected image to the database and return url
+      const formData = new FormData();
+      formData.append("url", resizedImage);
+
+      const options = {
+         method: "POST",
+         headers: {
+            "X-CSRFToken": Cookies.get("csrftoken"),
+         },
+         body: formData,
+      };
+
+      const response = await fetch(`/api_v1/closet/images/`, options).catch(
+         handleError
+      );
+
+      if (!response.ok) {
+         throw new Error("Network is not ok");
       }
+
+      const data = await response.json();
+
+      // request image tags from the Clarifai API
+      const tags = fetchTags(data.url);
    };
+
+   //Passes image from react-image-file-resizer to the clarfAI api
+   // const oldhandleImageInput = async (event) => {
+   //    try {
+   //       const file = event.target.files[0];
+   //       const uri = await resizeFile(file);
+   //       const resizedFile = new Blob([uri], { type: "image/jpeg" });
+   //       fetchImageTags(uri);
+   //       setClothingItem((prevState) => ({
+   //          ...prevState,
+   //          image: resizedFile,
+   //       }));
+
+   //       const reader = new FileReader();
+   //       reader.onloadend = () => {
+   //          setPreview(reader.result);
+   //       };
+   //       reader.readAsDataURL(resizedFile);
+   //    } catch (err) {
+   //       console.log(err);
+   //    }
+   // };
 
    // This section renders the tags stored in outputData state as a list of buttons
    // The nanoid() function is used to generate unique keys for each button
@@ -245,7 +291,7 @@ function DonationForm() {
             <Container id="container-donation-image">
                <Form onSubmit={handleSubmit}>
                   <Container id="image-container">
-                     {clothingItem.image && (
+                     {preview && (
                         <img src={preview} alt="" id="donation-image" />
                      )}
                      {/* <IconShirt className="w-100 h-100 text-muted" /> */}
@@ -277,6 +323,7 @@ function DonationForm() {
                         onChange={handleInput}
                      />
                      {/* * */}
+
                      <Form.Label htmlFor="category"></Form.Label>
                      <Form.Control
                         as="select"
@@ -330,6 +377,20 @@ function DonationForm() {
                         value={clothingItem.color}
                         onChange={handleInput}
                      />
+                     {/* <Form.Group controlId="colorDropdown">
+                        <Form.Label htmlFor="color"></Form.Label>
+                        <Form.Control as="select" className="color-dropdown">
+                           {colorOptions.map((option, index) => (
+                              <option
+                                 key={index}
+                                 value={option.code}
+                                 className="color-option"
+                              >
+                                 {option.name}
+                              </option>
+                           ))}
+                        </Form.Control>
+                     </Form.Group> */}
 
                      <Form.Label htmlFor="size"></Form.Label>
                      <Form.Control

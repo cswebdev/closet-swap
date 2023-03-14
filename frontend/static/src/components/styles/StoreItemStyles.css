@@ -1,0 +1,20 @@
+.CardImg {
+    height: 400px;
+    /* set the desired height */
+    width: 100%;
+    /* set the desired width */
+    object-fit: cover;
+    /* resize the image to fit the container while maintaining aspect ratio */
+    object-position: center;
+    /* center the image within the container */
+}
+
+div.col {
+    border-color: transparent;
+}
+
+div.overflow-auto.card-body {
+    border: .5px solid rgb(209, 209, 209);
+    border-radius: 0px 0px 5px 5px;
+    background-color: aliceblue;
+}

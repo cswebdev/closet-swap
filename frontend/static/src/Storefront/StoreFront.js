@@ -131,11 +131,16 @@ function StoreFront() {
                </Container>
             </Form>
             {/* Right Side Panel */}
-            <Container id="panel-store" className="w-75 bg-light">
+            <Container
+               id="panel-store"
+               className="w-75 bg-light overflow-auto"
+            >
                <section>
                   <h2>Browse Items here</h2>
                </section>
-               
+               <Container className="d-flex ">
+                  <StoreItem />
+               </Container>
             </Container>
          </Container>
       </Container>

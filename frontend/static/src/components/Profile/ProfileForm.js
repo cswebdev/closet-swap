@@ -39,7 +39,7 @@ function ProfileForm() {
                   <h1>User Info Goes Here</h1>
                </Row>
                <Row>
-                  <Col>Username Box</Col>
+                  <Col id="username">Username Box</Col>
                   <Col>Test Box</Col>
                </Row>
                <Row>
