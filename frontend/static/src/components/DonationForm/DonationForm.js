@@ -12,10 +12,42 @@ import Badge from "react-bootstrap/Badge";
 import { nanoid } from "nanoid";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 
+const styleChoices = {
+   BL: "Blouses",
+   BDS: "Button Down Shirts",
+   KT: "Knit Tops",
+   TS: "T Shirt",
+   TT: "Tank Top",
+   SweatS: "Sweat Shirt",
+   ST: "Silk Top",
+   Sless: "Strapless",
+   HT: "Halter Tops",
+   Turt: "Turtlenecks",
+   BS: "Bodysuits",
+   CROP: "Cropped",
+};
+
+const colorChoices = {
+   Black: "Black",
+   Gray: "Gray",
+   White: "White",
+   Ivory: "Ivory",
+   Tan: "Tan",
+   Brown: "Brown",
+   Purple: "Purple",
+   Blue: "Blue",
+   Teal: "Teal",
+   Green: "Green",
+   Red: "Red",
+   Pink: "Pink",
+   Orange: "Orange",
+   Yellow: "Yellow",
+};
 function DonationForm() {
    const [clothingItem, setClothingItem] = useState({
       title: "",
       category: "",
+      style: "",
       brand: "",
       color: "",
       size: "",
@@ -23,14 +55,6 @@ function DonationForm() {
       gender: "",
    });
 
-   // const colorOptions = [
-   //    { name: "Red", code: "#ff0000" },
-   //    { name: "Blue", code: "#0000ff" },
-   //    { name: "Green", code: "#00ff00" },
-   //    { name: "Yellow", code: "#ffff00" },
-   //    { name: "Orange", code: "#ffa500" },
-   //    { name: "Purple", code: "#800080" },
-   // ];
    const [image, setImage] = useState(null);
    const [preview, setPreview] = useState("");
    const [setError] = useState(null);
@@ -86,6 +110,23 @@ function DonationForm() {
       setClothingItem((prevState) => ({
          ...prevState,
          category: value,
+      }));
+   };
+
+   const handleStyleInput = (event) => {
+      const { value } = event.target;
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         style: value,
+      }));
+   };
+   const handleColorInput = (event) => {
+      const { value } = event.target;
+
+      setClothingItem((prevState) => ({
+         ...prevState,
+         color: value,
       }));
    };
 
@@ -153,6 +194,9 @@ function DonationForm() {
       // const IMAGE_URL = image;
       // const IMAGE_URL =
       // "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
+      const IMAGE_URL = url;
+      // console.log(presigned_url);
+      // console.log(url.presigned_url);
       ///////////////////////////////////////////////////////////////////////////////////
       // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
       ///////////////////////////////////////////////////////////////////////////////////
@@ -167,12 +211,13 @@ function DonationForm() {
             {
                data: {
                   image: {
-                     url: url,
+                     url: IMAGE_URL,
                   },
                },
             },
          ],
       });
+      console.log("hi");
       // This section defines the options for the API request using the request body and headers
 
       const requestOptions = {
@@ -252,30 +297,8 @@ function DonationForm() {
       const data = await response.json();
 
       // request image tags from the Clarifai API
-      const tags = fetchTags(data.url);
+      const tags = fetchTags(data.presigned_url);
    };
-
-   //Passes image from react-image-file-resizer to the clarfAI api
-   // const oldhandleImageInput = async (event) => {
-   //    try {
-   //       const file = event.target.files[0];
-   //       const uri = await resizeFile(file);
-   //       const resizedFile = new Blob([uri], { type: "image/jpeg" });
-   //       fetchImageTags(uri);
-   //       setClothingItem((prevState) => ({
-   //          ...prevState,
-   //          image: resizedFile,
-   //       }));
-
-   //       const reader = new FileReader();
-   //       reader.onloadend = () => {
-   //          setPreview(reader.result);
-   //       };
-   //       reader.readAsDataURL(resizedFile);
-   //    } catch (err) {
-   //       console.log(err);
-   //    }
-   // };
 
    // This section renders the tags stored in outputData state as a list of buttons
    // The nanoid() function is used to generate unique keys for each button
@@ -315,7 +338,7 @@ function DonationForm() {
                      <Form.Label htmlFor="title"></Form.Label>
                      <input
                         id="text"
-                        className="form-control w-75 me-2"
+                        className="form-control w-50 me-2"
                         name="title"
                         type="text"
                         placeholder="title"
@@ -327,17 +350,36 @@ function DonationForm() {
                      <Form.Label htmlFor="category"></Form.Label>
                      <Form.Control
                         as="select"
-                        className="w-25"
+                        className="w-25 me-2"
                         value={clothingItem.category}
                         onChange={handleCategoryInput}
                      >
                         <option value="" disabled>
-                           category select
+                           Category select
                         </option>
                         <option value="TOPS">Tops</option>
                         <option value="BOTTOMS">Bottoms</option>
                         <option value="DRESSES">Dresses</option>
                         <option value="SKIRTS">Skirts</option>
+                        <option value="SHORTS">Shorts</option>
+                        <option value="AW">Active Wear</option>
+                        <option value="SW">Swim Wear</option>
+                        <option value="SHOES">Shoes</option>
+                     </Form.Control>
+                     <Form.Label htmlFor="style"></Form.Label>
+                     <Form.Control
+                        as="select"
+                        className="w-25"
+                        onChange={handleStyleInput}
+                     >
+                        <option value="">Select Style</option>
+                        {Object.entries(styleChoices).map(
+                           ([code, name], index) => (
+                              <option key={index} value={code}>
+                                 {name}
+                              </option>
+                           )
+                        )}
                      </Form.Control>
                   </Form.Group>
                   {/* * */}
@@ -345,7 +387,7 @@ function DonationForm() {
                      <Form.Label htmlFor="brand"></Form.Label>
                      <input
                         id="text"
-                        className="form-control w-75 me-2"
+                        className="form-control w-50 me-2"
                         name="brand"
                         type="text"
                         placeholder="brand"
@@ -366,9 +408,23 @@ function DonationForm() {
                         <option value="F">Female</option>
                         <option value="U">Unisex</option>
                      </Form.Control>
+                     <Form.Control
+                        as="select"
+                        className="w-25 ms-2"
+                        onChange={handleColorInput}
+                     >
+                        <option value="">Select Color</option>
+                        {Object.entries(colorChoices).map(
+                           ([code, name], index) => (
+                              <option key={index} value={code}>
+                                 {name}
+                              </option>
+                           )
+                        )}
+                     </Form.Control>
                   </Form.Group>
                   <Form.Group className="d-flex mt-4">
-                     <Form.Label htmlFor="color"></Form.Label>
+                     {/* <Form.Label htmlFor="color"></Form.Label>
                      <input
                         className="form-control w-50 me-2"
                         type="text"
@@ -376,7 +432,7 @@ function DonationForm() {
                         placeholder="color"
                         value={clothingItem.color}
                         onChange={handleInput}
-                     />
+                     /> */}
                      {/* <Form.Group controlId="colorDropdown">
                         <Form.Label htmlFor="color"></Form.Label>
                         <Form.Control as="select" className="color-dropdown">
@@ -425,6 +481,7 @@ function DonationForm() {
                         <option value="P">Poor</option>
                      </Form.Control>
                   </Form.Group>
+
                   <Button
                      type="submit"
                      className="mt-4 float-end"

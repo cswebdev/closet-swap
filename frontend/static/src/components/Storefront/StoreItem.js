@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import "../components/Styles/StoreItemStyles.css";
+import "../Styles/StoreItemStyles.css";
 
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
@@ -34,16 +34,22 @@ function StoreItem(setClothingItem) {
 
    for (let i = 0; i < itemListings.length; i += 3) {
       itemListingsHTML.push(
-         <Row className="row" key={nanoid()}>
+         <Row className="row overflow-hidden" key={nanoid()} id="row-item">
             {itemListings.slice(i, i + 3).map((item) => (
-               <Col className="col p-1 m-0" key={item.id} id="col-item">
+               <Col
+                  className="col p-1 m-0 overflow-hidden"
+                  key={item.id}
+                  id="col-item"
+               >
                   <Card style={{ width: "18rem" }}>
-                     <Card.Img
-                        variant="top"
-                        src={item.image_url.url}
-                        className="CardImg"
-                     />
-                     <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                     <div className="p-0 m-0 g-0 overflow-hidden">
+                        <Card.Img
+                           variant="top"
+                           src={item.image_url.url}
+                           className="CardImg "
+                        />
+                     </div>
+                     <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden">
                         <Card.Title className="p-1 m-1 text-center">
                            {item.title}
                         </Card.Title>

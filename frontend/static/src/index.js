@@ -9,9 +9,9 @@ import LoginForm from "./components/Auth/LoginForm";
 import RegisterForm from "./components/Auth/RegistrationForm";
 import reportWebVitals from "./reportWebVitals";
 import DonationForm from "./components/DonationForm/DonationForm";
-import StoreFront from "./Storefront/StoreFront";
+import StoreFront from "./components/Storefront/StoreFront";
 import ProfileForm from "./components/Profile/ProfileForm";
-import StoreItem from "./Storefront/StoreItem";
+import StoreItem from "./components/Storefront/StoreItem";
 import "./Fonts/fonts.css";
 
 /*  */

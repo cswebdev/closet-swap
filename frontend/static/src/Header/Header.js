@@ -8,6 +8,7 @@ import "./Header.css";
 import { IconTextSize, IconUserCircle } from "@tabler/icons-react";
 import { IconSearch } from "@tabler/icons-react";
 import { IconShoppingBag } from "@tabler/icons-react";
+import { IconMessageCircle2Filled } from "@tabler/icons-react";
 
 import Button from "react-bootstrap/esm/Button";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -53,6 +54,15 @@ function Header(user) {
                      Item
                   </NavLink>
                </Nav>
+               <IconMessageCircle2Filled
+                  style={{
+                     width: "40px",
+                     height: "40px",
+
+                     color: "#39ff5a",
+                  }}
+                  className="m-2"
+               />
                <IconShoppingBag
                   style={{ width: "40px", height: "40px" }}
                   className="m-2"

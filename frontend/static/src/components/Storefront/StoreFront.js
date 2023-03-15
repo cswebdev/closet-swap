@@ -1,4 +1,4 @@
-import "../components/Styles/StoreFrontStyles.css";
+import "../Styles/StoreFrontStyles.css";
 import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { IconBrandMatrix, IconCheckbox, IconSearch } from "@tabler/icons-react";
