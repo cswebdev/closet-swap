@@ -1,7 +1,7 @@
 import "../components/Styles/StoreFrontStyles.css";
 import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
-import { IconCheckbox, IconSearch } from "@tabler/icons-react";
+import { IconBrandMatrix, IconCheckbox, IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
 
@@ -31,7 +31,7 @@ function StoreFront() {
          </div>
          {/* Left  Side Panel*/}
          <Container className="d-flex pt-4">
-            <Form className="w-25 bg-info">
+            <Form className="w-25 bg-info ">
                <Container id="panel-filter">
                   <section id="filter-section1">
                      <h6>Filter item here</h6>
@@ -131,13 +131,8 @@ function StoreFront() {
                </Container>
             </Form>
             {/* Right Side Panel */}
-            <Container
-               id="panel-store"
-               className="w-75 bg-light overflow-auto"
-            >
-               <section>
-                  <h2>Browse Items here</h2>
-               </section>
+            <Container id="panel-store" className="w-75 bg-light">
+               <section>{/* <h2>Browse Items here</h2> */}</section>
                <Container className="d-flex ">
                   <StoreItem />
                </Container>

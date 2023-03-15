@@ -9,11 +9,11 @@
     /* center the image within the container */
 }
 
-div.col {
+div#col-item {
     border-color: transparent;
 }
 
-div.overflow-auto.card-body {
+div.card-body {
     border: .5px solid rgb(209, 209, 209);
     border-radius: 0px 0px 5px 5px;
     background-color: aliceblue;

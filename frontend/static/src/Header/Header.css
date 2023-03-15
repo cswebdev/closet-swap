@@ -1,5 +1,10 @@
+nav.navbar.navbar-expand-md.navbar {
+    background-color: #fab8d8;
+}
+
 .navbar {
     height: 15vh;
+
 }
 
 .navbar-brand {

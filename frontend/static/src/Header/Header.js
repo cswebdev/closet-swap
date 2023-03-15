@@ -5,8 +5,10 @@ import Nav from "react-bootstrap/Navbar";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
-import { IconUserCircle } from "@tabler/icons-react";
+import { IconTextSize, IconUserCircle } from "@tabler/icons-react";
 import { IconSearch } from "@tabler/icons-react";
+import { IconShoppingBag } from "@tabler/icons-react";
+
 import Button from "react-bootstrap/esm/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from "js-cookie";
@@ -25,7 +27,7 @@ function Header(user) {
       Cookies.remove("Authorization", `Token ${data.key}`);
    };
    return (
-      <Navbar bg="light" expand="md">
+      <Navbar expand="md">
          <Container>
             <Navbar.Brand href="#home">Closet Swap</Navbar.Brand>
 
@@ -51,13 +53,21 @@ function Header(user) {
                      Item
                   </NavLink>
                </Nav>
+               <IconShoppingBag
+                  style={{ width: "40px", height: "40px" }}
+                  className="m-2"
+               />
                <Dropdown>
                   <Dropdown.Toggle
                      variant="outline-primary"
                      id="dropdown-basic"
-                     className="border-0 p-2"
+                     className="border-0"
                   >
-                     <IconUserCircle className="p-0" id="header-dropdown" />
+                     <IconUserCircle
+                        className="p-0 "
+                        id="header-dropdown"
+                        style={{ width: "40px", height: "40px" }}
+                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                      {/* <p>hello${user.username}</p> */}
