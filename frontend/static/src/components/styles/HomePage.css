@@ -60,7 +60,7 @@ div#hero-container.container {
     padding: 1rem 2rem;
     font-size: 1.5rem;
     background-color: #ffffff;
-    border: none;
+    border: 1px solid #00acff;
     border-radius: 1.5rem;
     color: #000000;
     cursor: pointer;
@@ -94,5 +94,5 @@ div#hero-container.container {
 
 #mission-image {
     max-width: 50%;
-    align-items: end;
+
 }

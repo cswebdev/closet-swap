@@ -28,8 +28,8 @@ function HomePage() {
                </div>
             </div>
          </Container>
-         <Container id="container-mission" className="d-flex-column">
-            <p id="mission-top-text" className="justify-content-end d-flex">
+         <Container id="container-mission" className="d-flex-columd">
+            <p id="mission-top-text">
                Our Mission at closet swap is to help gender non conforming
                people to become the best version of themselves. Part of the
                journey through gender expression is finding the right clothes!

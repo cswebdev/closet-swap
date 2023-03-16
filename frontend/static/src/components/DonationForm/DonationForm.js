@@ -53,13 +53,16 @@ function DonationForm() {
       size: "",
       condition: "",
       gender: "",
-      image:"", 
+      image: "",
+      selectedTags: [],
+      is_active: true,
    });
 
    const [image, setImage] = useState(null);
    const [preview, setPreview] = useState("");
    const [setError] = useState(null);
    const [outputData, setoutputData] = useState([]);
+   const [selectedTags, setSelectedTags] = useState([]);
 
    const handleInput = (event) => {
       const { name, value } = event.target;
@@ -305,9 +308,25 @@ function DonationForm() {
    // The nanoid() function is used to generate unique keys for each button
    const tagsHTML = outputData.map((tag) => (
       <li id="tag" key={nanoid()}>
-         <Button variant="outline-primary">{tag.name}</Button>
+         <Button
+            variant="outline-primary"
+            id="tag-button"
+            className={`btn-toggle${
+               selectedTags.includes(tag) ? " active" : ""
+            }`}
+            onClick={() => {
+               if (selectedTags.includes(tag)) {
+                  setSelectedTags(selectedTags.filter((t) => t !== tag));
+               } else {
+                  setSelectedTags([...selectedTags, tag]);
+               }
+            }}
+         >
+            {tag.name}
+         </Button>
       </li>
    ));
+   console.log(...selectedTags);
 
    return (
       <div>
@@ -470,7 +489,7 @@ function DonationForm() {
                   >
                      Submit
                   </Button>
-                  <Container id="container-recommended-tags">
+                  <Container id="container-recommended-tags" className="w-100">
                      <section id="section-recommended-tags">
                         <h6 className="text-centered">
                            Please Choose Recommended Tags

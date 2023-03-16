@@ -45,7 +45,7 @@ function StoreItem({setClothingItem, presigned_url, url, tagsHTML, image_url}) {
                      <div className="p-0 m-0 g-0 overflow-hidden">
                         <Card.Img
                            variant="top"
-                           src={item.image}
+                           src={item.image_url}
                            className="CardImg "
                         />
                      </div>

@@ -92,6 +92,8 @@ class ClothingItem(models.Model):
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     is_active = models.BooleanField(default=True)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, related_name="clothing_item")
+    selectedTags = models.CharField(max_length=255, null=True, blank=True)
+
 
     def __str__(self):
         return self.title
