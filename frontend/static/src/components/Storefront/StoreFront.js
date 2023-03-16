@@ -1,11 +1,12 @@
 import "../Styles/StoreFrontStyles.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
-import { IconBrandMatrix, IconCheckbox, IconSearch } from "@tabler/icons-react";
+import { IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
 import Accordion from "react-bootstrap/Accordion";
 import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
+import AccordionBody from "react-bootstrap/esm/AccordionBody";
 
 const genderChoices = {
    Male: "Male",
@@ -119,11 +120,13 @@ function StoreFront() {
       Orange: false,
       Yellow: false,
    });
-
+   const [itemFilter, setItemFilter] = useState("");
+   // const [storeItems, setStoreItems] = useState([]);
    const handleFilterInput = (event) => {
       const { name } = event.target;
-      setIsChecked({ ...isChecked, [name]: !isChecked[name] });
-      console.log({ ...isChecked });
+      // setIsChecked({ ...isChecked, [name]: !isChecked[name] });
+      setItemFilter(name);
+      // console.log(event.target);
    };
 
    return (
@@ -275,7 +278,9 @@ function StoreFront() {
             <Container id="panel-store" className="w-75 bg-light">
                <section>{/* <h2>Browse Items here</h2> */}</section>
                <Container className="d-flex ">
-                  <StoreItem />
+                  {/* store items are rendered here */}
+                  <StoreItem itemFilter={itemFilter} />
+                  {/* * */}
                </Container>
             </Container>
          </Container>

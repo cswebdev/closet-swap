@@ -8,9 +8,11 @@ import "../Styles/StoreItemStyles.css";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
-function StoreItem() {
+function StoreItem({ itemFilter }) {
+   console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
 
+   // console.log("this is item filter", itemFilter);
    useEffect(() => {
       const getItems = async () => {
          const response = await fetch(`/api_v1/closet/items/`);
@@ -18,7 +20,18 @@ function StoreItem() {
             throw new Error("Network response not ok");
          }
          const data = await response.json();
-         console.log(data);
+
+         let result = data;
+         // result.filter((item) => console.log(splice(item.color.itemFilter)));
+         // // result = Object.keys(result).filter((key) => key === "Female");
+         // console.log("this is a result 1", result);
+         // console.log(Object.keys(result).filter((key) => console.log(key)));
+         // itemFilter = "Male";
+         console.log("also" + " " + itemFilter);
+         // itemFilter = "Male";
+         result = result.filter((item) => item.gender == itemFilter);
+
+         return setItemListings(result);
          setItemListings(data);
       };
       getItems();
@@ -28,7 +41,7 @@ function StoreItem() {
       //   }, 1000000);
 
       //   return () => clearInterval(interval);
-   }, []);
+   }, [itemFilter]);
 
    const itemListingsHTML = [];
 
