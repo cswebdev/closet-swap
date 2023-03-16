@@ -53,6 +53,7 @@ function DonationForm() {
       size: "",
       condition: "",
       gender: "",
+      image:"", 
    });
 
    const [image, setImage] = useState(null);
@@ -87,7 +88,7 @@ function DonationForm() {
          body: formData,
       };
 
-      const response = await fetch(`/api_v1/closets/items/`, options).catch(
+      const response = await fetch(`/api_v1/closet/items/`, options).catch(
          handleError
       );
 
@@ -217,7 +218,7 @@ function DonationForm() {
             },
          ],
       });
-      console.log("hi");
+
       // This section defines the options for the API request using the request body and headers
 
       const requestOptions = {
@@ -404,9 +405,9 @@ function DonationForm() {
                         <option value="" disabled>
                            Item Gender
                         </option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                        <option value="U">Unisex</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Unisex">Unisex</option>
                      </Form.Control>
                      <Form.Control
                         as="select"
@@ -414,40 +415,20 @@ function DonationForm() {
                         onChange={handleColorInput}
                      >
                         <option value="">Select Color</option>
+                        // using Object.entries to iterate through each
+                        key-value pair in the styleChoices object
                         {Object.entries(colorChoices).map(
                            ([code, name], index) => (
+                              // creates an option element with a unique key and the code as the value
                               <option key={index} value={code}>
                                  {name}
                               </option>
+                              // displays the name of the style choice as the text content for the option
                            )
                         )}
                      </Form.Control>
                   </Form.Group>
                   <Form.Group className="d-flex mt-4">
-                     {/* <Form.Label htmlFor="color"></Form.Label>
-                     <input
-                        className="form-control w-50 me-2"
-                        type="text"
-                        name="color"
-                        placeholder="color"
-                        value={clothingItem.color}
-                        onChange={handleInput}
-                     /> */}
-                     {/* <Form.Group controlId="colorDropdown">
-                        <Form.Label htmlFor="color"></Form.Label>
-                        <Form.Control as="select" className="color-dropdown">
-                           {colorOptions.map((option, index) => (
-                              <option
-                                 key={index}
-                                 value={option.code}
-                                 className="color-option"
-                              >
-                                 {option.name}
-                              </option>
-                           ))}
-                        </Form.Control>
-                     </Form.Group> */}
-
                      <Form.Label htmlFor="size"></Form.Label>
                      <Form.Control
                         as="select"
@@ -474,7 +455,7 @@ function DonationForm() {
                         <option value="" disabled>
                            Condition
                         </option>
-                        <option value="N">New</option>
+                        <option value="New">New</option>
                         <option value="VG">Very Good</option>
                         <option value="G">Good</option>
                         <option value="F">Fair</option>

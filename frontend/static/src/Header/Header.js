@@ -92,7 +92,7 @@ function Header(user) {
                         logout
                      </Dropdown.Item>
                   </Dropdown.Menu>
-               </Dropdown>
+               </Dropdown>             
 
                {/* <input
                   type="text"

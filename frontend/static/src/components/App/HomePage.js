@@ -28,6 +28,23 @@ function HomePage() {
                </div>
             </div>
          </Container>
+         <Container id="container-mission" className="d-flex-column">
+            <p id="mission-top-text" className="justify-content-end d-flex">
+               Our Mission at closet swap is to help gender non conforming
+               people to become the best version of themselves. Part of the
+               journey through gender expression is finding the right clothes!
+            </p>
+
+            <img
+               src="https://img.freepik.com/free-vector/flat-design-transgender-representation-illustrated_23-2148957172.jpg?w=2000&t=st=1678935271~exp=1678935871~hmac=89ff520c1653883d15a935c5adb35fc77303c15c51ed251ffb6a1d99db9f2a78"
+               id="mission-image"
+            />
+
+            <p className="mission-mid-text">
+               All clothes are donated through other people in the LGBTQAIA+
+               community and our allies!
+            </p>
+         </Container>
       </Container>
    );
 }

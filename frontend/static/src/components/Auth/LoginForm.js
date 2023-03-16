@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../Styles/LoginStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
-import { Navigate } from "react-router-dom";
 
 function LoginForm() {
    const [user, setUser] = useState({
@@ -55,8 +55,7 @@ function LoginForm() {
          throw new Error("Network Response was not Ok");
       }
       const data = await response.json();
-      Cookies.set("Authorization", `Token${data.key}`);
-      Navigate("/");
+      Cookies.set("Authorization", `Token ${data.key}`); // Added space after "Token"
    };
 
    return (

@@ -6,7 +6,7 @@ body {
 
 #container-homepage {
     background-color: #00acff;
-    height: 100vh;
+    height: 100%;
     max-width: 70%;
     padding: 0;
 }
@@ -70,4 +70,29 @@ div#hero-container.container {
 .hero-button:hover {
     background-color: #00acff;
     color: #ffffff;
+}
+
+#container-mission {
+    padding: 0;
+    margin: 0;
+
+}
+
+
+#mission-top-text {
+    background-color: white;
+    max-width: 50%;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    margin-top: 5%;
+
+
+
+}
+
+#mission-image {
+    max-width: 50%;
+    align-items: end;
 }

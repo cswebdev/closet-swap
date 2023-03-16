@@ -8,7 +8,7 @@ import "../Styles/StoreItemStyles.css";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
-function StoreItem(setClothingItem) {
+function StoreItem({setClothingItem, presigned_url, url, tagsHTML, image_url}) {
    const [itemListings, setItemListings] = useState([]);
 
    useEffect(() => {
@@ -45,7 +45,7 @@ function StoreItem(setClothingItem) {
                      <div className="p-0 m-0 g-0 overflow-hidden">
                         <Card.Img
                            variant="top"
-                           src={item.image_url.url}
+                           src={item.image}
                            className="CardImg "
                         />
                      </div>
