@@ -23,7 +23,7 @@
 #filter-section1 {
 
     background-color: aqua;
-    height: 25vh;
+    /* height: 25vh; */
     margin-top: 15%;
     border: 1px solid transparent;
     border-radius: 14px 14px 0 0;
@@ -33,14 +33,14 @@
 
 #filter-section2 {
     background-color: aliceblue;
-    height: 25vh;
+    /* height: 25vh; */
     margin-top: 0;
     border-bottom: 4px solid cadetblue;
 }
 
 #filter-section3 {
     background-color: aqua;
-    height: 25vh;
+    /* height: 25vh; */
     margin-top: 0;
     border-bottom: 1px solid transparent;
     border-radius: 0 0 14px 14px;

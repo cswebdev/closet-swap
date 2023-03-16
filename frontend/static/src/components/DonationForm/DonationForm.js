@@ -288,9 +288,10 @@ function DonationForm() {
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
          body: formData,
+        
       };
 
-      const response = await fetch(`/api_v1/closet/images/`, options).catch(
+      const response = await fetch(`/api_v1/clothing/images/`, options).catch(
          handleError
       );
 
