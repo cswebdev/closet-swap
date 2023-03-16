@@ -39,7 +39,7 @@
 }
 
 #filter-section3 {
-    background-color: aqua;
+    /* background-color: aqua; */
     /* height: 25vh; */
     margin-top: 0;
     border-bottom: 1px solid transparent;
@@ -59,7 +59,7 @@ h6 {
     border-radius: 0px 14px 0px 0px;
 
 }
-
+/* 
 #filter-section1,
 #filter-section2,
 #filter-section3 {
@@ -84,4 +84,4 @@ h6 {
 #filter-section3 div label {
     flex-basis: 33.33%;
     margin-bottom: 0;
-}
+} */

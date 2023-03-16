@@ -8,7 +8,7 @@ import "../Styles/StoreItemStyles.css";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
-function StoreItem({image_url}) {
+function StoreItem() {
    const [itemListings, setItemListings] = useState([]);
 
    useEffect(() => {
@@ -45,7 +45,7 @@ function StoreItem({image_url}) {
                      <div className="p-0 m-0 g-0 overflow-hidden">
                         <Card.Img
                            variant="top"
-                           src={item.resizedImage}
+                           src={item.image}
                            className="CardImg "
                         />
                      </div>

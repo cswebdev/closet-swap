@@ -4,6 +4,8 @@ import Container from "react-bootstrap/esm/Container";
 import { IconBrandMatrix, IconCheckbox, IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
+import Accordion from "react-bootstrap/Accordion";
+import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
 
 const genderChoices = {
    Male: "Male",
@@ -17,6 +19,14 @@ const categoryChoices = {
    Dresses: "Dresses",
    Outerwear: "Outerwear",
    Activewear: "Activewear",
+};
+
+const sizeChoices = {
+   XS: "Extra Small",
+   S: "Small",
+   M: "Medium",
+   L: "Large",
+   XL: "Extra Large",
 };
 
 const subCategoryChoicesTops = {
@@ -65,25 +75,55 @@ const colorChoices = {
 
 function StoreFront() {
    const [isChecked, setIsChecked] = useState({
-      male: false,
-      female: false,
-      unisex: false,
-      tops: false,
-      bottoms: false,
-      dresses: false,
-      skirts: false,
-      pants: false,
-      shorts: false,
-      activewear: false,
-      outerwear: false,
-      tshirts: false,
-      blouses: false,
-      shirts: false,
+      Male: false,
+      Female: false,
+      Unisex: false,
+      Tops: false,
+      Bottoms: false,
+      Dresses: false,
+      Skirts: false,
+      Pants: false,
+      Shorts: false,
+      Activewear: false,
+      Outerwear: false,
+      TShirts: false,
+      Blouses: false,
+      Shirts: false,
+      Sweaters: false,
+      Hoodies: false,
+      TankTops: false,
+      Jackets: false,
+      Pants: false,
+      Shorts: false,
+      Skirts: false,
+      Leggings: false,
+      MaxiDresses: false,
+      MiniDresses: false,
+      MidiDresses: false,
+      ShiftDresses: false,
+      HalterDresses: false,
+      CocktailDresses: false,
+      EveningDresses: false,
+      Black: false,
+      Gray: false,
+      White: false,
+      Ivory: false,
+      Tan: false,
+      Brown: false,
+      Purple: false,
+      Blue: false,
+      Teal: false,
+      Green: false,
+      Red: false,
+      Pink: false,
+      Orange: false,
+      Yellow: false,
    });
 
    const handleFilterInput = (event) => {
       const { name } = event.target;
       setIsChecked({ ...isChecked, [name]: !isChecked[name] });
+      console.log({ ...isChecked });
    };
 
    return (
@@ -98,43 +138,66 @@ function StoreFront() {
          <Container className="d-flex pt-4">
             <Form className="w-25 bg-info ">
                <Container id="panel-filter">
-                  <section id="filter-section1" className="d-flex-column">
-                     <h6>Filter item here</h6>
-                     <div className="ps-3">
-                        <p className="mb-0">Gender:</p>
-                        {Object.entries(genderChoices).map(
-                           ([code, name], index) => (
-                              <Form.Check
-                                 key={index}
-                                 type="checkbox"
-                                 label={name}
-                                 name={code}
-                                 checked={isChecked[code]}
-                                 onChange={handleFilterInput}
-                              />
-                           )
-                        )}
-                     </div>
-                  </section>
-                  <section id="filter-section2">
-                     <h6>Filter item here</h6>
-                     <div className="ps-3">
-                        <p className="m-0">Category:</p>
-                        {Object.entries(categoryChoices).map(
-                           ([code, name], index) => (
-                              <Form.Check
-                                 key={index}
-                                 type="checkbox"
-                                 label={name}
-                                 name={code}
-                                 checked={isChecked[code]}
-                                 onChange={handleFilterInput}
-                              />
-                           )
-                        )}
-                     </div>
-                  </section>
+                  <Accordion>
+                     <Accordion.Item eventKey="0">
+                        <Accordion.Header>Gender</Accordion.Header>
+                        <Accordion.Body>
+                           <h6>Filter item here</h6>
+
+                           {Object.entries(genderChoices).map(
+                              ([code, name], index) => (
+                                 <Form.Check
+                                    key={index}
+                                    type="checkbox"
+                                    label={name}
+                                    name={code}
+                                    checked={isChecked[code]}
+                                    onChange={handleFilterInput}
+                                 />
+                              )
+                           )}
+                        </Accordion.Body>
+                     </Accordion.Item>
+                  </Accordion>
+                  <Accordion>
+                     <Accordion.Item eventKey="0">
+                        <Accordion.Header>Category</Accordion.Header>
+                        <h6>Filter item here</h6>
+                        <div className="ps-3">
+                           <p className="m-0">Category:</p>
+                           {Object.entries(categoryChoices).map(
+                              ([code, name], index) => (
+                                 <Form.Check
+                                    key={index}
+                                    type="checkbox"
+                                    label={name}
+                                    name={code}
+                                    checked={isChecked[code]}
+                                    onChange={handleFilterInput}
+                                 />
+                              )
+                           )}
+                        </div>
+                     </Accordion.Item>
+                  </Accordion>
                   <section id="filter-section3">
+                     <div className="ps-3">
+                        <p className="m-0">Size:</p>
+                        {Object.entries(sizeChoices).map(
+                           ([code, name], index) => (
+                              <Form.Check
+                                 key={index}
+                                 type="checkbox"
+                                 label={name}
+                                 name={code}
+                                 checked={isChecked[code]}
+                                 onChange={handleFilterInput}
+                              />
+                           )
+                        )}
+                     </div>
+                  </section>
+                  <section id="filter-section4">
                      <h6>Filter item here</h6>
                      <div className="ps-3">
                         <p className="m-0">Category:</p>
@@ -151,7 +214,7 @@ function StoreFront() {
                            )
                         )}
                      </div>
-                     <section id="filter-section4">
+                     <section id="filter-section5">
                         <h6>Filter item here</h6>
                         <div className="ps-3">
                            <p className="m-0">Category:</p>
@@ -169,7 +232,7 @@ function StoreFront() {
                            )}
                         </div>
                      </section>
-                     <section id="filter-section5">
+                     <section id="filter-section6">
                         <h6>Filter item here</h6>
                         <div className="ps-3">
                            <p className="m-0">Category:</p>
@@ -187,7 +250,7 @@ function StoreFront() {
                            )}
                         </div>
                      </section>
-                     <section id="filter-section6">
+                     <section id="filter-section7">
                         <h6>Filter item here</h6>
                         <div className="ps-3">
                            <p className="m-0">Color:</p>

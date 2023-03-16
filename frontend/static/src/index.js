@@ -12,7 +12,6 @@ import DonationForm from "./components/DonationForm/DonationForm";
 import StoreFront from "./components/Storefront/StoreFront";
 import ProfileForm from "./components/Profile/ProfileForm";
 import StoreItem from "./components/Storefront/StoreItem";
-import "./Fonts/fonts.css";
 
 /*  */
 

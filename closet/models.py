@@ -3,11 +3,11 @@ from django.conf import settings
 
 # Create your models here.
 
-class Image(models.Model):
-    url = models.ImageField(upload_to='clothing/')
+# class Image(models.Model):
+#     image = models.ImageField(upload_to='clothing/')
 
-    def __str__(self):
-        return str(self.url)
+#     def __str__(self):
+#         return str(self.url)
 
 #what is a ClothingItem - It's a product listing
 class ClothingItem(models.Model): 
@@ -91,10 +91,10 @@ class ClothingItem(models.Model):
     condition = models.CharField(max_length=3, choices=CONDITION_CHOICES)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     is_active = models.BooleanField(default=True)
-    image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, related_name="clothing_item")
-    selectedTags = models.CharField(max_length=255, null=True, blank=True)
+    selectedTags = models.JSONField(null=True)
+    image = models.ImageField(upload_to='clothing/', blank=True, null=True)
 
 
     def __str__(self):
-        return self.title
+        return self.image.name
 

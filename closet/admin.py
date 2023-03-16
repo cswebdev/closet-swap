@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import  ClothingItem, Image
+from .models import  ClothingItem
 
 # Register your models here.
 
 admin.site.register(ClothingItem)
-admin.site.register(Image)
+# admin.site.register(Image)

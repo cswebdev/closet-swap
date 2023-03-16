@@ -53,15 +53,14 @@ function DonationForm() {
       size: "",
       condition: "",
       gender: "",
-      image: "",
-      selectedTags: [],
+      selectedTags: null,
       is_active: true,
    });
 
-   const [image, setImage] = useState(null);
+   // const [image, setImage] = useState(null);
    const [preview, setPreview] = useState("");
    const [setError] = useState(null);
-   const [outputData, setoutputData] = useState([]);
+   // const [outputData, setoutputData] = useState([]);
    const [selectedTags, setSelectedTags] = useState([]);
 
    const handleInput = (event) => {
@@ -78,22 +77,23 @@ function DonationForm() {
    const handleSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData();
-
-      for (const property in clothingItem) {
-         formData.append(property, clothingItem[property]);
-      }
+      const clothingItemCopy = { ...clothingItem };
+      const id = clothingItemCopy.id;
+      delete clothingItemCopy.id;
 
       const options = {
-         method: "POST",
+         method: "PUT",
          headers: {
             "X-CSRFToken": Cookies.get("csrftoken"),
+            "Content-Type": "application/json",
          },
-         body: formData,
+         body: JSON.stringify(clothingItemCopy),
       };
 
-      const response = await fetch(`/api_v1/closet/items/`, options).catch(
-         handleError
-      );
+      const response = await fetch(
+         `/api_v1/closet/items/${id}/`,
+         options
+      ).catch(handleError);
 
       if (response.ok) {
       }
@@ -125,6 +125,7 @@ function DonationForm() {
          style: value,
       }));
    };
+
    const handleColorInput = (event) => {
       const { value } = event.target;
 
@@ -179,7 +180,6 @@ function DonationForm() {
       });
 
    const fetchTags = (url) => {
-      console.log({ image });
       // API request works with URL. Currently image input throws an error, possibly because the image isn't Base64. May need to convert image into Base 64
 
       ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -258,9 +258,7 @@ function DonationForm() {
                name: output.name,
                score: output.value,
             }));
-            setoutputData(analysisOutput);
-            console.log(analysisOutput);
-            console.log(outputData);
+            setSelectedTags(analysisOutput); // analysisOutput is an array of tags
          })
          .catch((error) => console.log("error", error));
    };
@@ -280,20 +278,25 @@ function DonationForm() {
 
       // Save selected image to the database and return url
       const formData = new FormData();
-      formData.append("url", resizedImage);
+      formData.append("image", resizedImage);
+
+      const id = clothingItem.id;
 
       const options = {
-         method: "POST",
+         method: id ? "PUT" : "POST",
          headers: {
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
          body: formData,
-        
       };
 
-      const response = await fetch(`/api_v1/clothing/images/`, options).catch(
-         handleError
-      );
+      const url = id
+         ? `/api_v1/closet/images/${id}/`
+         : `/api_v1/closet/images/`;
+
+      console.log({ id });
+
+      const response = await fetch(url, options).catch(handleError);
 
       if (!response.ok) {
          throw new Error("Network is not ok");
@@ -301,27 +304,50 @@ function DonationForm() {
 
       const data = await response.json();
 
-      // request image tags from the Clarifai API
-      const tags = fetchTags(data.presigned_url);
+      // // request image tags from the Clarifai API
+      const selectedTags = fetchTags(data.presigned_url);
+      console.log({ selectedTags });
+      setClothingItem({ ...clothingItem, id: data.id, selectedTags });
+   };
+
+   const addTag = (tag) => {
+      // Check if the tag already exists in the selected tags
+      const selectedTagIndex = selectedTags.findIndex(
+         (selectedTag) => selectedTag.name === tag.name
+      );
+      if (selectedTagIndex === -1) {
+         // If the tag doesn't exist, add it to the selected tags
+         setSelectedTags([...selectedTags, tag]);
+      } else {
+         // If the tag already exists, remove it from the selected tags
+         const updatedSelectedTags = [...selectedTags];
+         updatedSelectedTags.splice(selectedTagIndex, 1);
+         setSelectedTags(updatedSelectedTags);
+      }
+
+      // Convert the selected tags into an array of tag names
+      const selectedTagNames = selectedTags.map(
+         (selectedTag) => selectedTag.name
+      );
+
+      // Update the clothingItem state with the selected tag names
+      setClothingItem({
+         ...clothingItem,
+         selectedTags: selectedTagNames,
+      });
    };
 
    // This section renders the tags stored in outputData state as a list of buttons
    // The nanoid() function is used to generate unique keys for each button
-   const tagsHTML = outputData.map((tag) => (
+   const tagsHTML = selectedTags.map((tag) => (
       <li id="tag" key={nanoid()}>
          <Button
             variant="outline-primary"
             id="tag-button"
             className={`btn-toggle${
-               selectedTags.includes(tag) ? " active" : ""
+               clothingItem.selectedTags?.includes(tag) ? " active" : ""
             }`}
-            onClick={() => {
-               if (selectedTags.includes(tag)) {
-                  setSelectedTags(selectedTags.filter((t) => t !== tag));
-               } else {
-                  setSelectedTags([...selectedTags, tag]);
-               }
-            }}
+            onClick={(tag) => addTag(tag)}
          >
             {tag.name}
          </Button>
