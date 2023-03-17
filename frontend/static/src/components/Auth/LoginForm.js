@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
 
 function LoginForm() {
+   const navigate = useNavigate();
    const [user, setUser] = useState({
       username: "",
       password: "",
@@ -56,6 +57,7 @@ function LoginForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`); // Added space after "Token"
+      navigate("/home");
    };
 
    return (

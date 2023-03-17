@@ -30,28 +30,19 @@ function Header(user) {
    return (
       <Navbar expand="md">
          <Container>
-            <Navbar.Brand href="#home">Closet Swap</Navbar.Brand>
+            <Navbar.Brand href="/home">Closet Swap</Navbar.Brand>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">
-                  <NavLink to="/home" className="m-2">
-                     Home
-                  </NavLink>
                   <NavLink to="/login" className="m-2">
                      Login
-                  </NavLink>
-                  <NavLink to="/register" className="m-2">
-                     Register
                   </NavLink>
                   <NavLink to="/donate" className="m-2">
                      Donate
                   </NavLink>
                   <NavLink to="/store" className="m-2">
                      Store
-                  </NavLink>
-                  <NavLink to="/item" className="m-2">
-                     Item
                   </NavLink>
                </Nav>
                <IconMessageCircle2Filled
@@ -63,10 +54,13 @@ function Header(user) {
                   }}
                   className="m-2"
                />
-               <IconShoppingBag
-                  style={{ width: "40px", height: "40px" }}
-                  className="m-2"
-               />
+               <NavLink to="/checkout" className="m-2">
+                  <IconShoppingBag
+                     style={{ width: "40px", height: "40px" }}
+                     className="m-2"
+                     type="button"
+                  />
+               </NavLink>
                <Dropdown>
                   <Dropdown.Toggle
                      variant="outline-primary"
@@ -84,15 +78,11 @@ function Header(user) {
                      <Dropdown.Item className="p-3">
                         <NavLink to="/profile">Profile</NavLink>
                      </Dropdown.Item>
-                     <Dropdown.Item
-                        href="#/action-2"
-                        className="p-3"
-                        onClick={handleLogout}
-                     >
+                     <Dropdown.Item className="p-3" onClick={handleLogout}>
                         logout
                      </Dropdown.Item>
                   </Dropdown.Menu>
-               </Dropdown>             
+               </Dropdown>
 
                {/* <input
                   type="text"

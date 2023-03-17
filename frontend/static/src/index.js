@@ -11,8 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 import DonationForm from "./components/DonationForm/DonationForm";
 import StoreFront from "./components/Storefront/StoreFront";
 import ProfileForm from "./components/Profile/ProfileForm";
-import StoreItem from "./components/Storefront/StoreItem";
-
+import CheckOut from "./components/Checkout/Checkout";
 /*  */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -27,7 +26,7 @@ root.render(
                <Route path="donate" element={<DonationForm />} />
                <Route path="store" element={<StoreFront />} />
                <Route path="profile" element={<ProfileForm />} />
-               <Route path="item" element={<StoreItem />} />
+               <Route path="checkout" element={<CheckOut />} />
             </Route>
             <Route
                path="*"

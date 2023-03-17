@@ -3,12 +3,13 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Cookies from "js-cookie";
 import "../Styles/StoreItemStyles.css";
 
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
-function StoreItem({ itemFilter }) {
+function StoreItem({ itemFilter, item }) {
    console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
 
@@ -33,7 +34,7 @@ function StoreItem({ itemFilter }) {
                item.color === itemFilter ||
                item.style === itemFilter ||
                item.condition === itemFilter ||
-               !itemFilter === "All"
+               !item
          );
 
          return setItemListings(result);
@@ -47,6 +48,40 @@ function StoreItem({ itemFilter }) {
       //   return () => clearInterval(interval);
    }, [itemFilter]);
 
+   const handleAddToCart = async () => {
+      // const Formdata = new FormData();
+      const addItemToCart = { ...itemListings };
+      console.log("this is add to cart", addItemToCart);
+      console.log("this is item", item);
+
+      const options = {
+         method: "POST",
+         headers: {
+            "X-CSRFToken": Cookies.get("csrftoken"),
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(addItemToCart),
+      };
+      const response = await fetch(
+         `/api_v1/closet/checkout/${item.id}`,
+         options
+      ).catch(handleError);
+
+      if (response.ok) {
+         console.log("item added to cart");
+      }
+      if (!response.ok) {
+         console.log("Network is not okay. Item not added to cart");
+      }
+
+      const data = await response.json();
+      console.log("this is data", { data });
+   };
+
+   const handleError = (err) => {
+      console.warn.log(err);
+   };
+
    const itemListingsHTML = [];
 
    for (let i = 0; i < itemListings.length; i += 3) {
@@ -54,7 +89,7 @@ function StoreItem({ itemFilter }) {
          <Row className="row overflow-hidden" key={nanoid()} id="row-item">
             {itemListings.slice(i, i + 3).map((item) => (
                <Col
-                  className="col p-1 m-0 overflow-hidden"
+                  className="col p-0 m-1 g-0 overflow-hidden"
                   key={item.id}
                   id="col-item"
                >
@@ -66,7 +101,7 @@ function StoreItem({ itemFilter }) {
                            className="CardImg "
                         />
                      </div>
-                     <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden">
+                     <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden m-0 p-0">
                         <Card.Title className="p-1 m-1 text-center">
                            {item.title}
                         </Card.Title>
@@ -93,7 +128,11 @@ function StoreItem({ itemFilter }) {
                         </Card.Text>
                         <Button
                            variant="outline-primary"
-                           className="mt-1 justify-content-center "
+                           type="submit"
+                           className="mt-1 justify-content-center"
+                           onClick={() => {
+                              handleAddToCart(item);
+                           }}
                         >
                            Add to cart
                         </Button>

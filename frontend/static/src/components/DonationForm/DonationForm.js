@@ -43,22 +43,26 @@ const colorChoices = {
    Orange: "Orange",
    Yellow: "Yellow",
 };
+
+const INITIAL_STATE = {
+   title: "",
+   category: "",
+   style: "",
+   brand: "",
+   color: "",
+   size: "",
+   condition: "",
+   gender: "",
+   selectedTags: null,
+   is_active: true,
+};
+
 function DonationForm() {
-   const [clothingItem, setClothingItem] = useState({
-      title: "",
-      category: "",
-      style: "",
-      brand: "",
-      color: "",
-      size: "",
-      condition: "",
-      gender: "",
-      selectedTags: null,
-      is_active: true,
-   });
+   const [clothingItem, setClothingItem] = useState(INITIAL_STATE);
 
    // const [image, setImage] = useState(null);
    const [preview, setPreview] = useState("");
+
    const [setError] = useState(null);
    // const [outputData, setoutputData] = useState([]);
    const [selectedTags, setSelectedTags] = useState([]);
@@ -96,7 +100,13 @@ function DonationForm() {
       ).catch(handleError);
 
       if (response.ok) {
+         setClothingItem(INITIAL_STATE);
+         setPreview("");
+         handleColorInput = (event) => {
+            const { value } = "";
+         };
       }
+
       if (!response.ok) {
          throw new Error("Network is not ok");
       }
@@ -417,6 +427,7 @@ function DonationForm() {
                         as="select"
                         className="w-25"
                         onChange={handleStyleInput}
+                        value={clothingItem.style}
                      >
                         <option value="">Select Style</option>
                         {Object.entries(styleChoices).map(
@@ -458,6 +469,7 @@ function DonationForm() {
                         as="select"
                         className="w-25 ms-2"
                         onChange={handleColorInput}
+                        value={clothingItem.color}
                      >
                         <option value="">Select Color</option>
                         // using Object.entries to iterate through each

@@ -5,7 +5,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from django.urls import path, include
 from .models import  ClothingItem
-from .serializers import  ClothingItemSerializer, ImageSerializer
+from .serializers import  ClothingItemSerializer, ImageSerializer, CheckOutSerializer
 
 # Create your views here.
 class ClothingItemListAPIView(generics.ListCreateAPIView):
@@ -30,3 +30,10 @@ class ImageCreateAPIView(generics.ListCreateAPIView):
 class ImageDetailAPIView(generics.RetrieveUpdateAPIView):
     queryset = ClothingItem.objects.all()
     serializer_class = ImageSerializer
+
+class CheckOutAPIView(generics.ListCreateAPIView):
+    queryset = ClothingItem.objects.all()
+    serializer_class = CheckOutSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

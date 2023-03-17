@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function HomePage() {
+   const navigate = useNavigate();
    return (
       <>
          <Container id="container-homepage">
@@ -23,7 +24,13 @@ function HomePage() {
                         everyone. Join us and be a part of our mission to
                         celebrate diversity and expression.
                      </p>
-                     <button className="hero-button mt-5">Join us</button>
+                     <button
+                        type="button"
+                        onClick={() => navigate("/register")}
+                        className="hero-button mt-5"
+                     >
+                        Join us
+                     </button>
                   </div>
                </div>
             </Container>

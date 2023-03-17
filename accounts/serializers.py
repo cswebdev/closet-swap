@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
-from .models import Profile 
+from .models import Profile, User
 
 
 class ProfileSerializer(serializers.ModelSerializer):

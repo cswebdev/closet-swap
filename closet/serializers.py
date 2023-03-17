@@ -32,4 +32,8 @@ class ClothingItemSerializer(serializers.ModelSerializer):
         model = ClothingItem   
         fields = '__all__'
 
+class CheckOutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClothingItem   
+        fields = '__all__'
 

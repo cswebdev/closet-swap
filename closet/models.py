@@ -94,3 +94,10 @@ class ClothingItem(models.Model):
     def __str__(self):
         return self.image.name
 
+class CheckOut(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+    item = models.ForeignKey(ClothingItem, on_delete=models.CASCADE, blank=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.user.username

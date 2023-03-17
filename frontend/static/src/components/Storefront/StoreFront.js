@@ -81,10 +81,8 @@ function StoreFront() {
       Unisex: false,
       Tops: false,
       Bottoms: false,
-      DRESSES: false,
-      Skirts: false,
+      Dresses: false,
       Pants: false,
-      Shorts: false,
       Activewear: false,
       Outerwear: false,
       TShirts: false,
@@ -94,7 +92,6 @@ function StoreFront() {
       Hoodies: false,
       TankTops: false,
       Jackets: false,
-      Pants: false,
       Shorts: false,
       Skirts: false,
       Leggings: false,
@@ -124,7 +121,7 @@ function StoreFront() {
    // const [storeItems, setStoreItems] = useState([]);
    const handleFilterInput = (event) => {
       const { name } = event.target;
-      // setIsChecked({ ...isChecked, [name]: !isChecked[name] });
+      setIsChecked({ ...isChecked, [name]: !isChecked[name] });
       setItemFilter(name);
       // console.log(event.target);
    };
@@ -139,50 +136,44 @@ function StoreFront() {
          </div>
          {/* Left  Side Panel*/}
          <Container className="d-flex pt-4">
-            <Form className="w-25 bg-info ">
+            <Form className="w-25 bg-info">
                <Container id="panel-filter">
-                  <Accordion>
-                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>Gender</Accordion.Header>
-                        <Accordion.Body>
-                           <h6>Filter item here</h6>
+                  <section id="filter-section1">
+                     <div className="ps-3">
+                        <h6>Filter gender here</h6>
 
-                           {Object.entries(genderChoices).map(
-                              ([code, name], index) => (
-                                 <Form.Check
-                                    key={index}
-                                    type="checkbox"
-                                    label={name}
-                                    name={code}
-                                    checked={isChecked[code]}
-                                    onChange={handleFilterInput}
-                                 />
-                              )
-                           )}
-                        </Accordion.Body>
-                     </Accordion.Item>
-                  </Accordion>
-                  <Accordion>
-                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>Category</Accordion.Header>
-                        <h6>Filter item here</h6>
-                        <div className="ps-3">
-                           <p className="m-0">Category:</p>
-                           {Object.entries(categoryChoices).map(
-                              ([code, name], index) => (
-                                 <Form.Check
-                                    key={index}
-                                    type="checkbox"
-                                    label={name}
-                                    name={code}
-                                    checked={isChecked[code]}
-                                    onChange={handleFilterInput}
-                                 />
-                              )
-                           )}
-                        </div>
-                     </Accordion.Item>
-                  </Accordion>
+                        {Object.entries(genderChoices).map(
+                           ([code, name], index) => (
+                              <Form.Check
+                                 key={index}
+                                 type="checkbox"
+                                 label={name}
+                                 name={code}
+                                 checked={isChecked[code]}
+                                 onChange={handleFilterInput}
+                              />
+                           )
+                        )}
+                     </div>
+                  </section>
+                  <section id="filter-section2">
+                     <h6>Filter item here</h6>
+                     <div className="ps-3">
+                        <p className="m-0">Category:</p>
+                        {Object.entries(categoryChoices).map(
+                           ([code, name], index) => (
+                              <Form.Check
+                                 key={index}
+                                 type="checkbox"
+                                 label={name}
+                                 name={code}
+                                 checked={isChecked[code]}
+                                 onChange={handleFilterInput}
+                              />
+                           )
+                        )}
+                     </div>
+                  </section>
                   <section id="filter-section3">
                      <div className="ps-3">
                         <p className="m-0">Size:</p>

@@ -7,6 +7,7 @@ import { IconFlagFilled } from "@tabler/icons-react";
 
 function ProfileForm() {
    const [activeUser, setActiveUser] = useState({});
+   const [userProfile, setUserProfile] = useState({});
 
    useEffect(() => {
       const getActiveUser = async () => {
@@ -20,13 +21,29 @@ function ProfileForm() {
       };
       getActiveUser();
    }, []);
-   console.log("this is", activeUser.username);
+
+   useEffect(() => {
+      const getUserProfile = async () => {
+         const response = await fetch("/api_v1/profiles/${id}");
+         if (!response.ok) {
+            throw new Error("Network response not okay - user not found");
+         }
+         const data = await response.json();
+         console.log("profile data:", data);
+         setUserProfile(data);
+      };
+      getUserProfile();
+   }, []);
+
    return (
       <Container id="profile-page" className="bg-white">
          <Container id="container-profile" className="d-flex bg-white pt-5">
-            <Container id="container-avatar" className="w-25 ">
+            <Container
+               id="container-avatar"
+               className="w-25 text-center d-flex-column"
+            >
+               <h1 className="">{activeUser.username}</h1>
                <IconFlagFilled className="float-end  me-5" id="report" />
-
                <div id="section-avatar" className="m-0 p-0">
                   <img
                      src="https://openclipart.org/image/800px/277089"
