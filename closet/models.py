@@ -38,18 +38,14 @@ class ClothingItem(models.Model):
         ('XL', 'Extra Large'), 
     )
     CATEGORY_CHOICES = (
-        ('TOPS', 'Tops'), 
-        ('SWEATERS','Sweaters'),
-        ('C&J', 'Coats & Jackets'),
-        ('JEANS', 'Jeans'),
-        ('PANTS', 'Pants'), 
-        ('BOTTOMS', 'Bottoms'),
-        ('DRESSES', 'Dresses'),
-        ('SKIRTS', 'Skirts'), 
-        ('SHORTS', 'Shorts'), 
+        ('Tops', 'Tops'), 
+        ('Sweaters','Sweaters'),
+        ('Bottoms', 'Bottoms'),
+        ('Dresses', 'Dresses'),
+        ('Skirts', 'Skirts'), 
         ('AW', 'Active Wear'),
         ('SW', 'Swim Wear'), 
-        ('SHOES', 'Shoes'),
+        ('Shoes', 'Shoes'),
     )
    
     STYLE_CHOICES = (

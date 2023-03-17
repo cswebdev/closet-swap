@@ -22,17 +22,21 @@ function StoreItem({ itemFilter }) {
          const data = await response.json();
 
          let result = data;
-         // result.filter((item) => console.log(splice(item.color.itemFilter)));
-         // // result = Object.keys(result).filter((key) => key === "Female");
-         // console.log("this is a result 1", result);
-         // console.log(Object.keys(result).filter((key) => console.log(key)));
-         // itemFilter = "Male";
+
          console.log("also" + " " + itemFilter);
-         // itemFilter = "Male";
-         result = result.filter((item) => item.gender == itemFilter);
+
+         result = result.filter(
+            (item) =>
+               item.gender === itemFilter ||
+               item.category === itemFilter ||
+               item.size === itemFilter ||
+               item.color === itemFilter ||
+               item.style === itemFilter ||
+               item.condition === itemFilter ||
+               !itemFilter === "All"
+         );
 
          return setItemListings(result);
-         setItemListings(data);
       };
       getItems();
 
@@ -80,6 +84,12 @@ function StoreItem({ itemFilter }) {
                         </Card.Text>
                         <Card.Text className="p-0 m-0">
                            gender: {item.gender}
+                        </Card.Text>
+                        <Card.Text className="p-0 m-0">
+                           category: {item.category}
+                        </Card.Text>
+                        <Card.Text className="p-0 m-0">
+                           style: {item.style}
                         </Card.Text>
                         <Button
                            variant="outline-primary"

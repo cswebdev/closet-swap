@@ -15,7 +15,7 @@ const genderChoices = {
 };
 
 const categoryChoices = {
-   Tops: "Tops",
+   TOPS: "Tops",
    Bottoms: "Bottoms",
    Dresses: "Dresses",
    Outerwear: "Outerwear",
@@ -81,7 +81,7 @@ function StoreFront() {
       Unisex: false,
       Tops: false,
       Bottoms: false,
-      Dresses: false,
+      DRESSES: false,
       Skirts: false,
       Pants: false,
       Shorts: false,

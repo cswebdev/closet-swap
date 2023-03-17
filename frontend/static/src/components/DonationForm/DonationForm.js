@@ -404,14 +404,13 @@ function DonationForm() {
                         <option value="" disabled>
                            Category select
                         </option>
-                        <option value="TOPS">Tops</option>
-                        <option value="BOTTOMS">Bottoms</option>
-                        <option value="DRESSES">Dresses</option>
-                        <option value="SKIRTS">Skirts</option>
-                        <option value="SHORTS">Shorts</option>
+                        <option value="Tops">Tops</option>
+                        <option value="Bottoms">Bottoms</option>
+                        <option value="Dresses">Dresses</option>
+                        <option value="Skirts">Skirts</option>
                         <option value="AW">Active Wear</option>
                         <option value="SW">Swim Wear</option>
-                        <option value="SHOES">Shoes</option>
+                        <option value="Shoes">Shoes</option>
                      </Form.Control>
                      <Form.Label htmlFor="style"></Form.Label>
                      <Form.Control
