@@ -9,16 +9,19 @@ body {
     height: 100%;
     max-width: 70%;
     padding: 0;
+    border-left: 20px solid white;
+    border-right: 20px solid white;
 }
 
 div#hero-container.container {
     padding: 0;
     margin: 0;
+
 }
 
 .hero-container {
     position: relative;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     padding: 0;
     margin: 0;
@@ -49,11 +52,13 @@ div#hero-container.container {
 }
 
 .hero-text {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 600;
+    color: #3688db;
 }
 
 .hero-button {
@@ -74,25 +79,59 @@ div#hero-container.container {
 
 #container-mission {
     padding: 0;
-    margin: 0;
+    margin: 5% 0% 0% 0%;
+
+
 
 }
 
 
 #mission-top-text {
-    background-color: white;
-    max-width: 50%;
-    font-size: 20px;
-    padding: 10px;
-    border: 1px solid transparent;
+    background-color: #fff7fe;
+    max-width: 70%;
+    font-size: 30px;
+    padding: 40px;
+    border: 40px solid transparent;
     border-radius: 15px;
-    margin-top: 5%;
-
+    margin: 10% 0%;
+    color: #3688db;
 
 
 }
 
 #mission-image {
-    max-width: 50%;
+    max-width: 80%;
+    max-height: 560px;
+    object-fit: cover;
+    object-position: 0px 70%;
+    /* margin: 10% 0%; */
+    border: 10px solid white;
+    padding: 0;
+    border-radius: 15px;
 
+
+}
+
+#mission-text-bottom {
+    background-color: #fff7fe;
+    max-width: 90%;
+    font-size: 30px;
+    padding: 40px;
+    border: 40px solid transparent;
+    border-radius: 15px;
+
+    margin: 10% 0%;
+
+}
+
+#container-mission-bottom {
+    background-color: #ffd2fa;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+    padding: 0;
+    margin: auto;
+    border-left: 20px solid white;
+    border-right: 20px solid white;
 }
