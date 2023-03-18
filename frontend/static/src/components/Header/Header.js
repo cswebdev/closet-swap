@@ -81,14 +81,6 @@ function Header(user) {
                      </Dropdown.Item>
                   </Dropdown.Menu>
                </Dropdown>
-
-               {/* <input
-                  type="text"
-                  className="form-control w-25 float-left"
-               ></input>
-               <span>
-                  <IconSearch className="ms-2" />
-               </span> */}
             </Navbar.Collapse>
          </Container>
       </Navbar>

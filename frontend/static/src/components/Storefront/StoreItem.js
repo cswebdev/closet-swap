@@ -3,18 +3,17 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
 import "../Styles/StoreItemStyles.css";
-
-import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import { nanoid } from "nanoid";
 
-function StoreItem({ itemFilter, item,}) {
+function StoreItem({ itemFilter, item }) {
    console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
-   const [cartItems, setCartItems] = useState([]);
+   const { cartItems, setCartItems } = useOutletContext();
+   // const [cartItems, setCartItems] = useContext();
 
-   // console.log("this is item filter", itemFilter);
    useEffect(() => {
       const getItems = async () => {
          const response = await fetch(`/api_v1/closet/items/`);
@@ -25,7 +24,7 @@ function StoreItem({ itemFilter, item,}) {
 
          let result = data;
 
-         console.log("also" + " " + itemFilter);
+         console.log("also", itemFilter);
 
          result = result.filter(
             (item) =>
@@ -38,21 +37,17 @@ function StoreItem({ itemFilter, item,}) {
                !item
          );
 
+         // console.log(setCartItems);
          return setItemListings(result);
       };
       getItems();
+   }, [itemFilter, cartItems]);
 
-      //   const interval = setInterval(() => {
-      //      getItems();
-      //   }, 1000000);
-
-      //   return () => clearInterval(interval);
-   }, [itemFilter]);
-
-   const handleAddToCart = (item) => {
-      setCartItems([...cartItems, item]);
-      console.log("this is a cart item:", cartItems);
-   };
+   // const handleAddToCart = (event, item) => {
+   //    event.preventDefault(); // prevent the default behavior of the event
+   //    setCartItems([...cartItems, item]);
+   //    console.log("this is a cart item:", cartItems);
+   //  };
 
    const handleError = (err) => {
       console.warn.log(err);
@@ -106,9 +101,7 @@ function StoreItem({ itemFilter, item,}) {
                            variant="outline-primary"
                            type="submit"
                            className="mt-1 justify-content-center"
-                           onClick={() => {
-                              handleAddToCart(item);
-                           }}
+                           onClick={() => setCartItems([...cartItems, item])}
                         >
                            Add to cart
                         </Button>

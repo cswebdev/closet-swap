@@ -8,13 +8,14 @@ import "../Styles/App.css";
 
 function App() {
    const [isAuth, setAuth] = useState(false);
+   const [cartItems, setCartItems] = useState([]); // this is an array for cart info
 
    return (
       <>
          <Header isAuth={isAuth} />
-         <Outlet context={[setAuth]} />
+         <Outlet context={{ setAuth, cartItems, setCartItems }} />
       </>
    );
-}
+} // this is the main app component
 
 export default App;

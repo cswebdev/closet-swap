@@ -12,6 +12,8 @@ import DonationForm from "./components/DonationForm/DonationForm";
 import StoreFront from "./components/Storefront/StoreFront";
 import ProfileForm from "./components/Profile/ProfileForm";
 import CheckOut from "./components/Checkout/Checkout";
+import { Outlet } from "react-router-dom";
+
 /*  */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

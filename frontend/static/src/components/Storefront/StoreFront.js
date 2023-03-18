@@ -1,10 +1,10 @@
 import "../Styles/StoreFrontStyles.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useOutletContext } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import { IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
-
 
 const genderChoices = {
    Male: "Male",
@@ -116,7 +116,8 @@ function StoreFront() {
       Yellow: false,
    });
    const [itemFilter, setItemFilter] = useState("");
-   // const [storeItems, setStoreItems] = useState([]);
+   const [storeItems, setStoreItems] = useState([]);
+   const { cartItems, setCartItems } = useOutletContext();
    const handleFilterInput = (event) => {
       const { name } = event.target;
       setIsChecked({ ...isChecked, [name]: !isChecked[name] });
@@ -124,6 +125,7 @@ function StoreFront() {
       // console.log(event.target);
    };
 
+   console.log("cartItems", { cartItems });
    return (
       <Container id="container-storefront">
          <div id="searchbar" className="col-9 d-flex p-5 float-end">
@@ -268,7 +270,11 @@ function StoreFront() {
                <section>{/* <h2>Browse Items here</h2> */}</section>
                <Container className="d-flex ">
                   {/* store items are rendered here */}
-                  <StoreItem itemFilter={itemFilter} />
+                  <StoreItem
+                     itemFilter={itemFilter}
+                     cartItems={cartItems}
+                     setCartItems={setCartItems}
+                  />
                   {/* * */}
                </Container>
             </Container>
