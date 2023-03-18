@@ -3,11 +3,18 @@ import { useState, useEffect } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { IconFlagFilled } from "@tabler/icons-react";
+import { IconUser } from "@tabler/icons-react";
+import { IconMail } from "@tabler/icons-react";
+import Cookies from "js-cookie";
 
 function ProfileForm() {
    const [activeUser, setActiveUser] = useState({});
    const [userProfile, setUserProfile] = useState({});
+   const [avatar, setAvatar] = useState(null);
+   const [preview, setPreview] = useState(null);
 
    useEffect(() => {
       const getActiveUser = async () => {
@@ -22,34 +29,91 @@ function ProfileForm() {
       getActiveUser();
    }, []);
 
-   useEffect(() => {
-      const getUserProfile = async () => {
-         const response = await fetch("/api_v1/profiles/${id}");
-         if (!response.ok) {
-            throw new Error("Network response not okay - user not found");
-         }
-         const data = await response.json();
-         console.log("profile data:", data);
-         setUserProfile(data);
+   // useEffect(() => {
+   //    const getUserProfile = async () => {
+   //       const response = await fetch(`/api_v1/profiles/${id}`);
+   //       if (!response.ok) {
+   //          throw new Error("Network response not okay - user not found");
+   //       }
+   //       const data = await response.json();
+   //       console.log("profile data:", data);
+   //       setUserProfile(data);
+   //    };
+   //    getUserProfile();
+   // }, []);
+
+   const handleImageInput = async (event) => {
+      const file = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+         setPreview(reader.result);
       };
-      getUserProfile();
-   }, []);
+      reader.readAsDataURL(file);
+      setAvatar(file);
+   };
+
+   const handleImageSubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append("avatar", avatar);
+      const options = {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": Cookies.get("csrftoken"),
+         },
+         body: JSON.stringify(formData),
+      };
+      const response = await fetch(`/api_v1/profiles/`, options).catch(
+         handleError
+      );
+      if (!response.ok) {
+         throw new Error("Network response not okay - user not found");
+      }
+      const data = await response.json();
+      console.log("profile data:", data);
+      setUserProfile(data);
+   };
+
+   const handleError = (err) => {
+      console.warn.log(err);
+   };
 
    return (
       <Container id="profile-page" className="bg-white">
          <Container id="container-profile" className="d-flex bg-white pt-5">
+            <Form onSubmit={handleImageSubmit}></Form>{" "}
             <Container
                id="container-avatar"
-               className="w-25 text-center d-flex-column"
+               className="w-25 bg-primary text-center d-flex-column"
             >
-               <h1 className="">{activeUser.username}</h1>
-               <IconFlagFilled className="float-end  me-5" id="report" />
-               <div id="section-avatar" className="m-0 p-0">
-                  <img
-                     src="https://openclipart.org/image/800px/277089"
-                     id="avatar-image"
-                  />
+               <div id="user-header" className="d-flex text-center">
+                  <h1 className="m-auto">{activeUser.username}</h1>
+                  <IconFlagFilled id="report" />
                </div>
+
+               <Container id="image-container">
+                  {preview && <img src={preview} alt="" id="donation-image" />}
+               </Container>
+               <div className="d-flex">
+                  <Form.Label htmlFor="item_image"></Form.Label>
+                  <Form.Control
+                     type="file"
+                     id="item_image"
+                     name="item_image"
+                     accept="image/*"
+                     className="m-auto w-75"
+                     onChange={handleImageInput}
+                  ></Form.Control>
+               </div>
+               <Button
+                  variant="outline-primary"
+                  type="submit"
+                  className="float-end"
+               >
+                  Save Changes
+               </Button>
             </Container>
             <Container id="container-userinfo" className="bg-info">
                <Row className="text-center">

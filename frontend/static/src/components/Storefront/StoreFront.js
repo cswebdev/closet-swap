@@ -4,9 +4,7 @@ import Container from "react-bootstrap/esm/Container";
 import { IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
-import Accordion from "react-bootstrap/Accordion";
-import AccordionHeader from "react-bootstrap/esm/AccordionHeader";
-import AccordionBody from "react-bootstrap/esm/AccordionBody";
+
 
 const genderChoices = {
    Male: "Male",

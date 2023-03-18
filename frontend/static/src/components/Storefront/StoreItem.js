@@ -3,15 +3,16 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Cookies from "js-cookie";
+
 import "../Styles/StoreItemStyles.css";
 
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
-function StoreItem({ itemFilter, item }) {
+function StoreItem({ itemFilter, item,}) {
    console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
+   const [cartItems, setCartItems] = useState([]);
 
    // console.log("this is item filter", itemFilter);
    useEffect(() => {
@@ -48,34 +49,9 @@ function StoreItem({ itemFilter, item }) {
       //   return () => clearInterval(interval);
    }, [itemFilter]);
 
-   const handleAddToCart = async () => {
-      // const Formdata = new FormData();
-      const addItemToCart = { ...itemListings };
-      console.log("this is add to cart", addItemToCart);
-      console.log("this is item", item);
-
-      const options = {
-         method: "POST",
-         headers: {
-            "X-CSRFToken": Cookies.get("csrftoken"),
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(addItemToCart),
-      };
-      const response = await fetch(
-         `/api_v1/closet/checkout/${item.id}`,
-         options
-      ).catch(handleError);
-
-      if (response.ok) {
-         console.log("item added to cart");
-      }
-      if (!response.ok) {
-         console.log("Network is not okay. Item not added to cart");
-      }
-
-      const data = await response.json();
-      console.log("this is data", { data });
+   const handleAddToCart = (item) => {
+      setCartItems([...cartItems, item]);
+      console.log("this is a cart item:", cartItems);
    };
 
    const handleError = (err) => {

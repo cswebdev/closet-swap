@@ -6,10 +6,8 @@ import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { IconTextSize, IconUserCircle } from "@tabler/icons-react";
-import { IconSearch } from "@tabler/icons-react";
 import { IconShoppingBag } from "@tabler/icons-react";
 import { IconMessageCircle2Filled } from "@tabler/icons-react";
-
 import Button from "react-bootstrap/esm/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from "js-cookie";
