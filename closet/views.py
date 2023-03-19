@@ -37,3 +37,15 @@ class CheckOutAPIView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class ClosetProfileAPIView(generics.ListCreateAPIView):
+    queryset = ClothingItem.objects.filter()
+    serializer_class = ClothingItemSerializer
+
+
+    def get_queryset(self):
+        user=self.kwargs['pk']
+        return ClothingItem.objects.filter(user=user)
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

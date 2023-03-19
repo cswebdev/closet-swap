@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 function ProfileForm(user) {
    const [activeUser, setActiveUser] = useState({});
    const [userProfile, setUserProfile] = useState({});
+   const [userCloset, setUserCloset] = useState({});
    const [avatar, setAvatar] = useState(null);
    const [preview, setPreview] = useState(null);
 
@@ -29,9 +30,23 @@ function ProfileForm(user) {
       getActiveUser();
    }, []);
 
-   useEffect((id) => {
+   useEffect(() => {
+      const getUserCloset = async () => {
+         const response = await fetch(`/api_v1/closet/items/`);
+         if (!response.ok) {
+            throw new Error("Network response not okay - user not found");
+         }
+         console.log("response", response);
+         const data = await response.json();
+         console.log("closet data:", data);
+         setUserCloset(data);
+      };
+      getUserCloset();
+   }, []);
+
+   useEffect(() => {
       const getUserProfile = async () => {
-         const response = await fetch(`/api_v1/profiles/${id}`);
+         const response = await fetch(`/api_v1/profiles/`);
          if (!response.ok) {
             throw new Error("Network response not okay - user not found");
          }
@@ -42,6 +57,20 @@ function ProfileForm(user) {
       };
       getUserProfile();
    }, []);
+
+   // useEffect(() => {
+   //    const getUserProfile = async () => {
+   //       const response = await fetch(`/api_v1/profiles/${user.id}`);
+   //       if (!response.ok) {
+   //          throw new Error("Network response not okay - user not found");
+   //       }
+   //       console.log("response", response);
+   //       const data = await response.json();
+   //       console.log("profile data:", data);
+   //       setUserProfile(data);
+   //    };
+   //    getUserProfile();
+   // }, []);
 
    const handleImageInput = async (event) => {
       const file = event.target.files[0];
@@ -112,6 +141,7 @@ function ProfileForm(user) {
                   variant="outline-primary"
                   type="submit"
                   className="float-end"
+                  onSubmit={handleImageSubmit}
                >
                   Save Changes
                </Button>
