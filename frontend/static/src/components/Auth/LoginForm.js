@@ -63,46 +63,50 @@ function LoginForm() {
 
    return (
       <Container id="container-login">
-         <Form onSubmit={handleSubmit}>
-            <Form.Group className="w-50 m-auto">
-               <Form.Label htmlFor="username"></Form.Label>
-               <input
-                  id="text"
-                  className="form-control"
-                  name="username"
-                  type="text"
-                  placeholder="username"
-                  value={user.username}
-                  onChange={handleInput}
-               ></input>
-               <Form.Label htmlFor="password"></Form.Label>
-               <div className="input-group">
+         <div id="form-styling">
+            <h2 className="text-center">Login!</h2>
+
+            <Form onSubmit={handleSubmit}>
+               <Form.Group className="w-50 m-auto">
+                  <Form.Label htmlFor="username"></Form.Label>
                   <input
+                     id="text"
                      className="form-control"
-                     type={showPassword ? "text" : "password"}
-                     name="password"
-                     placeholder="password"
-                     value={user.password}
+                     name="username"
+                     type="text"
+                     placeholder="username"
+                     value={user.username}
                      onChange={handleInput}
-                  />
-                  <span
-                     className={`input-group-text ${
-                        showPassword ? "show-password" : ""
-                     }`}
-                     onClick={handleShowPassword}
+                  ></input>
+                  <Form.Label htmlFor="password"></Form.Label>
+                  <div className="input-group">
+                     <input
+                        className="form-control"
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="password"
+                        value={user.password}
+                        onChange={handleInput}
+                     />
+                     <span
+                        className={`input-group-text ${
+                           showPassword ? "show-password" : ""
+                        }`}
+                        onClick={handleShowPassword}
+                     >
+                        <IconEye />
+                     </span>
+                  </div>
+                  <Button
+                     className="btn btn-primary float-end mt-5"
+                     type="submit"
+                     id="login-button"
                   >
-                     <IconEye />
-                  </span>
-               </div>
-               <Button
-                  className="btn btn-primary float-end mt-5"
-                  type="submit"
-                  variant="primary"
-               >
-                  Login
-               </Button>
-            </Form.Group>
-         </Form>
+                     Login
+                  </Button>
+               </Form.Group>
+            </Form>
+         </div>
       </Container>
    );
 }

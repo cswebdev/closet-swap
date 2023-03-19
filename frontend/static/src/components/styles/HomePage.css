@@ -1,5 +1,5 @@
 body {
-    background-color: #e1f8ff;
+    background-color: #ecf7ff;
 }
 
 
@@ -9,8 +9,7 @@ body {
     height: 100%;
     max-width: 70%;
     padding: 0;
-    border-left: 20px solid white;
-    border-right: 20px solid white;
+
 }
 
 div#hero-container.container {
@@ -100,9 +99,10 @@ div#hero-container.container {
 }
 
 #mission-image {
-    max-width: 80%;
+    max-width: 70%;
     max-height: 560px;
     object-fit: cover;
+
     object-position: 0px 70%;
     /* margin: 10% 0%; */
     border: 10px solid white;
@@ -132,6 +132,5 @@ div#hero-container.container {
 
     padding: 0;
     margin: auto;
-    border-left: 20px solid white;
-    border-right: 20px solid white;
+
 }

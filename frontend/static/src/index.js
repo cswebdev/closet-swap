@@ -29,6 +29,7 @@ root.render(
                <Route path="store" element={<StoreFront />} />
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
+               <Route index element={<HomePage />} />
             </Route>
             <Route
                path="*"

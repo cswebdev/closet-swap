@@ -1,15 +1,29 @@
 nav.navbar.navbar-expand-md.navbar {
-    background-color: #fcfcfc;
+    background-color: #f8fcff;
+    /* border-bottom: 5px solid #00aaff; */
+    max-width: 70%;
+    margin: auto;
 }
 
 .navbar {
-    height: 15vh;
+    height: 17vh;
 
 }
 
 .navbar-brand {
-    font-size: 45px;
+    font-size: 55px;
     font-weight: 800;
+    color: #00acff;
+    margin: 0px 30px 0px 20px;
+
+}
+
+
+.navbar-brand:hover {
+
+    font-weight: 800;
+    color: #008ed5;
+
 }
 
 #header-dropdown {
@@ -17,4 +31,49 @@ nav.navbar.navbar-expand-md.navbar {
     color: rgb(0, 27, 102);
 
 
+}
+
+.me-auto.navbar.navbar-expand.navbar-light {
+    position: relative;
+    justify-content: end;
+
+}
+
+.me-auto.navbar.navbar-expand.navbar-light a {
+
+    background-color: #00acff;
+    border: 1px solid #00acff;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px 0px 0px 0px;
+
+}
+
+
+
+.me-auto.navbar.navbar-expand.navbar-light a:active {
+    background-color: #0099e5;
+    border: 1px solid #0a6b9b;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.me-auto.navbar.navbar-expand.navbar-light a:hover {
+    text-decoration: none;
+    background-color: #008ed5;
+    border: 1px solid #0a6b9b;
+}
+
+.me-auto.navbar.navbar-expand.navbar-light a:link {
+    text-decoration: none;
+}
+
+.me-auto.navbar.navbar-expand.navbar-light a:visited {
+    text-decoration: none;
 }

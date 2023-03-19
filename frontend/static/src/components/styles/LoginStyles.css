@@ -1,6 +1,38 @@
 #container-login {
 
-    background-color: #00cffb;
+    background-color: #00acff;
     height: 100vh;
     max-width: 70%;
+    padding: 10% 0% 0% 0%;
+}
+
+#form-styling {
+    padding-top: 10%;
+    background-color: rgb(235, 246, 255);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    height: 80%;
+    max-width: 80%;
+    margin: auto;
+}
+
+
+#login-button {
+    background-color: #00acff;
+    border: 1px solid #00acff;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px 0px 0px 0px;
+}
+
+#login-button:active {
+    background-color: #0099e5;
+    border: 1px solid #0a6b9b;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
 }

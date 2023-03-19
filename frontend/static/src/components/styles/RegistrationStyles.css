@@ -1,8 +1,21 @@
 #container-registration {
 
-    background-color: #00cffb;
+    background-color: #00acff;
     height: 100vh;
     max-width: 70%;
+
+    padding: 10% 0% 0% 0%;
+}
+
+#form-styling {
+    padding-top: 10%;
+    background-color: rgb(235, 246, 255);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    height: 80%;
+    max-width: 80%;
+
+    margin: auto;
 }
 
 #gender {
@@ -12,11 +25,66 @@
 
 }
 
+input.form-control {
+    border: 3px solid #bad0ed;
+    font-weight: bold;
+
+}
+
+#gender-select-box {
+    border: 3px solid #bad0ed;
+    font-weight: bold;
+    color: #808080;
+}
+
+#show-password {
+    border: 1px solid #8eb1df;
+    border-left: 2px solid #c6c6c7;
+}
+
+#show-password:hover {
+    border: 2px solid #858686;
+}
+
+/* #input-password2 {
+    border-right: 80px solid #c6c6c7;
+} */
+
 .input-group {
     position: relative;
+
 }
 
 
 span.input-group-text:active {
     box-shadow: inset 1px 1px 10px 10px rgba(0, 0, 0, 0.077);
+}
+
+#register-button {
+    background-color: #00acff;
+    border: 1px solid #00acff;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px 0px 0px 0px;
+}
+
+#register-button:hover {
+    background-color: #008ed5;
+    border: 1px solid #0a6b9b;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#register-button:active {
+    background-color: #008ed5;
+    border: 1px solid #0a6b9b;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
 }
