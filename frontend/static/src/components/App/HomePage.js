@@ -4,6 +4,7 @@ import "../Styles/HomePage.css";
 import Container from "react-bootstrap/esm/Container";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../Footer/PageFooter";
 
 function HomePage() {
    const navigate = useNavigate();
@@ -63,6 +64,7 @@ function HomePage() {
                </Row>
             </Container>
          </Container>
+         <Footer />
       </>
    );
 }

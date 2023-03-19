@@ -118,9 +118,48 @@ function StoreFront() {
    const [itemFilter, setItemFilter] = useState("");
    const [storeItems, setStoreItems] = useState([]);
    const { cartItems, setCartItems } = useOutletContext();
+
+   // exmple filter method provided by instructor
+   // const data = [
+   //    { color: "red", size: "S", gender: "M" },
+   //    { color: "blue", size: "M", gender: "F" },
+   //    { color: "green", size: "L", gender: "M" },
+   //    { color: "red", size: "M", gender: "F" },
+   // ];
+
+   // let color = "red";
+   // let size = "M";
+   // let gender; // gender filter is not set (value is undefined)
+
+   // const filteredData = data.filter((item) => {
+   //    if (
+   //       (color !== undefined && item.color !== color) ||
+   //       (size !== undefined && item.size !== size) ||
+   //       (gender !== undefined && item.gender !== gender)
+   //    ) {
+   //       return false;
+   //    }
+   //    return true;
+   // });
+   // end of example
+   const data = [
+      { color: "red", size: "S", gender: "M" },
+      { color: "blue", size: "M", gender: "F" },
+      { color: "green", size: "L", gender: "M" },
+      { color: "red", size: "M", gender: "F" },
+   ];
+
+   const filterData = (items, filters) => {
+      return items.filter((item) => {
+         return Object.keys(filters).every((key) => {
+            return filters[key] === undefined || item[key] === filters[key];
+         });
+      });
+   };
+
    const handleFilterInput = (event) => {
       const { name } = event.target;
-      setIsChecked({ ...isChecked, [name]: !isChecked[name] });
+      setIsChecked({ ...!isChecked, [name]: isChecked[name] });
       setItemFilter(name);
       // console.log(event.target);
    };
@@ -266,7 +305,7 @@ function StoreFront() {
                </Container>
             </Form>
             {/* Right Side Panel */}
-            <Container id="panel-store" className="w-75 bg-light">
+            <Container id="panel-store" className="w-75 bg-light ">
                <section>{/* <h2>Browse Items here</h2> */}</section>
                <Container className="d-flex ">
                   {/* store items are rendered here */}

@@ -64,7 +64,7 @@ function StoreItem({ itemFilter, item }) {
                   key={item.id}
                   id="col-item"
                >
-                  <Card style={{ width: "18rem" }}>
+                  <Card style={{ width: "16rem" }}>
                      <div className="p-0 m-0 g-0 overflow-hidden">
                         <Card.Img
                            variant="top"

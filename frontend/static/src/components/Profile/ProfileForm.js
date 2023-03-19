@@ -10,7 +10,7 @@ import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 
-function ProfileForm() {
+function ProfileForm(user) {
    const [activeUser, setActiveUser] = useState({});
    const [userProfile, setUserProfile] = useState({});
    const [avatar, setAvatar] = useState(null);
@@ -29,18 +29,19 @@ function ProfileForm() {
       getActiveUser();
    }, []);
 
-   // useEffect(() => {
-   //    const getUserProfile = async () => {
-   //       const response = await fetch(`/api_v1/profiles/${id}`);
-   //       if (!response.ok) {
-   //          throw new Error("Network response not okay - user not found");
-   //       }
-   //       const data = await response.json();
-   //       console.log("profile data:", data);
-   //       setUserProfile(data);
-   //    };
-   //    getUserProfile();
-   // }, []);
+   useEffect((id) => {
+      const getUserProfile = async () => {
+         const response = await fetch(`/api_v1/profiles/${id}`);
+         if (!response.ok) {
+            throw new Error("Network response not okay - user not found");
+         }
+         console.log("response", response);
+         const data = await response.json();
+         console.log("profile data:", data);
+         setUserProfile(data);
+      };
+      getUserProfile();
+   }, []);
 
    const handleImageInput = async (event) => {
       const file = event.target.files[0];

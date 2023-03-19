@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from closet.models import ClothingItem
 
 
 # Create your models here.
@@ -30,5 +31,6 @@ class Profile(models.Model):
     display_name = models.CharField(max_length=255)
     avatar = models.ImageField(upload_to="media/avatars/", blank=True, null=True)
     gender = models.CharField(max_length=3, choices=User.GENDER_CHOICES, blank=True, null=True)
+    ClothingItem = models.ManyToManyField(ClothingItem, blank=True)
    
     # avatar:models.ImageField(upload_to="profiles/")   

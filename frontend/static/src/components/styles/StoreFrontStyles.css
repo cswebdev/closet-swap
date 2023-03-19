@@ -11,40 +11,12 @@
     height: 100%;
     padding-bottom: 10%;
     border: 1px solid transparent;
-    border-radius: 14px 0 0;
+    border-radius: 14px 0px 0px 14px;
+    background-color: #f9fdff;
 
 
 }
 
-#panel-filter {
-    position: sticky;
-}
-
-#filter-section1 {
-
-    background-color: aqua;
-    /* height: 25vh; */
-    margin-top: 15%;
-    border: 1px solid transparent;
-    border-radius: 14px 14px 0 0;
-    border-bottom: 4px solid cadetblue;
-
-}
-
-#filter-section2 {
-    background-color: aliceblue;
-    /* height: 25vh; */
-    margin-top: 0;
-    border-bottom: 4px solid cadetblue;
-}
-
-#filter-section3 {
-    /* background-color: aqua; */
-    /* height: 25vh; */
-    margin-top: 0;
-    border-bottom: 1px solid transparent;
-    border-radius: 0 0 14px 14px;
-}
 
 h6 {
     padding-top: 10%;
@@ -59,19 +31,25 @@ h6 {
     border-radius: 0px 14px 0px 0px;
 
 }
-/* 
+
 #filter-section1,
 #filter-section2,
-#filter-section3 {
+#filter-section3,
+#filter-section4,
+#filter-section5,
+#filter-section6 {
     width: 100%;
+    margin-top: 0;
+    padding: 0;
+
 }
 
-#filter-section1 div,
+/* #filter-section1 div,
 #filter-section2 div,
 #filter-section3 div {
     display: flex;
     flex-wrap: wrap;
-}
+} */
 
 #filter-section1 div p,
 #filter-section2 div p,
@@ -84,4 +62,15 @@ h6 {
 #filter-section3 div label {
     flex-basis: 33.33%;
     margin-bottom: 0;
-} */
+}
+
+div#panel-store {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+d.flex.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
