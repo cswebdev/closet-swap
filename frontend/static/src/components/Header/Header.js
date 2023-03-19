@@ -28,8 +28,11 @@ function Header(user) {
    return (
       <Navbar expand="md">
          <Container>
-            <Navbar.Brand href="/home">Closet Swap</Navbar.Brand>
-
+            <Navbar.Brand>
+               <NavLink to="/home" className="m-2">
+                  Closet Swap
+               </NavLink>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">

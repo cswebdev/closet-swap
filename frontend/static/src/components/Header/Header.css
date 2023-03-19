@@ -3,10 +3,15 @@ nav.navbar.navbar-expand-md.navbar {
     /* border-bottom: 5px solid #00aaff; */
     max-width: 70%;
     margin: auto;
+    text-decoration: none;
+}
+
+nav.navbar.navbar-expand-md.navbar a {
+    text-decoration: none;
 }
 
 .navbar {
-    height: 17vh;
+    height: 18vh;
 
 }
 
