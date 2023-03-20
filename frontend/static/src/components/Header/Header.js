@@ -13,6 +13,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from "js-cookie";
 
 function Header(user) {
+   const navigate = useNavigate();
    const handleLogout = async () => {
       const response = await fetch("/dj-rest-auth/logout/", {
          method: "POST",
@@ -20,10 +21,14 @@ function Header(user) {
             "Content-Type": "application/json",
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
-         body: "",
+         body: JSON.stringify(user),
       });
+
       const data = await response.json();
       Cookies.remove("Authorization", `Token ${data.key}`);
+      if (response.ok) {
+         navigate("/home");
+      }
    };
    return (
       <Navbar expand="md">

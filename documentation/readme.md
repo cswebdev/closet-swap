@@ -84,4 +84,9 @@ Javascript 3rd Party Packages
             https://www.npmjs.com/package/react-bootstrap
             - Added React Router 
             https://reactrouter.com/en/main/start/tutorial
+            - Added Pillow
+            https://pypi.org/project/Pillow/
+
+            -Added Django-phonenumber-field
+            https://pypi.org/project/django-phonenumber-field/
     

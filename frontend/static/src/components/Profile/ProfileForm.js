@@ -16,6 +16,7 @@ function ProfileForm({ id }) {
       gender: "",
       state: "",
       city: "",
+      avatar: "",
    });
 
    const [activeUser, setActiveUser] = useState({});
@@ -30,14 +31,6 @@ function ProfileForm({ id }) {
 
    useEffect(() => {
       const getActiveUser = async () => {
-         // const response = await fetch("/dj-rest-auth/user");
-         // if (!response.ok) {
-         //    throw new Error("Network response not okay - auth user not found");
-         // }
-         // const data = await response.json();
-         // console.log("dj-rest/active user: ", data);
-         // setActiveUser(data);
-
          const response = await fetch(`/api_v1/profiles/current_user/`);
          if (!response.ok) {
             throw new Error("Network response not okay - user not found");
@@ -49,33 +42,19 @@ function ProfileForm({ id }) {
       getActiveUser();
    }, []);
 
-   // useEffect(() => {
-   //    const getUserCloset = async () => {
-   //       const response = await fetch(`/api_v1/closet/items/`);
-   //       if (!response.ok) {
-   //          throw new Error("Network response not okay - user not found");
-   //       }
-   //       console.log("response", response);
-   //       const data = await response.json();
-   //       console.log("closet data:", data);
-   //       setUserCloset(data);
-   //    };
-   //    getUserCloset();
-   // }, []);
-
-   // useEffect(() => {
-   //    const getUserProfile = async () => {
-   //       const response = await fetch(`/api_v1/profiles/`);
-   //       if (!response.ok) {
-   //          throw new Error("Network response not okay - user not found");
-   //       }
-   //       const data = await response.json();
-   //       console.log("profile data:", data);
-
-   //       setUserProfile(data);
-   //    };
-   //    getUserProfile();
-   // }, []);
+   useEffect(() => {
+      const getUserCloset = async () => {
+         const response = await fetch(`/api_v1/closet/items/`);
+         if (!response.ok) {
+            throw new Error("Network response not okay - user not found");
+         }
+         console.log("response", response);
+         const data = await response.json();
+         console.log("closet data:", data);
+         setUserCloset(data);
+      };
+      getUserCloset();
+   }, []);
 
    const handleDisplayNamesInput = (event) => {
       const { value } = event.target;
@@ -100,27 +79,34 @@ function ProfileForm({ id }) {
          setPreview(reader.result);
       };
       reader.readAsDataURL(file);
+      console.log("file", file);
       setAvatar(file);
    };
 
-   const handleImageSubmit = async (event) => {
+   const handleSubmit = async (event) => {
       event.preventDefault();
+
       const formData = new FormData();
       formData.append("avatar", avatar);
+      formData.append("display_name", displayNames);
+
       const options = {
-         method: "POST",
+         method: "PUT",
          headers: {
-            "Content-Type": "application/json",
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
-         body: JSON.stringify(formData),
+         body: formData,
       };
-      const response = await fetch(`/api_v1/profiles/${id}/`, options).catch(
-         handleError
-      );
+
+      const response = await fetch(
+         `/api_v1/profiles/current_user/`,
+         options
+      ).catch(handleError);
+
       if (!response.ok) {
          throw new Error("Network response not okay - user not found");
       }
+
       const data = await response.json();
       console.log("profile data:", data);
       setUserProfile(data);
@@ -134,7 +120,7 @@ function ProfileForm({ id }) {
       <Container id="profile-page" className="bg-white">
          <Container id="container-profile" className="d-flex pt-5">
             <Form
-               onSubmit={handleImageSubmit}
+               onSubmit={handleSubmit}
                className="m-0 p-0 g-0"
                id="profile-form"
             >
@@ -150,6 +136,13 @@ function ProfileForm({ id }) {
                      {preview && (
                         <img src={preview} alt="" id="profile-avatar-image" />
                      )}
+                     {!preview && (
+                        <img
+                           src={userProfile.avatar}
+                           alt=""
+                           id="profile-avatar-image"
+                        />
+                     )}
                   </Container>
                   <div className="d-flex p-0">
                      <div className="d-flex  m-auto">
@@ -162,28 +155,28 @@ function ProfileForm({ id }) {
                            className="form-control m-auto"
                            onChange={handleImageInput}
                         ></Form.Control>
-                        <Button
-                           variant="outline-primary"
-                           type="submit"
-                           onSubmit={handleImageSubmit}
-                        >
-                           Save
-                        </Button>
                      </div>
                   </div>
                </Container>
+               <Button
+                  variant="outline-primary"
+                  type="submit"
+                  onSubmit={handleSubmit}
+               >
+                  Save
+               </Button>
             </Form>
             <Form onSubmit={handleDisplayNamesInput} className="m-0 p-0 g-0">
                <Container id="container-userinfo">
                   <Row className="text-center">
-                     <h1>User Info Goes Here</h1>
+                     {/* <h1>User Info Goes Here</h1> */}
                   </Row>
                   <Row>
                      <Form.Group className="mb-3">
                         <Form.Label htmlFor="displayname"></Form.Label>
                         <div className="input-group" id="displayname">
                            <input
-                              className="d-flex p-0 form-control"
+                              className=" form-control"
                               type="text"
                               id="displayname"
                               name="displayname"
@@ -194,13 +187,20 @@ function ProfileForm({ id }) {
                         </div>
                      </Form.Group>
                   </Row>
-                  <Row>
-                     <Col id="username">UserName: {displayNames}</Col>
-                     <Col>Gender: {userProfile.gender}</Col>
+                  <Row className=" bg-info">
+                     <Col>
+                        <Row id="username">
+                           UserName: {userProfile.display_name}
+                        </Row>
+                        <Row>Gender: {userProfile.gender}</Row>
+                        <Row>City: {userProfile.city}</Row>
+                        <Row>State: {userProfile.state}</Row>
+                     </Col>
                   </Row>
-                  <Row>
-                     <Col>City: {userProfile.city}</Col>
-                     <Col>State: {userProfile.state}</Col>
+               </Container>
+               <Container id="update-userinfo">
+                  <Row className="text-center">
+                     {/* <h1>Update User Info</h1> */}
                   </Row>
                </Container>
             </Form>
