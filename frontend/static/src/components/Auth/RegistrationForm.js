@@ -14,6 +14,7 @@ function RegistrationForm() {
       password2: "",
       email: "",
       gender: "",
+      phone_number: "",
    });
 
    const [setError] = useState(null);
@@ -149,11 +150,24 @@ function RegistrationForm() {
                         </span>
                      </div>
                   </Form.Group>
-                  <Form.Group className="mt-4 w-50 float-end">
+
+                  <Form.Group className="d-flex mt-4 m-auto">
+                     <Form.Label htmlFor="phone_number"></Form.Label>
+                     <div className="input-group">
+                        <input
+                           type="form-control"
+                           className="form-control "
+                           placeholder="phone number"
+                           name="phone_number"
+                           value={user.phone_number}
+                           onChange={handleInput}
+                        />
+                     </div>
+
                      <Form.Label htmlFor="gender"></Form.Label>
                      <Form.Control
                         as="select"
-                        className="float-end "
+                        className="form-select"
                         value={user.gender}
                         onChange={handleGenderInput}
                         id="gender-select-box"
@@ -170,14 +184,14 @@ function RegistrationForm() {
                         <option value="GF">Gender Fluid</option>
                         <option value="IS">Intersex</option>
                      </Form.Control>
-                     <Button
-                        className="btn btn-primary float-end mt-5"
-                        type="submit"
-                        id="register-button"
-                     >
-                        Submit
-                     </Button>
                   </Form.Group>
+                  <Button
+                     className="btn btn-primary float-end mt-5"
+                     type="submit"
+                     id="register-button"
+                  >
+                     Submit
+                  </Button>
                </Form.Group>
             </Form>
          </div>

@@ -1,5 +1,6 @@
 #profile-page {
     height: 100vh;
+    width: 70%;
 }
 
 #profile-form {
@@ -49,4 +50,10 @@
 
 svg#report {
     color: red;
+}
+
+#container-userinfo {
+    height: 30vh;
+    background-color: #00acff;
+    background-color: white;
 }

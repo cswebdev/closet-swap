@@ -16,7 +16,8 @@ function ProfileForm(user) {
    const [userCloset, setUserCloset] = useState({});
    const [avatar, setAvatar] = useState(null);
    const [preview, setPreview] = useState(null);
-
+   const [displayNames, setDisplayNames] = useState("");
+   const [gender, setGender] = useState("");
    useEffect(() => {
       const getActiveUser = async () => {
          const response = await fetch("/dj-rest-auth/user");
@@ -52,6 +53,8 @@ function ProfileForm(user) {
          }
          console.log("response", response);
          const data = await response.json();
+         setDisplayNames(data[0].display_name);
+         setGender(data[0].gender);
          console.log("profile data:", data);
          setUserProfile(data);
       };
@@ -153,13 +156,13 @@ function ProfileForm(user) {
                   </div>
                </Container>
             </Form>
-            <Container id="container-userinfo" className="bg-info">
+            <Container id="container-userinfo">
                <Row className="text-center">
                   <h1>User Info Goes Here</h1>
                </Row>
                <Row>
-                  <Col id="username">Username Box</Col>
-                  <Col>Test Box</Col>
+                  <Col id="username">UserName: {displayNames}</Col>
+                  <Col>Gender: {gender}</Col>
                </Row>
                <Row>
                   <Col>Test Box</Col>
@@ -173,7 +176,7 @@ function ProfileForm(user) {
                <Col></Col>
             </Row>
             <Row>
-               <Col>item</Col>
+               <Col>{}</Col>
                <Col>item</Col>
                <Col>item</Col>
             </Row>
