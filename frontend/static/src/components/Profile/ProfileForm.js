@@ -112,40 +112,47 @@ function ProfileForm(user) {
 
    return (
       <Container id="profile-page" className="bg-white">
-         <Container id="container-profile" className="d-flex bg-white pt-5">
-            <Form onSubmit={handleImageSubmit}></Form>{" "}
-            <Container
-               id="container-avatar"
-               className="w-25 bg-primary text-center d-flex-column"
+         <Container id="container-profile" className="d-flex pt-5">
+            <Form
+               onSubmit={handleImageSubmit}
+               className="m-0 p-0 g-0"
+               id="profile-form"
             >
-               <div id="user-header" className="d-flex text-center">
-                  <h1 className="m-auto">{activeUser.username}</h1>
-                  <IconFlagFilled id="report" />
-               </div>
-
-               <Container id="image-container">
-                  {preview && <img src={preview} alt="" id="donation-image" />}
-               </Container>
-               <div className="d-flex">
-                  <Form.Label htmlFor="item_image"></Form.Label>
-                  <Form.Control
-                     type="file"
-                     id="item_image"
-                     name="item_image"
-                     accept="image/*"
-                     className="m-auto w-75"
-                     onChange={handleImageInput}
-                  ></Form.Control>
-               </div>
-               <Button
-                  variant="outline-primary"
-                  type="submit"
-                  className="float-end"
-                  onSubmit={handleImageSubmit}
+               <Container
+                  id="container-avatar"
+                  className=" text-center  m-0 p-0"
                >
-                  Save Changes
-               </Button>
-            </Container>
+                  <Container id="profile-avatar-container">
+                     <div id="user-header" className="d-flex text-center">
+                        <h1 className="text-center">{activeUser.username}</h1>
+                        <IconFlagFilled id="report" className="ms-1 mt-2" />
+                     </div>
+                     {preview && (
+                        <img src={preview} alt="" id="profile-avatar-image" />
+                     )}
+                  </Container>
+                  <div className="d-flex p-0">
+                     <div className="d-flex  m-auto">
+                        <Form.Label htmlFor="item_image"></Form.Label>
+                        <Form.Control
+                           type="file"
+                           id="item_image"
+                           name="item_image"
+                           accept="image/*"
+                           className="form-control m-auto"
+                           onChange={handleImageInput}
+                        ></Form.Control>
+                        <Button
+                           variant="outline-primary"
+                           type="submit"
+                           onSubmit={handleImageSubmit}
+                        >
+                           Save
+                        </Button>
+                     </div>
+                  </div>
+               </Container>
+            </Form>
             <Container id="container-userinfo" className="bg-info">
                <Row className="text-center">
                   <h1>User Info Goes Here</h1>

@@ -2,32 +2,42 @@
     height: 100vh;
 }
 
+#profile-form {
+    width: auto
+}
+
 
 #container-profile {
-    height: 40vh;
+    height: 50vh;
+    width: auto;
 }
 
-#section-avatar {
-    width: 120px;
-    height: 120px;
-    border: 6px solid #a5a0ff;
-    border-radius: 50%;
-    position: relative;
-    object-fit: contain;
-    text-align: center;
-    display: inline-flex;
+#profile-avatar-container {
+    height: 30vh;
+    width: auto;
+    background-color: #00acff;
 
+    padding: 0%;
 
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-variant: small-caps;
+    font-weight: bold;
 }
 
-img#avatar-image {
 
-    border: 1px solid transparent;
+
+#profile-avatar-image {
+
+    border: 3px solid white;
     border-radius: 50%;
-    max-height: 100px;
-    max-width: 100px;
+    height: 150px;
+    width: 150px;
     margin: auto;
+    padding: 0;
+    object-fit: cover;
+    overflow: hidden;
 
 }
 

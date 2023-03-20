@@ -120,10 +120,8 @@ function StoreFront() {
    const { cartItems, setCartItems } = useOutletContext();
    console.log(itemFilter);
 
-
    // research flat map
 
-   
    // exmple filter method provided by instructor
    // const data = [
    //    { color: "red", size: "S", gender: "M" },
@@ -145,7 +143,7 @@ function StoreFront() {
    //       return false;
    //    }
    //    return true;
-   // });   
+   // });
    // end of example
    const data = [
       { color: "red", size: "S", gender: "M" },
