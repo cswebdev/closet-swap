@@ -7,6 +7,59 @@ import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
 import { Navigate } from "react-router-dom";
 
+const selectState = {
+   AL: "Alabama",
+   AK: "Alaska",
+   AZ: "Arizona",
+   AR: "Arkansas",
+   CA: "California",
+   CO: "Colorado",
+   CT: "Connecticut",
+   DE: "Delaware",
+   FL: "Florida",
+   GA: "Georgia",
+   HI: "Hawaii",
+   ID: "Idaho",
+   IL: "Illinois",
+   IN: "Indiana",
+   IA: "Iowa",
+   KS: "Kansas",
+   KY: "Kentucky",
+   LA: "Louisiana",
+   ME: "Maine",
+   MD: "Maryland",
+   MA: "Massachusetts",
+   MI: "Michigan",
+   MN: "Minnesota",
+   MS: "Mississippi",
+   MO: "Missouri",
+   MT: "Montana",
+   NE: "Nebraska",
+   NV: "Nevada",
+   NH: "New Hampshire",
+   NJ: "New Jersey",
+   NM: "New Mexico",
+   NY: "New York",
+   NC: "North Carolina",
+   ND: "North Dakota",
+   OH: "Ohio",
+   OK: "Oklahoma",
+   OR: "Oregon",
+   PA: "Pennsylvania",
+   RI: "Rhode Island",
+   SC: "South Carolina",
+   SD: "South Dakota",
+   TN: "Tennessee",
+   TX: "Texas",
+   UT: "Utah",
+   VT: "Vermont",
+   VA: "Virginia",
+   WA: "Washington",
+   WV: "West Virginia",
+   WI: "Wisconsin",
+   WY: "Wyoming",
+};
+
 function RegistrationForm() {
    const [user, setUser] = useState({
       username: "",
@@ -15,6 +68,8 @@ function RegistrationForm() {
       email: "",
       gender: "",
       phone_number: "",
+      city: "",
+      state: "",
    });
 
    const [setError] = useState(null);
@@ -49,6 +104,15 @@ function RegistrationForm() {
    };
    const handleError = (err) => {
       console.warn.log(err);
+   };
+
+   const handleStateInput = (event) => {
+      const { value } = event.target;
+
+      setUser((prevState) => ({
+         ...prevState,
+         state: value.trim(),
+      }));
    };
 
    const handleSubmit = async (event) => {
@@ -183,6 +247,36 @@ function RegistrationForm() {
                         <option value="GNC">Gender Non Conforming</option>
                         <option value="GF">Gender Fluid</option>
                         <option value="IS">Intersex</option>
+                     </Form.Control>
+                  </Form.Group>
+                  <Form.Group className="d-flex mt-4 m-auto">
+                     <Form.Label htmlFor="city">
+                        <div className="input-group">
+                           <input
+                              type="form-control"
+                              className="form-control "
+                              placeholder="city"
+                              name="city"
+                              value={user.city}
+                              onChange={handleInput}
+                           />
+                        </div>
+                     </Form.Label>
+                     <Form.Label htmlFor="state"></Form.Label>
+                     <Form.Control
+                        as="select"
+                        className="form-select"
+                        value={user.state}
+                        onChange={handleStateInput}
+                        id="state-select-box"
+                     >
+                        {Object.entries(selectState).map(
+                           ([code, name], index) => (
+                              <option key={index} value={code}>
+                                 {name}
+                              </option>
+                           )
+                        )}
                      </Form.Control>
                   </Form.Group>
                   <Button
