@@ -9,6 +9,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     city = serializers.ReadOnlyField(source='user.city')
     state = serializers.ReadOnlyField(source='user.state')
     clothing_items = ClothingItemSerializer(source='user.clothing_items', many=True, read_only=True)
+    username = serializers.StringRelatedField(source='user.username', read_only=True)
 
 
     class Meta: 
@@ -31,6 +32,7 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.save(update_fields=['city'])
         user.state = self.validated_data.get('state', '')
         user.save(update_fields=['state'])
+        
 
         profile = Profile.objects.create(user=user)
         profile.save()

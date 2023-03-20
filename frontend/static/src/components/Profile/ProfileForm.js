@@ -10,7 +10,7 @@ import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 
-function ProfileForm() {
+function ProfileForm({ id }) {
    const [user, setUser] = useState({
       display_name: "",
       gender: "",
@@ -30,60 +30,48 @@ function ProfileForm() {
 
    useEffect(() => {
       const getActiveUser = async () => {
-         const response = await fetch("/dj-rest-auth/user");
+         // const response = await fetch("/dj-rest-auth/user");
+         // if (!response.ok) {
+         //    throw new Error("Network response not okay - auth user not found");
+         // }
+         // const data = await response.json();
+         // console.log("dj-rest/active user: ", data);
+         // setActiveUser(data);
+
+         const response = await fetch(`/api_v1/profiles/current_user/`);
          if (!response.ok) {
             throw new Error("Network response not okay - user not found");
          }
          const data = await response.json();
-         console.log(data);
-         setActiveUser(data);
-         console.log("active user:", data);
+         setUserProfile(data);
       };
+
       getActiveUser();
    }, []);
 
-   useEffect(() => {
-      const getUserCloset = async () => {
-         const response = await fetch(`/api_v1/closet/items/`);
-         if (!response.ok) {
-            throw new Error("Network response not okay - user not found");
-         }
-         console.log("response", response);
-         const data = await response.json();
-         console.log("closet data:", data);
-         setUserCloset(data);
-      };
-      getUserCloset();
-   }, []);
-
-   useEffect((id) => {
-      const getUserProfile = async () => {
-         const response = await fetch(`/api_v1/profiles/`);
-         if (!response.ok) {
-            throw new Error("Network response not okay - user not found");
-         }
-         console.log("response", response);
-         const data = await response.json();
-         setDisplayNames(data.display_name);
-         setGender(data.gender);
-         setState(data[0].state);
-         setCity(data[0].city);
-
-         console.log("profile data:", data);
-         setUserProfile(data);
-      };
-      getUserProfile();
-   }, []);
-
    // useEffect(() => {
-   //    const getUserProfile = async () => {
-   //       const response = await fetch(`/api_v1/profiles/${user.id}`);
+   //    const getUserCloset = async () => {
+   //       const response = await fetch(`/api_v1/closet/items/`);
    //       if (!response.ok) {
    //          throw new Error("Network response not okay - user not found");
    //       }
    //       console.log("response", response);
    //       const data = await response.json();
+   //       console.log("closet data:", data);
+   //       setUserCloset(data);
+   //    };
+   //    getUserCloset();
+   // }, []);
+
+   // useEffect(() => {
+   //    const getUserProfile = async () => {
+   //       const response = await fetch(`/api_v1/profiles/`);
+   //       if (!response.ok) {
+   //          throw new Error("Network response not okay - user not found");
+   //       }
+   //       const data = await response.json();
    //       console.log("profile data:", data);
+
    //       setUserProfile(data);
    //    };
    //    getUserProfile();
@@ -127,7 +115,7 @@ function ProfileForm() {
          },
          body: JSON.stringify(formData),
       };
-      const response = await fetch(`/api_v1/profiles/`, options).catch(
+      const response = await fetch(`/api_v1/profiles/${id}/`, options).catch(
          handleError
       );
       if (!response.ok) {
@@ -208,11 +196,11 @@ function ProfileForm() {
                   </Row>
                   <Row>
                      <Col id="username">UserName: {displayNames}</Col>
-                     <Col>Gender: {gender}</Col>
+                     <Col>Gender: {userProfile.gender}</Col>
                   </Row>
                   <Row>
-                     <Col>Test Box</Col>
-                     <Col>Test Box</Col>
+                     <Col>City: {userProfile.city}</Col>
+                     <Col>State: {userProfile.state}</Col>
                   </Row>
                </Container>
             </Form>
