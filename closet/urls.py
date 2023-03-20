@@ -8,7 +8,7 @@ urlpatterns = [
     path('closet/items/', ClothingItemListAPIView.as_view()), 
     path('closet/images/<int:pk>/', ImageDetailAPIView.as_view()),
     path('closet/images/', ImageCreateAPIView.as_view()),
-    path('closet/profile/<int:pk>', ClosetProfileAPIView.as_view()),
+    # path('closet/profile/<int:pk>', ClosetProfileAPIView.as_view()),
     # path('<path:resource>/', .IndexView.as_view()),
 
 

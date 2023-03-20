@@ -77,7 +77,7 @@ class ClothingItem(models.Model):
         ('Unisex', 'Unisex'),
     )
     
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, related_name="clothing_items")
     title = models.CharField(max_length=255)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
     style = models.CharField(max_length=20, choices=STYLE_CHOICES)

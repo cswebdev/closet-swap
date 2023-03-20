@@ -7,6 +7,10 @@ from .models import User, Profile
 class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         ('Additional Info', {'fields': ('gender',)}),
+        ('Additional Info', {'fields': ('phone_number',)}),
+        ('Additional Info', {'fields': ('city',)}),
+        ('Additional Info', {'fields': ('state',)}),
+        
     )
 admin.site.register(User,CustomUserAdmin)
 

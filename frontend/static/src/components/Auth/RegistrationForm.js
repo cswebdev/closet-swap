@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../Styles/RegistrationStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const selectState = {
    AL: "Alabama",
@@ -71,10 +71,10 @@ function RegistrationForm() {
       city: "",
       state: "",
    });
-
+   const navigate = useNavigate();
    const [setError] = useState(null);
    const [showPassword, setShowPassword] = useState(false);
-   const [setAuth] = useState(false);
+   const [auth, setAuth] = useState(false);
 
    const handleInput = (event) => {
       const { name, value } = event.target;
@@ -130,13 +130,14 @@ function RegistrationForm() {
          setError("passwords do not match");
          return;
       }
-
       const response = await fetch(
          "/dj-rest-auth/registration/",
          options
       ).catch(handleError);
 
       if (response.ok) {
+         setAuth(true);
+         navigate("/home");
       }
 
       if (!response.ok) {
@@ -144,8 +145,7 @@ function RegistrationForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`);
-      setAuth(true);
-      Navigate("/");
+      console.log("registration data: ", data);
    };
 
    return (

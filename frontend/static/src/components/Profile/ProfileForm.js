@@ -10,7 +10,14 @@ import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 
-function ProfileForm(user) {
+function ProfileForm() {
+   const [user, setUser] = useState({
+      display_name: "",
+      gender: "",
+      state: "",
+      city: "",
+   });
+
    const [activeUser, setActiveUser] = useState({});
    const [userProfile, setUserProfile] = useState({});
    const [userCloset, setUserCloset] = useState({});
@@ -18,6 +25,9 @@ function ProfileForm(user) {
    const [preview, setPreview] = useState(null);
    const [displayNames, setDisplayNames] = useState("");
    const [gender, setGender] = useState("");
+   const [state, setState] = useState("");
+   const [city, setCity] = useState("");
+
    useEffect(() => {
       const getActiveUser = async () => {
          const response = await fetch("/dj-rest-auth/user");
@@ -27,6 +37,7 @@ function ProfileForm(user) {
          const data = await response.json();
          console.log(data);
          setActiveUser(data);
+         console.log("active user:", data);
       };
       getActiveUser();
    }, []);
@@ -45,7 +56,7 @@ function ProfileForm(user) {
       getUserCloset();
    }, []);
 
-   useEffect(() => {
+   useEffect((id) => {
       const getUserProfile = async () => {
          const response = await fetch(`/api_v1/profiles/`);
          if (!response.ok) {
@@ -53,8 +64,11 @@ function ProfileForm(user) {
          }
          console.log("response", response);
          const data = await response.json();
-         setDisplayNames(data[0].display_name);
-         setGender(data[0].gender);
+         setDisplayNames(data.display_name);
+         setGender(data.gender);
+         setState(data[0].state);
+         setCity(data[0].city);
+
          console.log("profile data:", data);
          setUserProfile(data);
       };
@@ -74,6 +88,21 @@ function ProfileForm(user) {
    //    };
    //    getUserProfile();
    // }, []);
+
+   const handleDisplayNamesInput = (event) => {
+      const { value } = event.target;
+      setDisplayNames(value.trim());
+
+      setUser((prevState) => ({
+         ...prevState,
+         display_name: value,
+      }));
+   };
+
+   const handleGenderInput = (event) => {
+      const { value } = event.target;
+      setGender(value.trim());
+   };
 
    const handleImageInput = async (event) => {
       const file = event.target.files[0];
@@ -156,19 +185,37 @@ function ProfileForm(user) {
                   </div>
                </Container>
             </Form>
-            <Container id="container-userinfo">
-               <Row className="text-center">
-                  <h1>User Info Goes Here</h1>
-               </Row>
-               <Row>
-                  <Col id="username">UserName: {displayNames}</Col>
-                  <Col>Gender: {gender}</Col>
-               </Row>
-               <Row>
-                  <Col>Test Box</Col>
-                  <Col>Test Box</Col>
-               </Row>
-            </Container>
+            <Form onSubmit={handleDisplayNamesInput} className="m-0 p-0 g-0">
+               <Container id="container-userinfo">
+                  <Row className="text-center">
+                     <h1>User Info Goes Here</h1>
+                  </Row>
+                  <Row>
+                     <Form.Group className="mb-3">
+                        <Form.Label htmlFor="displayname"></Form.Label>
+                        <div className="input-group" id="displayname">
+                           <input
+                              className="d-flex p-0 form-control"
+                              type="text"
+                              id="displayname"
+                              name="displayname"
+                              placeholder="Display Name"
+                              value={user.display_name}
+                              onChange={handleDisplayNamesInput}
+                           ></input>
+                        </div>
+                     </Form.Group>
+                  </Row>
+                  <Row>
+                     <Col id="username">UserName: {displayNames}</Col>
+                     <Col>Gender: {gender}</Col>
+                  </Row>
+                  <Row>
+                     <Col>Test Box</Col>
+                     <Col>Test Box</Col>
+                  </Row>
+               </Container>
+            </Form>
          </Container>
          <Container id="container-closet">
             <Row className="text-center mt-5">
