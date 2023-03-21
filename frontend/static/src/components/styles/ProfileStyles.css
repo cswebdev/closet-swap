@@ -1,6 +1,6 @@
 #profile-page {
-    height: 100vh;
-    width: 70%;
+    height: 80vh;
+
 }
 
 #profile-form {
@@ -9,19 +9,20 @@
 
 
 #container-profile {
-    height: 50vh;
+    /* height: 60vh; */
     width: auto;
+    background-color: #00acff;
+
 }
 
 #profile-avatar-container {
-    height: 30vh;
+    height: 20vh;
     width: auto;
-    background-color: #00acff;
 
     padding: 0%;
 
     display: flex;
-    flex-direction: column;
+
     align-items: center;
     font-variant: small-caps;
     font-weight: bold;
@@ -53,16 +54,16 @@ svg#report {
 }
 
 #container-userinfo {
-    height: 30vh;
-    background-color: #00acff;
+    height: 15vh;
+
     background-color: white;
 
 }
 
 #container-closet {
 
-    background-color: #00acff;
-    max-height: 80vh;
+    /* background-color: #00acff; */
+    max-height: auto;
     overflow: hidden;
     overflow-y: scroll;
 }

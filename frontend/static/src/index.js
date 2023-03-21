@@ -12,6 +12,7 @@ import DonationForm from "./components/DonationForm/DonationForm";
 import StoreFront from "./components/Storefront/StoreFront";
 import ProfileForm from "./components/Profile/ProfileForm";
 import CheckOut from "./components/Checkout/Checkout";
+import ChatPage from "./components/Chat/ChatPage";
 import { Outlet } from "react-router-dom";
 
 /*  */
@@ -29,6 +30,7 @@ root.render(
                <Route path="store" element={<StoreFront />} />
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
+
                <Route index element={<HomePage />} />
             </Route>
             <Route
