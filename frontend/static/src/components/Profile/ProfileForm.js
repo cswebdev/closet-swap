@@ -96,20 +96,23 @@ function ProfileForm() {
       getActiveUser();
    }, []);
 
-   useEffect(() => {
-      const getUserCloset = async () => {
-         const response = await fetch(`/api_v1/closet/items/`);
-         if (!response.ok) {
-            throw new Error("Network response not okay - user not found");
-         }
-         console.log("response", response);
-         const data = await response.json();
-         console.log("closet data:", data);
-         setUserCloset(data);
-         console.log(data);
-      };
-      getUserCloset();
-   }, []);
+   // useEffect(() => {
+   //    const getUserCloset = async () => {
+   //       const response = await fetch(`/api_v1/closet/items/`);
+   //       if (!response.ok) {
+   //          throw new Error("Network response not okay - user not found");
+   //       }
+   //       console.log("response", response);
+   //       const data = await response.json();
+
+   //       const userItems = data.filter((item) => item.user === user.id);
+   //       console.log("user items", userItems);
+   //       console.log("closet data:", data);
+   //       setUserCloset(data);
+   //       console.log(data);
+   //    };
+   //    getUserCloset();
+   // }, []);
 
    console.log("user closet", userCloset);
 
@@ -126,6 +129,10 @@ function ProfileForm() {
    const handleGenderInput = (event) => {
       const { value } = event.target;
       setGender(value.trim());
+      setUser((prevState) => ({
+         ...prevState,
+         gender: value,
+      }));
    };
 
    const handleStateInput = (event) => {
@@ -134,6 +141,15 @@ function ProfileForm() {
       setUser((prevState) => ({
          ...prevState,
          state: value,
+      }));
+   };
+
+   const handleCityInput = (event) => {
+      const { value } = event.target;
+      setCity(value.trim());
+      setUser((prevState) => ({
+         ...prevState,
+         city: value,
       }));
    };
 
@@ -166,6 +182,8 @@ function ProfileForm() {
       const formData = new FormData();
       formData.append("avatar", avatar);
       formData.append("display_name", displayNames);
+      formData.append("city", city);
+      formData.append("state", state);
 
       const options = {
          method: "PUT",
@@ -193,9 +211,9 @@ function ProfileForm() {
       console.warn.log(err);
    };
 
-   const userClosetHTML = userCloset.map((item) => {
+   const userClosetHTML = userProfile.clothing_items?.map((item) => {
       return (
-         <div className="col-8 col-md-4 col-lg-3 col-xl-2 d-flex">
+         <div className="col-4 d-flex-row flex-wrap">
             <Card className="">
                <div className="">
                   <Card.Img
@@ -274,7 +292,7 @@ function ProfileForm() {
                            <div>
                               <Col>
                                  <Row id="username">
-                                    UserName: {userProfile.display_name}
+                                    Username: {userProfile.display_name}
                                  </Row>
                                  <Row>Gender: {userProfile.gender}</Row>
                                  <Row>City: {userProfile.city}</Row>
@@ -284,7 +302,7 @@ function ProfileForm() {
                         </Container>
                         <Container id="update-userinfo">
                            <h6>Update Information</h6>
-                           <Form.Group className="mb-3">
+                           <Form.Group className="mb-3 d-flex">
                               <Form.Label htmlFor="displayname"></Form.Label>
                               <div className="input-group" id="displayname">
                                  <input
@@ -297,6 +315,28 @@ function ProfileForm() {
                                     onChange={handleDisplayNamesInput}
                                  ></input>
                               </div>
+                              <Form.Label htmlFor="gender"></Form.Label>
+                              <Form.Control
+                                 as="select"
+                                 className="form-select"
+                                 value={user.gender}
+                                 onChange={handleGenderInput}
+                                 id="gender-select-box"
+                              >
+                                 <option value="" disabled>
+                                    Select your gender
+                                 </option>
+                                 <option value="M">Male</option>
+                                 <option value="F">Female</option>
+                                 <option value="TM">Trans Male</option>
+                                 <option value="TF">Trans Female</option>
+                                 <option value="NB">Non Binary</option>
+                                 <option value="GNC">
+                                    Gender Non Conforming
+                                 </option>
+                                 <option value="GF">Gender Fluid</option>
+                                 <option value="IS">Intersex</option>
+                              </Form.Control>
                            </Form.Group>
                            <Container className="d-flex" id="update-location">
                               <Form.Group className="d-flex mt-4 ">
@@ -307,8 +347,8 @@ function ProfileForm() {
                                        className="form-control "
                                        placeholder="city"
                                        name="city"
-                                       value={user.city}
-                                       onChange={handleInput}
+                                       value={userProfile.city}
+                                       onChange={handleCityInput}
                                     />
                                  </div>
 
@@ -316,7 +356,7 @@ function ProfileForm() {
                                  <Form.Control
                                     as="select"
                                     className="form-select"
-                                    value={user.state}
+                                    value={userProfile.state}
                                     onChange={handleStateInput}
                                     id="state-select-box"
                                  >
@@ -344,10 +384,10 @@ function ProfileForm() {
                   </Row>
                </Form>
             </Container>
-            <Container id="container-closet">
+            <Container id="container-closet" className="d-flex">
                <div className="text-center mt-5">
                   <h1>User Clothes</h1>
-                  <div>{userClosetHTML}</div>
+                  <div className="row">{userClosetHTML}</div>
                </div>
             </Container>
          </Container>

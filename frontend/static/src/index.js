@@ -30,7 +30,7 @@ root.render(
                <Route path="store" element={<StoreFront />} />
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
-
+               <Route path="chat" element={<ChatPage />} />
                <Route index element={<HomePage />} />
             </Route>
             <Route

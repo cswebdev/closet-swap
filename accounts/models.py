@@ -80,8 +80,8 @@ class User(AbstractUser):
     display_name=models.CharField(max_length=255, blank=True, null=True)
     avatar=models.ImageField(upload_to="media/avatars/", blank=True, null=True)
     
-    
 
+    
 class Profile(models.Model):
     
     user = models.OneToOneField(

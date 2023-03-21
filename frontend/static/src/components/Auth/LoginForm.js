@@ -58,7 +58,7 @@ function LoginForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`); // Added space after "Token"
-      navigate("/home");
+      navigate("/profile");
    };
 
    return (
