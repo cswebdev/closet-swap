@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'phonenumber_field',
+
 
    
 
@@ -62,6 +64,7 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     'api.apps.ApiConfig', 
     'closet.apps.ClosetConfig', 
+    'chats.apps.ChatsConfig',
 ]
 
 
