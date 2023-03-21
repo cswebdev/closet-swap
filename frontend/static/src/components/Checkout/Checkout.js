@@ -12,10 +12,6 @@ import { IconTrash } from "@tabler/icons-react";
 
 function CheckOut() {
    const { cartItems, setCartItems } = useOutletContext();
-   // const handleAddToCart = (item) => {
-   //    setCartItems([...cartItems, item]);
-   //    console.log("this is a cart item:", cartItems);
-   // };
 
    console.log("checkout test:", { cartItems });
 

@@ -57,3 +57,19 @@ svg#report {
     background-color: #00acff;
     background-color: white;
 }
+
+#container-closet {
+
+    background-color: #00acff;
+    /* flex-direction:; */
+}
+
+
+div.card {
+    display: flex;
+
+}
+
+#user-closet-item {
+    width: 25%;
+}

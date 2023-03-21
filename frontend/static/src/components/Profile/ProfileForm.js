@@ -1,16 +1,17 @@
 import "../Styles/ProfileStyles.css";
 import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Form } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { IconFlagFilled } from "@tabler/icons-react";
 import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 
-function ProfileForm({ id }) {
+function ProfileForm() {
    const [user, setUser] = useState({
       display_name: "",
       gender: "",
@@ -21,7 +22,7 @@ function ProfileForm({ id }) {
 
    const [activeUser, setActiveUser] = useState({});
    const [userProfile, setUserProfile] = useState({});
-   const [userCloset, setUserCloset] = useState({});
+   const [userCloset, setUserCloset] = useState([]);
    const [avatar, setAvatar] = useState(null);
    const [preview, setPreview] = useState(null);
    const [displayNames, setDisplayNames] = useState("");
@@ -52,9 +53,12 @@ function ProfileForm({ id }) {
          const data = await response.json();
          console.log("closet data:", data);
          setUserCloset(data);
+         console.log(data);
       };
       getUserCloset();
    }, []);
+
+   console.log("user closet", userCloset);
 
    const handleDisplayNamesInput = (event) => {
       const { value } = event.target;
@@ -115,6 +119,21 @@ function ProfileForm({ id }) {
    const handleError = (err) => {
       console.warn.log(err);
    };
+
+   const userClosetHTML = userCloset.map((item) => {
+      return (
+         <Card className="col-8 col-md-4 col-lg-3 col-xl-2 d-flex w-">
+            <div className="p-0 m-0 g-0 overflow-hidden">
+               <Card.Img variant="top" src={item.image} className="CardImg " />
+            </div>
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden m-0 p-0">
+               <Card.Title className="p-1 m-1 text-center">
+                  {item.title}
+               </Card.Title>
+            </Card.Body>
+         </Card>
+      );
+   });
 
    return (
       <Container id="profile-page" className="bg-white">
@@ -199,22 +218,15 @@ function ProfileForm({ id }) {
                   </Row>
                </Container>
                <Container id="update-userinfo">
-                  <Row className="text-center">
-                     {/* <h1>Update User Info</h1> */}
-                  </Row>
+                  <Row className="text-center"></Row>
                </Container>
             </Form>
          </Container>
          <Container id="container-closet">
-            <Row className="text-center mt-5">
+            <div className="text-center mt-5">
                <h1>User Clothes</h1>
-               <Col></Col>
-            </Row>
-            <Row>
-               <Col>{}</Col>
-               <Col>item</Col>
-               <Col>item</Col>
-            </Row>
+               <div>{userClosetHTML}</div>
+            </div>
          </Container>
       </Container>
    );
