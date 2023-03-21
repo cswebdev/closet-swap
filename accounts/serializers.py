@@ -27,7 +27,7 @@ class CustomRegisterSerializer(RegisterSerializer):
     def custom_signup(self, request, user):
         user.gender = self.validated_data.get('gender', '')
         user.save(update_fields=['gender'])
-        user.phone_number = self.validated_data.get('phone', '')
+        user.phone_number = self.validated_data.get('phone_number', '')
         user.save(update_fields=['phone_number'])
         user.city = self.validated_data.get('city', '')
         user.save(update_fields=['city'])

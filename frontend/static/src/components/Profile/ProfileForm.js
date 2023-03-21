@@ -96,24 +96,6 @@ function ProfileForm() {
       getActiveUser();
    }, []);
 
-   // useEffect(() => {
-   //    const getUserCloset = async () => {
-   //       const response = await fetch(`/api_v1/closet/items/`);
-   //       if (!response.ok) {
-   //          throw new Error("Network response not okay - user not found");
-   //       }
-   //       console.log("response", response);
-   //       const data = await response.json();
-
-   //       const userItems = data.filter((item) => item.user === user.id);
-   //       console.log("user items", userItems);
-   //       console.log("closet data:", data);
-   //       setUserCloset(data);
-   //       console.log(data);
-   //    };
-   //    getUserCloset();
-   // }, []);
-
    console.log("user closet", userCloset);
 
    const handleDisplayNamesInput = (event) => {

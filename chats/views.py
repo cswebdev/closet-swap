@@ -14,8 +14,7 @@ class ChatListAPIView(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
     def get_queryset(self):
-        room = self.kwargs['pk']
-        return Chat.objects.filter(room=room)
+        return Chat.objects.filter(room_id=self.kwargs['room_id'])
     
 class ChatRoomListAPIView(generics.ListCreateAPIView):
     queryset = ChatRoom.objects.all()

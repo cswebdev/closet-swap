@@ -16,7 +16,7 @@ pillow = "~=9.4.0"
 clarifai-grpc = "~=9.2.0"
 django-storages = "~=1.13.2"
 boto3 = "~=1.26.91"
-django-phonenumber-field = "~=7.0.2"
+django-phonenumber-field = {version = "~=7.0.2", extras = ["phonenumberslite"]}
 
 [dev-packages]
 

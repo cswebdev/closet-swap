@@ -6,6 +6,7 @@ import "../Styles/RegistrationStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+import EulaAgreement from "../EULA/Eula";
 
 const selectState = {
    AL: "Alabama",
@@ -62,6 +63,8 @@ const selectState = {
 
 function RegistrationForm() {
    const [user, setUser] = useState({
+      first_name: "",
+      last_name: "",
       username: "",
       password1: "",
       password2: "",
@@ -115,6 +118,14 @@ function RegistrationForm() {
       }));
    };
 
+   const handlePhoneNumberInput = (event) => {
+      const { value } = event.target;
+      setUser((prevState) => ({
+         ...prevState,
+         phone_number: value.trim(),
+      }));
+   };
+
    const handleSubmit = async (event) => {
       event.preventDefault();
       const options = {
@@ -155,35 +166,56 @@ function RegistrationForm() {
 
             <Form onSubmit={handleSubmit} id="form-registration">
                <Form.Group className="w-50 m-auto">
-                  <Form.Label htmlFor="username"></Form.Label>
-                  <input
-                     id="text"
-                     className="form-control"
-                     name="username"
-                     type="text"
-                     placeholder="username"
-                     value={user.username}
-                     onChange={handleInput}
-                  />
+                  <Form.Group className="d-flex mt-4 m-auto">
+                     <Form.Label htmlForm="first_name"></Form.Label>
 
-                  <Form.Label htmlFor="email"></Form.Label>
-                  <input
-                     type="email"
-                     className="form-control"
-                     placeholder="email"
-                     name="email"
-                     value={user.email}
-                     onChange={handleInput}
-                  />
+                     <input
+                        id="text"
+                        className="form-control me-1"
+                        name="first_name"
+                        type="text"
+                        placeholder="first name"
+                        value={user.first_name}
+                        onChange={handleInput}
+                     />
+                     <Form.Label htmlFor="last_name"></Form.Label>
+                     <input
+                        id="text"
+                        className="form-control ms-1"
+                        name="last_name"
+                        type="text"
+                        placeholder="last name"
+                        value={user.last_name}
+                        onChange={handleInput}
+                     />
+                  </Form.Group>
+                  <Form.Group className="d-flex mt-4 m-auto">
+                     <Form.Label htmlFor="username"></Form.Label>
+                     <input
+                        id="text"
+                        className="form-control me-1"
+                        name="username"
+                        type="text"
+                        placeholder="username"
+                        value={user.username}
+                        onChange={handleInput}
+                     />
 
-                  {/* <Form.Label htmlFor="phone"></Form.Label>
-               <Form.Control type="phone" placeholder="phone number" /> */}
-
+                     <Form.Label htmlFor="email"></Form.Label>
+                     <input
+                        type="email"
+                        className="form-control ms-1"
+                        placeholder="email"
+                        name="email"
+                        value={user.email}
+                        onChange={handleInput}
+                     />
+                  </Form.Group>
                   <Form.Group className="d-flex mt-4 m-auto">
                      <Form.Label htmlFor="password1"></Form.Label>
                      <div className="input-group">
                         <input
-                           className=" form-control me-2"
+                           className=" form-control me-1"
                            type={showPassword ? "text" : "password"}
                            name="password1"
                            placeholder="password"
@@ -195,7 +227,7 @@ function RegistrationForm() {
                      <Form.Label htmlFor="password2"></Form.Label>
                      <div className="input-group">
                         <input
-                           className="form-control"
+                           className="form-control ms-1"
                            type={showPassword ? "text" : "password"}
                            name="password2"
                            placeholder="password"
@@ -217,21 +249,19 @@ function RegistrationForm() {
 
                   <Form.Group className="d-flex mt-4 m-auto">
                      <Form.Label htmlFor="phone_number"></Form.Label>
-                     <div className="input-group">
-                        <input
-                           type="form-control"
-                           className="form-control "
-                           placeholder="phone number"
-                           name="phone_number"
-                           value={user.phone_number}
-                           onChange={handleInput}
-                        />
-                     </div>
+                     <input
+                        type="tel"
+                        className="form-control me-1"
+                        placeholder="phone number"
+                        name="phone_number"
+                        value={user.phone_number}
+                        onChange={handleInput}
+                     />
 
                      <Form.Label htmlFor="gender"></Form.Label>
                      <Form.Control
                         as="select"
-                        className="form-select"
+                        className="ms-1"
                         value={user.gender}
                         onChange={handleGenderInput}
                         id="gender-select-box"
@@ -250,22 +280,24 @@ function RegistrationForm() {
                      </Form.Control>
                   </Form.Group>
                   <Form.Group className="d-flex mt-4 m-auto">
-                     <Form.Label htmlFor="city">
-                        <div className="input-group">
-                           <input
-                              type="form-control"
-                              className="form-control "
-                              placeholder="city"
-                              name="city"
-                              value={user.city}
-                              onChange={handleInput}
-                           />
-                        </div>
-                     </Form.Label>
+                     <Form.Label htmlFor="city"></Form.Label>
+                     <div className="input-group">
+                        <input
+                           type="text"
+                           className="form-control me-1"
+                           placeholder="city"
+                           name="city"
+                           value={user.city}
+                           onChange={handleInput}
+                        />
+                     </div>
+
                      <Form.Label htmlFor="state"></Form.Label>
                      <Form.Control
                         as="select"
-                        className="form-select"
+                        type="select"
+                        name="state"
+                        className="form-control ms-1"
                         value={user.state}
                         onChange={handleStateInput}
                         id="state-select-box"
@@ -279,6 +311,13 @@ function RegistrationForm() {
                         )}
                      </Form.Control>
                   </Form.Group>
+                  <section
+                     className="overflow-auto"
+                     id="eula-agreement-section"
+                  >
+                     <EulaAgreement />
+                  </section>
+
                   <Button
                      className="btn btn-primary float-end mt-5"
                      type="submit"

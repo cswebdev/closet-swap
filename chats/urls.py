@@ -1,10 +1,11 @@
 from django.urls import path
 from .views import ChatListAPIView, ChatRoomListAPIView, ChatRoomDetailAPIView, ChatDetailAPIView
 
+app_name='chats'
 urlpatterns = [
-    path('chat/rooms/<int:pk>/', ChatRoomDetailAPIView.as_view()),
-    path('chat/rooms/', ChatRoomListAPIView.as_view()),
-    path('chat/<int:pk>/', ChatDetailAPIView.as_view()),
-    path('chat/', ChatListAPIView.as_view()),
+    path('chats/rooms/<int:pk>/', ChatRoomDetailAPIView.as_view()),
+    path('chats/rooms/', ChatRoomListAPIView.as_view()),
+    path('chats/delete/<int:pk>/', ChatDetailAPIView.as_view()),
+    path('chats/<int:room_id>', ChatListAPIView.as_view()),
 
 ]

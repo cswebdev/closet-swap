@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+import os
 from closet.models import ClothingItem
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
@@ -73,7 +75,7 @@ class User(AbstractUser):
         ('WY', 'Wyoming'),
     )
 
-    phone_number=models.CharField(max_length=10, blank=True, null=True)
+    phone_number=PhoneNumberField(blank=True)
     gender=models.CharField(max_length=3, choices=GENDER_CHOICES)
     state=models.CharField(max_length=2, choices=STATE_CHOICES, blank=True, null=True)
     city=models.CharField(max_length=255, blank=True, null=True)
