@@ -56,20 +56,25 @@ svg#report {
     height: 30vh;
     background-color: #00acff;
     background-color: white;
+
 }
 
 #container-closet {
 
     background-color: #00acff;
-    /* flex-direction:; */
+    max-height: 80vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 
-div.card {
+/* div.card {
     display: flex;
 
-}
+} */
 
 #user-closet-item {
     width: 25%;
+    display: flex;
+    flex-direction: row;
 }
