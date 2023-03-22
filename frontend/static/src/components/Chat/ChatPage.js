@@ -11,6 +11,7 @@ import { Form } from "react-bootstrap";
 function ChatPage() {
    const navigate = useNavigate();
    const [activeUser, setActiveUser] = useState({});
+   const [userProfile, setUserProfile] = useState({});
    const [SelectedUsers, setSelectedUsers] = useState([]);
    const [activeRoom, setActiveRoom] = useState({});
    const [messages, setMessages] = useState([]);

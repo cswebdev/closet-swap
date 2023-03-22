@@ -12,68 +12,8 @@ import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 
-const selectState = {
-   AL: "Alabama",
-   AK: "Alaska",
-   AZ: "Arizona",
-   AR: "Arkansas",
-   CA: "California",
-   CO: "Colorado",
-   CT: "Connecticut",
-   DE: "Delaware",
-   FL: "Florida",
-   GA: "Georgia",
-   HI: "Hawaii",
-   ID: "Idaho",
-   IL: "Illinois",
-   IN: "Indiana",
-   IA: "Iowa",
-   KS: "Kansas",
-   KY: "Kentucky",
-   LA: "Louisiana",
-   ME: "Maine",
-   MD: "Maryland",
-   MA: "Massachusetts",
-   MI: "Michigan",
-   MN: "Minnesota",
-   MS: "Mississippi",
-   MO: "Missouri",
-   MT: "Montana",
-   NE: "Nebraska",
-   NV: "Nevada",
-   NH: "New Hampshire",
-   NJ: "New Jersey",
-   NM: "New Mexico",
-   NY: "New York",
-   NC: "North Carolina",
-   ND: "North Dakota",
-   OH: "Ohio",
-   OK: "Oklahoma",
-   OR: "Oregon",
-   PA: "Pennsylvania",
-   RI: "Rhode Island",
-   SC: "South Carolina",
-   SD: "South Dakota",
-   TN: "Tennessee",
-   TX: "Texas",
-   UT: "Utah",
-   VT: "Vermont",
-   VA: "Virginia",
-   WA: "Washington",
-   WV: "West Virginia",
-   WI: "Wisconsin",
-   WY: "Wyoming",
-};
-
 function UserProfile() {
-   const [user, setUser] = useState({
-      display_name: "",
-      gender: "",
-      state: "",
-      city: "",
-      avatar: "",
-   });
-
+   const [user, setUser] = useState({});
    const [activeUser, setActiveUser] = useState({});
    const [userProfile, setUserProfile] = useState({});
    const [userCloset, setUserCloset] = useState([]);
@@ -81,9 +21,9 @@ function UserProfile() {
    const [chatId, setChatId] = useState(null);
    const navigate = useNavigate();
 
-   useEffect((user) => {
-      const getActiveUser = async () => {
-         const response = await fetch(`/api_v1/profiles/${user.id}}`);
+   useEffect(() => {
+      const getSelectedProfile = async () => {
+         const response = await fetch(`/api_v1/profiles/users/${pk}`);
          if (!response.ok) {
             throw new Error("Network response not okay - user not found");
          }
@@ -93,7 +33,7 @@ function UserProfile() {
          console.log("user profile", user.username);
       };
 
-      getActiveUser();
+      getSelectedProfile();
    }, []);
 
    console.log("user closet", userCloset);

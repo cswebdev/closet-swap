@@ -13,10 +13,9 @@ import Button from "react-bootstrap/esm/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cookies from "js-cookie";
 
-function Header(user) {
+function AuthHeader(user) {
    const [isAuth, setAuth] = useState(false);
    const navigate = useNavigate();
-
    const handleLogout = async () => {
       const response = await fetch("/dj-rest-auth/logout/", {
          method: "POST",
@@ -31,7 +30,6 @@ function Header(user) {
       Cookies.remove("Authorization", `Token ${data.key}`);
       if (response.ok) {
          setAuth(false);
-
          navigate("/home");
       }
    };
@@ -46,9 +44,6 @@ function Header(user) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">
-                  <NavLink to="/login" className="m-2">
-                     Login
-                  </NavLink>
                   <NavLink to="/donate" className="m-2">
                      Donate
                   </NavLink>
@@ -111,4 +106,4 @@ function Header(user) {
    );
 }
 
-export default Header;
+export default AuthHeader;

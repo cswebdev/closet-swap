@@ -77,7 +77,7 @@ function RegistrationForm() {
    const navigate = useNavigate();
    const [setError] = useState(null);
    const [showPassword, setShowPassword] = useState(false);
-   const [auth, setAuth] = useState(false);
+   const [isAuth, setAuth] = useState(false);
 
    const handleInput = (event) => {
       const { name, value } = event.target;

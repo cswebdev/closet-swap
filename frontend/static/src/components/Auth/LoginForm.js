@@ -9,6 +9,7 @@ import { IconEye } from "@tabler/icons-react";
 import { useOutletContext } from "react-router-dom";
 
 function LoginForm() {
+   const [isAuth, setAuth] = useState(false);
    const navigate = useNavigate();
    const [user, setUser] = useState({
       username: "",
@@ -58,6 +59,7 @@ function LoginForm() {
       }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`); // Added space after "Token"
+      setAuth(true);
       navigate("/profile");
    };
 

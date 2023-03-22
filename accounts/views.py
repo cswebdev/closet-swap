@@ -24,14 +24,19 @@ class ProfileCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         # serializer.save(user=get_object_or_404(User, id=1))
         serializer.save(user=self.request.user)
+
+class ProfileListAPIView(generics.ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+    def get_queryset(self):
+        user=self.kwargs['pk']
+        return Profile.objects.filter(user=user)
+        
     
 class ProfileDetailAPIView(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     return Profile.objects.filter(user=user)
 
     def get_object(self):
         queryset = self.get_queryset()
