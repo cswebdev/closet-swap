@@ -6,8 +6,10 @@ from dj_rest_auth.registration.views import RegisterView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ProfileSerializer
-from .models import Profile
-
+from .models import Profile, User
+from django.http import JsonResponse
+from twilio.rest import Client
+from django.conf import settings
 
 
 
@@ -36,4 +38,13 @@ class ProfileDetailAPIView(generics.RetrieveUpdateAPIView):
         obj = get_object_or_404(queryset, user=self.request.user)
         return obj
     
+
+# def send_sms(request): 
+#     client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+#     message = client.messages.create(
+#         to = User.phone_number,
+#         from_ = +18888147157,
+#         body = "Hello from Twilio!",
+#     )
+#     return JsonResponse({'message': 'Message sent!'})
 
