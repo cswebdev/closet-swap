@@ -27,6 +27,8 @@ class ImageSerializer(serializers.ModelSerializer):
 
 class ClothingItemSerializer(serializers.ModelSerializer):
     # image_url= ImageSerializer(source="image", read_only=True)
+    user_avatar = serializers.ImageField(source='user.profile.avatar', read_only=True)
+    user_profile_id = serializers.IntegerField(source='user.profile.id', read_only=True)
     
     class Meta:
         model = ClothingItem   

@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+   BrowserRouter as Router,
+   Routes,
+   Route,
+   useParams,
+} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./components/App/App";
@@ -18,6 +23,10 @@ import { Outlet } from "react-router-dom";
 
 /*  */
 
+function ProfilePage() {
+   let { userId } = useParams();
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
    <React.StrictMode>
@@ -32,7 +41,9 @@ root.render(
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
                <Route path="chat" element={<ChatPage />} />
-               <Route path="profile/id" element={<UsersProfiles />} />
+               <Route path="users">
+                  <Route path=":userId" element={<UsersProfiles />} />
+               </Route>
                <Route index element={<HomePage />} />
             </Route>
             <Route

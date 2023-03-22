@@ -13,23 +13,22 @@ function StoreItem({ itemFilter, item }) {
    console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
    const { cartItems, setCartItems } = useOutletContext();
-   // const [cartItems, setCartItems] = useContext();
-   const [userProfile, setUserProfile] = useState({});
+   // const [userProfile, setUserProfile] = useState();
    const navigate = useNavigate();
 
-   useEffect((user, id) => {
-      const getItemUserProfile = async () => {
-         const response = await fetch(`/api_v1/profiles/`);
-         if (!response.ok) {
-            throw new Error("Network response not ok");
-         }
-         console.log("this is the response", response);
-         const data = await response.json();
-         console.log("this is the data", data);
-         return setUserProfile(data);
-      };
-      getItemUserProfile();
-   }, []);
+   // useEffect((user, id) => {
+   //    const getItemUserProfile = async () => {
+   //       const response = await fetch(`/api_v1/profiles/`);
+   //       if (!response.ok) {
+   //          throw new Error("Network response not ok");
+   //       }
+   //       console.log("this is the response", response);
+   //       const data = await response.json();
+   //       console.log("this is the data", data);
+   //       return setUserProfile(data);
+   //    };
+   //    getItemUserProfile();
+   // }, []);
 
    useEffect(() => {
       const getItems = async () => {
@@ -60,13 +59,19 @@ function StoreItem({ itemFilter, item }) {
       getItems();
    }, [itemFilter, cartItems]);
 
-   
-
-   // const handleAddToCart = (event, item) => {
-   //    event.preventDefault(); // prevent the default behavior of the event
-   //    setCartItems([...cartItems, item]);
-   //    console.log("this is a cart item:", cartItems);
-   //  };
+   // const getItemUserProfile = async (userProfile) => {
+   //    navigate(`/profile/user/${userProfile}`);
+   //    try {
+   //       const response = await fetch(`/api_v1/profiles/users/${userProfile}`);
+   //       if (!response.ok) {
+   //          throw new Error("Network response not ok");
+   //       }
+   //       const data = await response.json();
+   //       setUserProfile(data);
+   //    } catch (err) {
+   //       handleError(err);
+   //    }
+   // };
 
    const handleError = (err) => {
       console.warn.log(err);
@@ -97,9 +102,12 @@ function StoreItem({ itemFilter, item }) {
                      <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden m-0 p-0">
                         <div id="item-user-avatar">
                            <img
-                              src={item.user.avatar}
-                              alt="user avatar"
-                              onError={handleError}
+                              src={item.user_avatar}
+                              alt="avatar"
+                              id={item.user_profile_id}
+                              onClick={() =>
+                                 navigate(`/users/${item.user_profile_id}`)
+                              }
                            />
                         </div>
                         <Card.Title className="p-1 m-1 text-center">

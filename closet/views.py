@@ -38,6 +38,10 @@ class CheckOutAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+class CheckOutDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ClothingItem.objects.all()
+    serializer_class = CheckOutSerializer
+
 class ClosetProfileAPIView(generics.ListCreateAPIView):
     queryset = ClothingItem.objects.filter()
     serializer_class = ClothingItemSerializer

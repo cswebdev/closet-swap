@@ -55,7 +55,7 @@ function Header(user) {
                   <NavLink to="/store" className="m-2">
                      Store
                   </NavLink>
-                  <NavLink to="/profile/id" className="m-2">
+                  <NavLink to="/profile/user" className="m-2">
                      test
                   </NavLink>
                </Nav>

@@ -11,6 +11,7 @@ import { IconFlagFilled } from "@tabler/icons-react";
 import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
+import { useParams } from "react-router-dom";
 
 function UserProfile() {
    const [user, setUser] = useState({});
@@ -20,21 +21,22 @@ function UserProfile() {
    const [preview, setPreview] = useState(null);
    const [chatId, setChatId] = useState(null);
    const navigate = useNavigate();
+   const { userId } = useParams();
 
    useEffect(() => {
       const getSelectedProfile = async () => {
-         const response = await fetch(`/api_v1/profiles/users/${pk}`);
+         const response = await fetch(`/api_v1/profiles/users/${userId}`);
          if (!response.ok) {
             throw new Error("Network response not okay - user not found");
          }
          const data = await response.json();
          setUserProfile(data);
+         setUserCloset(data.clothing_items);
          console.log("user profile", data);
-         console.log("user profile", user.username);
       };
 
       getSelectedProfile();
-   }, []);
+   }, [setUserProfile, setUserCloset, userId]);
 
    console.log("user closet", userCloset);
 
@@ -72,7 +74,7 @@ function UserProfile() {
                         <Container id="profile-avatar-container">
                            <div id="user-header" className="d-flex text-center">
                               <h1 className="text-center">
-                                 {userProfile.display_name}
+                                 {userProfile.avatar}
                               </h1>
                               <IconFlagFilled
                                  id="report"

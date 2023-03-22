@@ -98,8 +98,6 @@ function ProfileForm() {
       getActiveUser();
    }, []);
 
-   console.log("user closet", userCloset);
-
    const handleDisplayNamesInput = (event) => {
       const { value } = event.target;
       setDisplayNames(value.trim());

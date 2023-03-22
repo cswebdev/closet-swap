@@ -9,10 +9,20 @@ import Button from "react-bootstrap/Button";
 import StoreItem from "../Storefront/StoreItem";
 import { useOutletContext } from "react-router-dom";
 import { IconTrash } from "@tabler/icons-react";
+import Cookies from "js-cookie";
 
 function CheckOut() {
    const { cartItems, setCartItems } = useOutletContext();
+   const [isActive, setIsActive] = useState(true);
 
+   //using slice to remove cart item from cartItems array
+   const removeCartItem = async (id) => {
+   
+      const index = cartItems.findIndex((item) => item.id === id);
+      const newCartItems = [...cartItems];
+      newCartItems.splice(index, 1);
+      setCartItems(newCartItems);
+   };
    console.log("checkout test:", { cartItems });
 
    const cartItemsHTML = cartItems.map((item) => (
@@ -22,7 +32,7 @@ function CheckOut() {
             key={item.id}
             id="col-item"
          >
-            <Card style={{ width: "14rem"}}>
+            <Card style={{ width: "14rem" }}>
                <div className="p-0 m-0 g-0 overflow-hidden">
                   <Card.Img
                      variant="top"
@@ -47,14 +57,13 @@ function CheckOut() {
                      category: {item.category}
                   </Card.Text>
                   <Card.Text className="p-0 m-0">style: {item.style}</Card.Text>
-                  <Button
+                  {/* <Button
                      variant="outline-primary"
                      type="submit"
                      className="mt-1 justify-content-center"
                      onClick={() => setCartItems([...cartItems, item])}
-                  >
-                     <IconTrash />
-                  </Button>
+                  ></Button> */}
+                  <IconTrash onClick={() => removeCartItem(item.id)} />
                </Card.Body>
             </Card>
          </Col>
@@ -66,7 +75,6 @@ function CheckOut() {
          <Row>
             <Col>
                <h1 className="text-center">Checkout</h1>
-               {/* <Button onClick={handleAddToCart}></Button> */}
             </Col>
          </Row>
          <Row className="mt-5">
@@ -83,6 +91,9 @@ function CheckOut() {
                         </section>
                      </Col>
                   </Row>
+                  <Button variant="outline-primary" type="submit">
+                     Checkout
+                  </Button>
                </Container>
             </Col>
          </Row>
