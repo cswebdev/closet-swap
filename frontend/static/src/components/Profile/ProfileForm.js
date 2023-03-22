@@ -219,7 +219,7 @@ function ProfileForm() {
    return (
       <>
          <Container id="profile-page" className="d-flex">
-            <Container id="container-profile" className="d-flex pt-5">
+            <Container id="container-profile" className="pt-2">
                <Form
                   onSubmit={handleSubmit}
                   className="m-0 p-0 g-0"
@@ -228,18 +228,13 @@ function ProfileForm() {
                   <Row>
                      <Container
                         id="container-avatar"
-                        className="text-center  m-0 p-0"
+                        className="text-center m-0 p-0"
                      >
+                        <h1 className="text-center ">
+                           {userProfile.display_name}
+                        </h1>
                         <Container id="profile-avatar-container">
-                           <div id="user-header" className="d-flex text-center">
-                              <h1 className="text-center">
-                                 {activeUser.username}
-                              </h1>
-                              <IconFlagFilled
-                                 id="report"
-                                 className="ms-1 mt-2"
-                              />
-                           </div>
+                           <div id="user-header" className="text-center"></div>
                            {preview && (
                               <img
                                  src={preview}
@@ -369,8 +364,8 @@ function ProfileForm() {
                </Form>
             </Container>
             <Container id="container-closet" className="d-flex">
-               <div className="text-center mt-5">
-                  <h1>User Clothes</h1>
+               <div className="text-center mt-1">
+                  <h3>My closet</h3>
                   <div className="row">{userClosetHTML}</div>
                </div>
             </Container>
