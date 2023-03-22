@@ -13,6 +13,7 @@ import StoreFront from "./components/Storefront/StoreFront";
 import ProfileForm from "./components/Profile/ProfileForm";
 import CheckOut from "./components/Checkout/Checkout";
 import ChatPage from "./components/Chat/ChatPage";
+import UsersProfiles from "./components/Profile/UsersProfiles";
 import { Outlet } from "react-router-dom";
 
 /*  */
@@ -31,6 +32,7 @@ root.render(
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
                <Route path="chat" element={<ChatPage />} />
+               <Route path="profile/id" element={<UsersProfiles />} />
                <Route index element={<HomePage />} />
             </Route>
             <Route

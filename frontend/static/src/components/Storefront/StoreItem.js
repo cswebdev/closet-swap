@@ -5,14 +5,31 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import "../Styles/StoreItemStyles.css";
 import { useOutletContext } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import { useNavigate } from "react-router-dom";
 
 function StoreItem({ itemFilter, item }) {
    console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
    const { cartItems, setCartItems } = useOutletContext();
    // const [cartItems, setCartItems] = useContext();
+   const [userProfile, setUserProfile] = useState({});
+   const navigate = useNavigate();
+
+   useEffect((user, id) => {
+      const getItemUserProfile = async () => {
+         const response = await fetch(`/api_v1/profiles/`);
+         if (!response.ok) {
+            throw new Error("Network response not ok");
+         }
+         console.log("this is the response", response);
+         const data = await response.json();
+         console.log("this is the data", data);
+         return setUserProfile(data);
+      };
+      getItemUserProfile();
+   }, []);
 
    useEffect(() => {
       const getItems = async () => {
@@ -43,6 +60,8 @@ function StoreItem({ itemFilter, item }) {
       getItems();
    }, [itemFilter, cartItems]);
 
+   
+
    // const handleAddToCart = (event, item) => {
    //    event.preventDefault(); // prevent the default behavior of the event
    //    setCartItems([...cartItems, item]);
@@ -65,14 +84,24 @@ function StoreItem({ itemFilter, item }) {
                   id="col-item"
                >
                   <Card style={{ width: "16rem" }}>
-                     <div className="p-0 m-0 g-0 overflow-hidden">
+                     <div
+                        className="p-0 m-0 g-0 overflow-hidden"
+                        id="div-card-img"
+                     >
                         <Card.Img
                            variant="top"
                            src={item.image}
-                           className="CardImg "
+                           className="CardImg"
                         />
                      </div>
                      <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden m-0 p-0">
+                        <div id="item-user-avatar">
+                           <img
+                              src={item.user.avatar}
+                              alt="user avatar"
+                              onError={handleError}
+                           />
+                        </div>
                         <Card.Title className="p-1 m-1 text-center">
                            {item.title}
                         </Card.Title>

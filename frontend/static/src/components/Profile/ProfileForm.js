@@ -91,6 +91,8 @@ function ProfileForm() {
          }
          const data = await response.json();
          setUserProfile(data);
+         console.log("user profile", data);
+         console.log("user profile", user.username);
       };
 
       getActiveUser();
