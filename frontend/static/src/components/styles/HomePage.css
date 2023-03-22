@@ -98,10 +98,11 @@ div#hero-container.container {
 
 }
 
+
 #mission-image {
-   
-    max-width: 100%;
-    object-fit: stretch;
+    max-height: 450px;
+    min-width: 100%;
+    object-fit: cover;
 
     object-position: 0px 70%;
 
