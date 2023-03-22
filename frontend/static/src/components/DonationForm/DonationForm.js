@@ -197,7 +197,7 @@ function DonationForm() {
       // of the image we want as an input. Change these strings to run your own example.
       //////////////////////////////////////////////////////////////////////////////////////////////////
       // Your PAT (Personal Access Token) can be found in the portal under Authentification
-      const PAT = "2db209982998400a86c0eb512dd78dc8";
+      const PAT = process.env.REACT_APP_PAT;
       // Specify the correct user_id/app_id pairings
       // Since you're making inferences outside your app's scope
       const USER_ID = "csweb";
@@ -205,8 +205,7 @@ function DonationForm() {
       // Change these to whatever model and image URL you want to use
       const MODEL_ID = "apparel-classification-v2";
       const MODEL_VERSION_ID = "651c5412d53c408fa3b4fe3dcc060be7";
-      // const IMAGE_URL = image;
-      // const IMAGE_URL =
+
       // "https://assets.overland.com/is/image/overlandsheepskin/16144-dbcm-av01895?$";
       const IMAGE_URL = url;
       // console.log(presigned_url);

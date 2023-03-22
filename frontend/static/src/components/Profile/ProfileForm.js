@@ -168,9 +168,10 @@ function ProfileForm() {
       formData.append("display_name", displayNames);
       formData.append("city", city);
       formData.append("state", state);
+      formData.append("gender", gender);
 
       const options = {
-         method: "PUT",
+         method: "PATCH",
          headers: {
             "X-CSRFToken": Cookies.get("csrftoken"),
          },

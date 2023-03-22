@@ -7,9 +7,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ProfileSerializer
 from .models import Profile
-from phonenumber_field.validators import validate_international_phonenumber
-from phonenumber_field.serializerfields import PhoneNumberField
-from phonenumber_field.phonenumber import PhoneNumber
 
 
 

@@ -120,9 +120,8 @@ function RegistrationForm() {
 
    const handlePhoneNumberInput = (event) => {
       const { value } = event.target;
-      setUser((prevState) => ({
-         ...prevState,
-         phone_number: value.trim(),
+      setUser(() => ({
+         phone_number: value,
       }));
    };
 
@@ -166,7 +165,7 @@ function RegistrationForm() {
 
             <Form onSubmit={handleSubmit} id="form-registration">
                <Form.Group className="w-50 m-auto">
-                  <Form.Group className="d-flex mt-4 m-auto">
+                  {/* <Form.Group className="d-flex mt-4 m-auto">
                      <Form.Label htmlForm="first_name"></Form.Label>
 
                      <input
@@ -188,7 +187,7 @@ function RegistrationForm() {
                         value={user.last_name}
                         onChange={handleInput}
                      />
-                  </Form.Group>
+                  </Form.Group> */}
                   <Form.Group className="d-flex mt-4 m-auto">
                      <Form.Label htmlFor="username"></Form.Label>
                      <input
@@ -255,7 +254,7 @@ function RegistrationForm() {
                         placeholder="phone number"
                         name="phone_number"
                         value={user.phone_number}
-                        onChange={handleInput}
+                        onChange={handlePhoneNumberInput}
                      />
 
                      <Form.Label htmlFor="gender"></Form.Label>
