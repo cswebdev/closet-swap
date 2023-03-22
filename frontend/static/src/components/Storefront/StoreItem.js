@@ -104,7 +104,7 @@ function StoreItem({ itemFilter, item }) {
                            <img
                               src={item.user_avatar}
                               alt="avatar"
-                              id={item.user_profile_id}
+                              id="item-user-avatar"
                               onClick={() =>
                                  navigate(`/users/${item.user_profile_id}`)
                               }

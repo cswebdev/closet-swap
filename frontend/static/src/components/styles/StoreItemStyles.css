@@ -2,7 +2,7 @@
     overflow: hidden;
     border: 1px soild transparent;
     max-width: fit-content;
-    
+
 }
 
 #row-item {
@@ -48,6 +48,14 @@ div.card-body {
     border-radius: 0px 0px 5px 5px;
     background-color: rgb(247, 251, 255);
 
+}
+
+#item-user-avatar {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 1px;
 }
 
 @media (max-width: 767px) {

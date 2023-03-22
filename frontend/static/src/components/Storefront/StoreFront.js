@@ -308,9 +308,9 @@ function StoreFront() {
                </Container>
             </Form>
             {/* Right Side Panel */}
-            <Container id="panel-store" className="w-75 bg-light ">
+            <Container id="panel-store" className="w-75 bg-light   ">
                <section>{/* <h2>Browse Items here</h2> */}</section>
-               <Container className="d-flex ">
+               <Container className="d-flex" id="container-storeItem">
                   {/* store items are rendered here */}
                   <StoreItem
                      itemFilter={itemFilter}

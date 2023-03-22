@@ -17,7 +17,6 @@ function CheckOut() {
 
    //using slice to remove cart item from cartItems array
    const removeCartItem = async (id) => {
-   
       const index = cartItems.findIndex((item) => item.id === id);
       const newCartItems = [...cartItems];
       newCartItems.splice(index, 1);
@@ -71,7 +70,7 @@ function CheckOut() {
    ));
 
    return (
-      <Container id="container-checkout" className="bg-info">
+      <Container id="container-checkout" className="">
          <Row>
             <Col>
                <h1 className="text-center">Checkout</h1>

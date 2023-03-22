@@ -10,6 +10,7 @@ import { IconFlagFilled } from "@tabler/icons-react";
 import { IconUser } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
+import { nanoid } from "nanoid";
 
 const selectState = {
    AL: "Alabama",
@@ -169,7 +170,7 @@ function ProfileForm() {
       formData.append("gender", gender);
 
       const options = {
-         method: "PATCH",
+         method: "PUT",
          headers: {
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
@@ -196,7 +197,7 @@ function ProfileForm() {
 
    const userClosetHTML = userProfile.clothing_items?.map((item) => {
       return (
-         <div className="col-4 d-flex-row flex-wrap">
+         <div className="col-4 d-flex-row flex-wrap" key={nanoid()}>
             <Card className="">
                <div className="">
                   <Card.Img
@@ -358,7 +359,7 @@ function ProfileForm() {
                      <Button
                         type="submit"
                         className="bottom-0 end-0"
-                        Variant="outline-primary"
+                        variant="outline-primary"
                         id="update-profile"
                         onClick={handleSubmit}
                      >

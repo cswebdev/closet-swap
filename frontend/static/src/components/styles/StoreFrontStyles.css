@@ -30,6 +30,7 @@ h6 {
     border: 1px solid transparent;
     border-radius: 0px 14px 0px 0px;
 
+
 }
 
 #filter-section1,
@@ -64,12 +65,19 @@ h6 {
     margin-bottom: 0;
 }
 
-div#panel-store {
-    margin-left: auto;
-    margin-right: auto;
+#panel-store.w-75.bg-light {
+    max-height: 183.8vh;
+    border: 1px solid transparent;
+    border-radius: 0px 14px 14px 0px;
 }
 
 d.flex.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+#container-storeItem>div {
     margin-left: auto;
     margin-right: auto;
     padding: 0;

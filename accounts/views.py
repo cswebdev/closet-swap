@@ -32,16 +32,27 @@ class ProfileListAPIView(generics.ListAPIView):
     def get_queryset(self):
         user=self.kwargs['pk']
         return Profile.objects.filter(user=user)
-        
+
+
     
 class ProfileDetailAPIView(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
     def get_object(self):
-        queryset = self.get_queryset()
-        obj = get_object_or_404(queryset, user=self.request.user)
+        pk = self.kwargs.get('pk')
+        if pk:
+           obj = self.queryset.get(pk=pk)
+        else:
+              obj = self.queryset.get(user=self.request.user)
         return obj
+    
+
+    # def get_object(self):
+    #     queryset = self.get_queryset()
+    #     # user=self.kwargs['pk']
+    #     obj = get_object_or_404(queryset, user=self.request.user,)
+    #     return obj
     
 
 # def send_sms(request): 

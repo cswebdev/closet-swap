@@ -25,7 +25,7 @@ function UserProfile() {
 
    useEffect(() => {
       const getSelectedProfile = async () => {
-         const response = await fetch(`/api_v1/profiles/users/${userId}`);
+         const response = await fetch(`/api_v1/profiles/users/${userId}/`);
          if (!response.ok) {
             throw new Error("Network response not okay - user not found");
          }
@@ -64,44 +64,26 @@ function UserProfile() {
    return (
       <>
          <Container id="profile-page" className="d-flex">
-            <Container id="container-profile" className="d-flex pt-5">
+            <Container id="container-profile" className=" pt-1 w-25 ">
                <Form className="m-0 p-0 g-0 " id="profile-form">
                   <Row>
                      <Container
                         id="container-avatar"
-                        className="text-center m-0 p-4"
+                        className="text-center m-0 p-0"
                      >
+                        <h1 className="text-center">{userProfile.username}</h1>
                         <Container id="profile-avatar-container">
-                           <div id="user-header" className="d-flex text-center">
-                              <h1 className="text-center">
-                                 {userProfile.avatar}
-                              </h1>
-                              <IconFlagFilled
-                                 id="report"
-                                 className="ms-1 mt-2"
-                              />
-                           </div>
-                           {preview && (
-                              <img
-                                 src={preview}
-                                 alt=""
-                                 id="profile-avatar-image"
-                              />
-                           )}
-                           {!preview && (
-                              <img
-                                 src={userProfile.avatar}
-                                 alt=""
-                                 id="profile-avatar-image"
-                              />
-                           )}
+                           <img
+                              src={userProfile.avatar}
+                              alt=""
+                              id="profile-avatar-image"
+                           />
                         </Container>
+                        <IconFlagFilled id="report" className=" m-0 p-0" />
 
                         <div className="d-flex p-0"></div>
 
                         <Container id="container-userinfo">
-                           {/* <h1>User Info Goes Here</h1> */}
-
                            <div>
                               <Col>
                                  <Row id="username">
@@ -127,8 +109,8 @@ function UserProfile() {
                </Form>
             </Container>
             <Container id="container-closet" className="d-flex">
-               <div className="text-center mt-5">
-                  <h1>User Clothes</h1>
+               <div className="text-center mt-2 mb-2">
+                  <h1>User Closet</h1>
                   <div className="row">{userClosetHTML}</div>
                </div>
             </Container>

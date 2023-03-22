@@ -7,7 +7,7 @@ body {
 #container-homepage {
     background-color: #00acff;
     height: 100%;
-    max-width: 80%;
+
     padding: 0;
 
 }
@@ -15,15 +15,15 @@ body {
 div#hero-container.container {
     padding: 0;
     margin: 0;
-
+    width: 100%;
 }
 
 .hero-container {
     position: relative;
     height: 600px;
-    overflow: hidden;
+
     padding: 0;
-    margin: 0;
+    margin: auto
 }
 
 .hero-image {
@@ -99,16 +99,14 @@ div#hero-container.container {
 }
 
 #mission-image {
-    max-width: 70%;
-    max-height: 560px;
-    object-fit: cover;
+   
+    max-width: 100%;
+    object-fit: stretch;
 
     object-position: 0px 70%;
-    /* margin: 10% 0%; */
-    border: 10px solid white;
-    padding: 0;
-    border-radius: 15px;
 
+
+    padding: 0;
 
 }
 

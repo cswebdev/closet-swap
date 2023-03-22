@@ -34,8 +34,8 @@ function HomePage() {
                      </button>
                   </div>
                </div>
-            </Container>
-            <Container id="container-mission" className="d-flex-column">
+               {/* </Container> */}
+               {/* <Container id="container-mission" className="d-flex-column"> */}
                <Row className="align-items-center justify-content-center">
                   <p
                      id="mission-top-text"
@@ -46,16 +46,14 @@ function HomePage() {
                      Express yourself to the fullest with style!
                   </p>
                </Row>
-            </Container>
-         </Container>
-         <Row className="aign-items-center justify-content-center">
-            <img
-               src="https://images.unsplash.com/photo-1593091430196-2433358501df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-               id="mission-image"
-            />
-         </Row>
-         <Container>
-            <Container id="container-mission-bottom" className="d-flex-column">
+               {/* </Container> */}
+
+               <img
+                  src="https://images.unsplash.com/photo-1593091430196-2433358501df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                  id="mission-image"
+               />
+
+               {/* <Container id="container-mission-bottom" className="d-flex-column"> */}
                <Row className="align-items-center justify-content-center">
                   <p id="mission-text-bottom" className="text-center">
                      We encourage you to donate your clothes with others and
@@ -64,7 +62,7 @@ function HomePage() {
                </Row>
             </Container>
          </Container>
-         <Footer />
+         {/* <Footer /> */}
       </>
    );
 }
