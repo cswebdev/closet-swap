@@ -5,7 +5,6 @@ from .models import Chat
 class ChatListAPIView(generics.ListCreateAPIView):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
@@ -13,4 +12,3 @@ class ChatListAPIView(generics.ListCreateAPIView):
 class ChatDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
-    permission_classes = [permissions.IsAuthenticated]

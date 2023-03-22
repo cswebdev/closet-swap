@@ -12,27 +12,32 @@ function ChatPage() {
    const navigate = useNavigate();
    const [activeUser, setActiveUser] = useState({});
    const [SelectedUsers, setSelectedUsers] = useState([]);
-   const [rooms, setRooms] = useState([]);
    const [activeRoom, setActiveRoom] = useState({});
    const [messages, setMessages] = useState([]);
+   const [chatId, setChatId] = useState(null);
 
    useEffect(() => {
-      const getSelectedUsers = async () => {
-         const response = await fetch("/api_v1/profiles/");
+      const getMessages = async () => {
+         const response = await fetch(`/api_v1/chats/`, {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+               "X-CSRFToken": Cookies.get("csrftoken"),
+            },
+            body: JSON.stringify({
+               sender: activeUser.id,
+               receiver: userProfile.id,
+            }),
+         });
          if (!response.ok) {
-            throw new Error("Network Response was not Ok");
+            throw new Error("Network response not okay - user not found");
          }
-
          const data = await response.json();
-         console.log(data);
-
-         setSelectedUsers(data);
+         setChatId(data.id);
+         console.log("chat id", data.id);
       };
-      getSelectedUsers();
-   }, []);
-
-
-
+      getMessages();
+   });
 
    return (
       <>

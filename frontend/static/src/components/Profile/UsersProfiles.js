@@ -1,6 +1,7 @@
 import "../Styles/ProfileStyles.css";
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -77,6 +78,8 @@ function UserProfile() {
    const [userProfile, setUserProfile] = useState({});
    const [userCloset, setUserCloset] = useState([]);
    const [preview, setPreview] = useState(null);
+   const [chatId, setChatId] = useState(null);
+   const navigate = useNavigate();
 
    useEffect((user) => {
       const getActiveUser = async () => {
@@ -167,6 +170,15 @@ function UserProfile() {
                                  <Row>State: {userProfile.state}</Row>
                               </Col>
                            </div>
+                        </Container>
+                        <Container id="container-buttons">
+                           <Button
+                              id="chat-button"
+                              className="m-2"
+                              onClick={() => navigate("/chat")}
+                           >
+                              Chat
+                           </Button>
                         </Container>
                      </Container>
                   </Row>
