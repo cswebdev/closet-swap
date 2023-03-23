@@ -93,24 +93,25 @@ class ClothingItem(models.Model):
 
 
     def __str__(self):
-        return self.image.name
+        # return self.image.name
+        return self.title
 
 class CheckOut(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
     item = models.ForeignKey(ClothingItem, on_delete=models.CASCADE, blank=True)
-    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.user.username
     
 
 
-    class Order(models.Model):
-        user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
-        item = models.ForeignKey(ClothingItem, on_delete=models.CASCADE, blank=True)
-        is_active = models.BooleanField(default=False)
+class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+    order_items = models.JSONField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
-        def __str__(self):
-            return self.user.username
-        
+    def __str__(self):
+        return self.user.username
+
+    
         

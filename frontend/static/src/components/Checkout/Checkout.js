@@ -14,6 +14,7 @@ import Cookies from "js-cookie";
 function CheckOut() {
    const { cartItems, setCartItems } = useOutletContext();
    const [isActive, setIsActive] = useState(true);
+   const [order_Items, setOrder_Items] = useState([]);
    const numItems = cartItems.length;
 
    //using slice to remove cart item from cartItems array
@@ -25,24 +26,56 @@ function CheckOut() {
    };
 
    const handleCheckout = async () => {
-      const response = await fetch(`/api_v1/closet/items/`, {
+      // setOrder_Items(cartItems); // update order_Items state with cartItems
+      const options = {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
-
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
+         body: JSON.stringify({ order_items: cartItems }), // pass order_Items to the body
+      };
+      const response = await fetch("/api_v1/closet/orders/", options);
+      if (!response.ok) {
+         throw new Error("Network response not okay - order not saved");
+      }
+      const data = await response.json();
+      console.log("checkout data:", data);
 
-         body: JSON.stringify(cartItems),
-      });
+      //setCartItems([]); // clear cartItems after successful checkout
    };
+
+   // const handleCheckout = async () => {
+   //    const setOrder_Items = [...cartItems];
+   //    const options = {
+   //       method: "POST",
+   //       headers: {
+   //          "Content-Type": "application/json",
+   //          "X-CSRFToken": Cookies.get("csrftoken"),
+   //       },
+   //       body: JSON.stringify(...setOrder_Items),
+   //    };
+   //    const response = await fetch("/api_v1/closet/orders/", options);
+   //    if (!response.ok) {
+   //       throw new Error("Network response not okay - order not saved");
+   //    }
+   //    const data = await response.json();
+   //    console.log("checkout data:", data);
+
+   //    //setCartItems([]);
+   // };
    console.log("checkout test:", { cartItems });
 
    const cartItemsHTML = cartItems.map((item) => (
       <Row>
          <Col className="col p-0 m-1 g-0 d-flex" key={item.id} id="col-item">
             <section className="d-flex me-1" id="item-section">
-               <img src={item.image} alt="" id="checkout-image" />
+               <img
+                  src={item.image}
+                  alt=""
+                  id="checkout-image"
+                  style={{ height: "12rem", width: "12rem" }}
+               />
                <div
                   className="position-relative flex-column"
                   style={{ height: "12rem", width: "80vh" }}
@@ -67,13 +100,10 @@ function CheckOut() {
 
    return (
       <Container id="container-checkout" className="bg-light">
-         <Row>
-            <Col>
-               <h1 className="text-center mt-5 mb-0 pb-0">Checkout</h1>
-            </Col>
-         </Row>
+         <h1 className="text-center mt-5 mb-0 pb-0">Checkout</h1>
+
          <section id="section-checkout-form">
-            <Row className="mt-5">
+            <Row className="mt-2">
                <h3 className="mt-0 pt-0">items</h3>
                <Col className="d-flex">
                   <Container id="container-checkout-items" className="">
@@ -111,7 +141,7 @@ function CheckOut() {
                            <Button
                               id="checkout-button"
                               className="float-end position-absolute bottom-0 end-0 m-4"
-                              onClick={handleCheckout}
+                              onClick={() => handleCheckout()}
                            >
                               Checkout
                            </Button>

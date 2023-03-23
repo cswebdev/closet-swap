@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/App.css";
 
 function App() {
-   const [isAuth, setAuth] = useState(false);
+   const [isAuth, setAuth] = useState(null);
    const [cartItems, setCartItems] = useState([]); // this is an array for cart info
 
    const handleLogOut = () => {

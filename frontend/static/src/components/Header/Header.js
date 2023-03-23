@@ -52,8 +52,8 @@ function Header(user) {
                   <NavLink to="/donate" className="m-2">
                      Donate
                   </NavLink>
-                  <NavLink to="/store" className="m-2">
-                     Store
+                  <NavLink to="/shop" className="m-2">
+                     Shop
                   </NavLink>
                </Nav>
                <Nav>
@@ -93,6 +93,11 @@ function Header(user) {
                         <Dropdown.Item className="p-3">
                            <div type="btn" onClick={() => navigate("/profile")}>
                               Profile
+                           </div>
+                        </Dropdown.Item>
+                        <Dropdown.Item className="p-3">
+                           <div type="btn" onClick={() => navigate("/orders")}>
+                              Orders
                            </div>
                         </Dropdown.Item>
 

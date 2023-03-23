@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import  ClothingItem
+from .models import  ClothingItem, CheckOut, Order
 from django.conf import settings
 import boto3
 
@@ -40,6 +40,20 @@ class CheckOutSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
+    item_id = serializers.IntegerField(source='item.id', read_only=True)
     class Meta:
-        model = ClothingItem   
+        model = Order   
         fields = '__all__'
+    
+    #using create method to update item.is_active to false
+    def create(self, validated_data):
+        items = validated_data['order_items']
+        for item in items:
+            # import pdb 
+            # pdb.set_trace()
+            instance = ClothingItem.objects.get(id=item['id'])
+            instance.is_active = False
+            instance.save()
+        return Order.objects.create(**validated_data)
+
+

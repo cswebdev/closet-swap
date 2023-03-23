@@ -19,6 +19,7 @@ import ProfileForm from "./components/Profile/ProfileForm";
 import CheckOut from "./components/Checkout/Checkout";
 import ChatPage from "./components/Chat/ChatPage";
 import UsersProfiles from "./components/Profile/UsersProfiles";
+import UserOrdersPage from "./components/UserOrders/UserOrdersPage";
 import { Outlet } from "react-router-dom";
 
 /*  */
@@ -37,10 +38,11 @@ root.render(
                <Route path="login" element={<LoginForm />} />
                <Route path="register" element={<RegisterForm />} />
                <Route path="donate" element={<DonationForm />} />
-               <Route path="store" element={<StoreFront />} />
+               <Route path="shop" element={<StoreFront />} />
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
                <Route path="chat" element={<ChatPage />} />
+               <Route path="orders" element={<UserOrdersPage />} />
                <Route path="users">
                   <Route path=":userId" element={<UsersProfiles />} />
                </Route>

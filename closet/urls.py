@@ -1,8 +1,9 @@
 from django.urls import path, include   
-from .views import ClothingItemListAPIView, ClothingItemDetailAPIView, ImageCreateAPIView, ImageDetailAPIView, CheckOutAPIView, ClosetProfileAPIView ,CheckOutDetailAPIView
+from .views import ClothingItemListAPIView, ClothingItemDetailAPIView, ImageCreateAPIView, ImageDetailAPIView, CheckOutAPIView, ClosetProfileAPIView ,CheckOutDetailAPIView, OrderListAPIView
 
 urlpatterns = [
-    
+    path('closet/orders/<int:pk>/', OrderListAPIView.as_view()),
+    path('closet/orders/', OrderListAPIView.as_view()),
     path('closet/checkout/delete/<int:pk>/', CheckOutDetailAPIView.as_view()),
     path('closet/checkout/<int:pk>/', CheckOutAPIView.as_view()),
     path('closet/checkout/', CheckOutAPIView.as_view()),

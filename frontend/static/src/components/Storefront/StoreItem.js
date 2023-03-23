@@ -81,10 +81,14 @@ function StoreItem({ itemFilter, item }) {
 
    for (let i = 0; i < itemListings.length; i += 3) {
       itemListingsHTML.push(
-         <Row className="row overflow-hidden" key={nanoid()} id="row-item">
+         <Row
+            className="overflow-hidden justify-content-center"
+            key={nanoid()}
+            id="row-item"
+         >
             {itemListings.slice(i, i + 3).map((item) => (
                <Col
-                  className="col p-0 m-1 g-0 overflow-hidden"
+                  className="col p-0 mt-1 ms-2 me-2 mb-2 g-0 overflow-hidden"
                   key={item.id}
                   id="col-item"
                >

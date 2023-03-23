@@ -82,6 +82,10 @@ function DonationForm() {
       event.preventDefault();
       const formData = new FormData();
       const clothingItemCopy = { ...clothingItem };
+      selectedTags.forEach((tag) => {
+         formData.append("tags", tag);
+      });
+
       const id = clothingItemCopy.id;
       delete clothingItemCopy.id;
 
@@ -101,10 +105,8 @@ function DonationForm() {
 
       if (response.ok) {
          setClothingItem(INITIAL_STATE);
+         setSelectedTags([]);
          setPreview("");
-         handleColorInput = (event) => {
-            const { value } = "";
-         };
       }
 
       if (!response.ok) {
@@ -342,7 +344,9 @@ function DonationForm() {
       // Update the clothingItem state with the selected tag names
       setClothingItem({
          ...clothingItem,
-         selectedTags: selectedTagNames,
+         selectedTags: [...selectedTags, tag].map(
+            (selectedTag) => selectedTag.name
+         ),
       });
    };
 

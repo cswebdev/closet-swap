@@ -4,12 +4,12 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.urls import path, include
-from .models import  ClothingItem
-from .serializers import  ClothingItemSerializer, ImageSerializer, CheckOutSerializer
+from .models import  ClothingItem, Order, CheckOut
+from .serializers import  ClothingItemSerializer, ImageSerializer, CheckOutSerializer, OrderSerializer
 
 # Create your views here.
 class ClothingItemListAPIView(generics.ListCreateAPIView):
-    queryset = ClothingItem.objects.all()
+    queryset = ClothingItem.objects.filter(is_active=True)
     serializer_class = ClothingItemSerializer
 
     def perform_create(self, serializer):
@@ -53,3 +53,24 @@ class ClosetProfileAPIView(generics.ListCreateAPIView):
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class CheckOutAPIView(generics.ListCreateAPIView):
+    queryset = ClothingItem.objects.all()
+    serializer_class = CheckOutSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class CheckOutDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ClothingItem.objects.all()
+    serializer_class = CheckOutSerializer
+
+class OrderListAPIView(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+

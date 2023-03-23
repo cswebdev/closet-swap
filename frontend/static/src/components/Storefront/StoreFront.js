@@ -170,12 +170,12 @@ function StoreFront() {
    console.log("cartItems", { cartItems });
    return (
       <Container id="container-storefront">
-         <div id="searchbar" className="col-9 d-flex p-5 float-end">
+         {/* <div id="searchbar" className="col-9 d-flex p-5 float-end">
             <input type="text" className="form-control"></input>
             <span>
                <IconSearch className="ms-2" />
             </span>
-         </div>
+         </div> */}
          {/* Left  Side Panel*/}
          <Container className="d-flex pt-4">
             <Form className="w-25 bg-info">
@@ -308,14 +308,18 @@ function StoreFront() {
                </Container>
             </Form>
             {/* Right Side Panel */}
-            <Container id="panel-store" className="w-75 bg-light   ">
+            <Container id="panel-store" className="w-75 d-flex">
                <section>{/* <h2>Browse Items here</h2> */}</section>
-               <Container className="d-flex" id="container-storeItem">
+               <Container
+                  className="overflow-hidden bg-light"
+                  id="container-storeItem"
+               >
                   {/* store items are rendered here */}
                   <StoreItem
                      itemFilter={itemFilter}
                      cartItems={cartItems}
                      setCartItems={setCartItems}
+                     className="d-flex flex-wrap justify-content-center"
                   />
                   {/* * */}
                </Container>

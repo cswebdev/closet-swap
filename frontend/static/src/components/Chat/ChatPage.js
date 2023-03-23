@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Cookies from "js-cookie";
 import Container from "react-bootstrap/esm/Container";
+import Spinner from "react-bootstrap/esm/Spinner";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Form } from "react-bootstrap";
@@ -42,7 +43,7 @@ function ChatPage() {
 
    return (
       <>
-         <Container id="container-chatpage" className="d-flex">
+         {/* <Container id="container-chatpage" className="d-flex">
             <Container id="container-userlist" className="bg-info w-25">
                <Row>
                   <Col>
@@ -57,6 +58,15 @@ function ChatPage() {
                   </Col>
                </Row>
             </Container>
+         </Container> */}
+
+         <Container className="text-center my-5">
+            <h1>Page Under Construction</h1>
+            <p className="lead mt-3">
+               We're sorry, but this page is currently under construction.
+               Please check back soon!
+            </p>
+            <Spinner animation="border" variant="primary" className="mt-5" />
          </Container>
       </>
    );
