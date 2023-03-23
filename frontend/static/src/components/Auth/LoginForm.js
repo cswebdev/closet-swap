@@ -79,7 +79,6 @@ function LoginForm() {
                      placeholder="username"
                      value={user.username}
                      onChange={handleInput}
-                     id="username"
                   ></input>
                   <Form.Label htmlFor="password"></Form.Label>
                   <div className="input-group">

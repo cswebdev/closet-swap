@@ -197,7 +197,7 @@ function ProfileForm() {
 
    const userClosetHTML = userProfile.clothing_items?.map((item) => {
       return (
-         <div className="col-4 d-flex-row flex-wrap" key={nanoid()}>
+         <div className="col-4  mt-1 mb-1 d-flex-row flex-wrap" key={nanoid()}>
             <Card className="">
                <div className="">
                   <Card.Img

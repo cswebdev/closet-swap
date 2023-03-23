@@ -1,3 +1,113 @@
 #container-checkout {
-    height: 100vh;
+    height: 82vh;
+
+    padding: 0;
+    overflow: hidden;
+
+}
+
+#section-checkout-form {
+    height: 60vh;
+    margin: 0;
+
+
+
+}
+
+
+
+#container-checkout-items {
+    height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #e3e3e3;
+    margin: 0;
+
+
+
+
+    /* background-color: #9ccae1; */
+}
+
+.d-flex.me-1 {
+    width: 100%;
+}
+
+img#checkout-image {
+    height: 12rem;
+    width: 12rem;
+    object-fit: cover;
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 5px 0px 0px 5px;
+}
+
+div.position-relative.flex-column {
+
+    background-color: #f7f7f7;
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 0px 5px 5px 0px;
+}
+
+
+#container-checkout-info {
+    position: relative;
+    background-color: #e3edf1;
+    max-width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#checkout-message {
+    position: relative;
+    height: 40vh;
+    width: 90%;
+    margin: auto;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 20px;
+
+}
+
+
+#checkout-button {
+    background-color: #00acff;
+    border: 1px solid #00acff;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px 0px 0px 0px;
+}
+
+#checkout-button:hover {
+    background-color: #0099e5;
+    border: 1px solid #0a6b9b;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#checkout-button:active {
+    background-color: #008cd3;
+    border: 1px solid #003651;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+svg.position-absolute.bottom-0.end-0.m-2 {
+    width: 30px;
+    height: 30px;
+    color: rgb(209, 0, 0);
+}
+
+svg.position-absolute.bottom-0.end-0.m-2:hover {
+    transform: scale(1.08);
+    color: rgb(255, 0, 0);
 }

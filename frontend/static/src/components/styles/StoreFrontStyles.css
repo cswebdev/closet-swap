@@ -8,7 +8,7 @@
 
 .w-25.bg-info,
 #panel-filter {
-    height: 100%;
+    /* max-height: 200vh; */
     padding-bottom: 10%;
     border: 1px solid transparent;
     border-radius: 14px 0px 0px 14px;
@@ -66,7 +66,7 @@ h6 {
 }
 
 #panel-store.w-75.bg-light {
-    max-height: 183.8vh;
+    /* max-height: 183.8vh; */
     border: 1px solid transparent;
     border-radius: 0px 14px 14px 0px;
 }
