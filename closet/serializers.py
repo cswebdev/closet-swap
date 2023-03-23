@@ -39,3 +39,7 @@ class CheckOutSerializer(serializers.ModelSerializer):
         model = ClothingItem   
         fields = '__all__'
 
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClothingItem   
+        fields = '__all__'

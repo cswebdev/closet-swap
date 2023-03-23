@@ -23,6 +23,19 @@ function CheckOut() {
       newCartItems.splice(index, 1);
       setCartItems(newCartItems);
    };
+
+   const handleCheckout = async () => {
+      const response = await fetch(`/api_v1/closet/items/`, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+
+            "X-CSRFToken": Cookies.get("csrftoken"),
+         },
+
+         body: JSON.stringify(cartItems),
+      });
+   };
    console.log("checkout test:", { cartItems });
 
    const cartItemsHTML = cartItems.map((item) => (
@@ -98,6 +111,7 @@ function CheckOut() {
                            <Button
                               id="checkout-button"
                               className="float-end position-absolute bottom-0 end-0 m-4"
+                              onClick={handleCheckout}
                            >
                               Checkout
                            </Button>

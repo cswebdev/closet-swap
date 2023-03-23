@@ -102,3 +102,15 @@ class CheckOut(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+
+    class Order(models.Model):
+        user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+        item = models.ForeignKey(ClothingItem, on_delete=models.CASCADE, blank=True)
+        is_active = models.BooleanField(default=False)
+
+        def __str__(self):
+            return self.user.username
+        
+        
