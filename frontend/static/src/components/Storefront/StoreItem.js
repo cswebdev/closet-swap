@@ -96,7 +96,7 @@ function StoreItem({ itemFilter, item }) {
                         <Card.Img
                            variant="top"
                            src={item.image}
-                           className="CardImg"
+                           className="CardImg overflow-hidden"
                         />
                      </div>
                      <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden m-0 p-0">

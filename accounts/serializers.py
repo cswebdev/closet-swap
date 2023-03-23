@@ -6,7 +6,6 @@ from phonenumber_field.serializerfields import PhoneNumberField
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    phone_number = serializers.ReadOnlyField(source='user.phone_number')
     phone_number = PhoneNumberField(source='user.phone_number')
     city = serializers.ReadOnlyField(source='user.city')
     state = serializers.ReadOnlyField(source='user.state')

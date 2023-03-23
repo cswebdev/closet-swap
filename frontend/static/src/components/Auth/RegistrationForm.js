@@ -63,31 +63,34 @@ const selectState = {
 
 function RegistrationForm() {
    const [user, setUser] = useState({
-      first_name: "",
-      last_name: "",
       username: "",
       password1: "",
       password2: "",
       email: "",
-      gender: "",
-      phone_number: "",
+      first_name: "",
+      last_name: "",
       city: "",
       state: "",
+      phone_number: "",
+      gender: "",
    });
    const navigate = useNavigate();
    const [setError] = useState(null);
    const [showPassword, setShowPassword] = useState(false);
    const [isAuth, setAuth] = useState(false);
 
+
    const handleInput = (event) => {
       const { name, value } = event.target;
 
-      console.log(`name: ${name}, value: ${value}`);
+      //console.log(`name: ${name}, value: ${value}`);
 
       setUser((prevState) => ({
          ...prevState,
          [name]: value.trim(),
       }));
+      //console.log("name: ", name, "value: ", value);
+      //console.log("user: ", user);
    };
 
    // https://www.w3schools.com/howto/howto_js_toggle_password.asp
@@ -97,36 +100,16 @@ function RegistrationForm() {
       setShowPassword(!showPassword);
    };
 
-   const handleGenderInput = (event) => {
-      const { value } = event.target;
-
-      setUser((prevState) => ({
-         ...prevState,
-         gender: value.trim(),
-      }));
-   };
+  
    const handleError = (err) => {
       console.warn.log(err);
    };
 
-   const handleStateInput = (event) => {
-      const { value } = event.target;
-
-      setUser((prevState) => ({
-         ...prevState,
-         state: value.trim(),
-      }));
-   };
-
-   const handlePhoneNumberInput = (event) => {
-      const { value } = event.target;
-      setUser(() => ({
-         phone_number: value,
-      }));
-   };
+  
 
    const handleSubmit = async (event) => {
       event.preventDefault();
+
       const options = {
          method: "POST",
          headers: {
@@ -154,6 +137,7 @@ function RegistrationForm() {
          throw new Error("Network is not ok");
       }
       const data = await response.json();
+      //console.log("data: ", data);
       Cookies.set("Authorization", `Token ${data.key}`);
       console.log("registration data: ", data);
    };
@@ -161,33 +145,12 @@ function RegistrationForm() {
    return (
       <Container id="container-registration">
          <div id="form-styling">
-            <h2 className="text-center">Dont have an account? Sign up here!</h2>
-
             <Form onSubmit={handleSubmit} id="form-registration">
-               <Form.Group className="w-50 m-auto">
-                  {/* <Form.Group className="d-flex mt-4 m-auto">
-                     <Form.Label htmlForm="first_name"></Form.Label>
+               <h2 className="text-center">
+                  Dont have an account? Sign up here!
+               </h2>
 
-                     <input
-                        id="text"
-                        className="form-control me-1"
-                        name="first_name"
-                        type="text"
-                        placeholder="first name"
-                        value={user.first_name}
-                        onChange={handleInput}
-                     />
-                     <Form.Label htmlFor="last_name"></Form.Label>
-                     <input
-                        id="text"
-                        className="form-control ms-1"
-                        name="last_name"
-                        type="text"
-                        placeholder="last name"
-                        value={user.last_name}
-                        onChange={handleInput}
-                     />
-                  </Form.Group> */}
+               <Form.Group className="w-50 m-auto">
                   <Form.Group className="d-flex mt-4 m-auto">
                      <Form.Label htmlFor="username"></Form.Label>
                      <input
@@ -214,12 +177,13 @@ function RegistrationForm() {
                      <Form.Label htmlFor="password1"></Form.Label>
                      <div className="input-group">
                         <input
-                           className=" form-control me-1"
+                           className="form-control me-1"
                            type={showPassword ? "text" : "password"}
                            name="password1"
                            placeholder="password"
                            value={user.password1}
                            onChange={handleInput}
+                           id="input-password"
                         />
                      </div>
 
@@ -251,18 +215,21 @@ function RegistrationForm() {
                      <input
                         type="tel"
                         className="form-control me-1"
-                        placeholder="phone number"
+                        placeholder="+1 phone number"
                         name="phone_number"
                         value={user.phone_number}
-                        onChange={handlePhoneNumberInput}
+                        onChange={handleInput}
+                        id="phone-number"
                      />
 
                      <Form.Label htmlFor="gender"></Form.Label>
                      <Form.Control
                         as="select"
                         className="ms-1"
+                        name="gender"
                         value={user.gender}
-                        onChange={handleGenderInput}
+                        // onChange={handleGenderInput}
+                        onChange={handleInput}
                         id="gender-select-box"
                      >
                         <option value="" disabled>
@@ -298,7 +265,8 @@ function RegistrationForm() {
                         name="state"
                         className="form-control ms-1"
                         value={user.state}
-                        onChange={handleStateInput}
+                        //  onChange={handleStateInput}
+                        onChange={handleInput}
                         id="state-select-box"
                      >
                         {Object.entries(selectState).map(

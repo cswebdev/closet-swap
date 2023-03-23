@@ -10,6 +10,7 @@ class CustomUserAdmin(UserAdmin):
         ('Additional Info', {'fields': ('phone_number',)}),
         ('Additional Info', {'fields': ('city',)}),
         ('Additional Info', {'fields': ('state',)}),
+        ('Additional Info', {'fields': ('display_name',)}),
         
     )
 admin.site.register(User,CustomUserAdmin)

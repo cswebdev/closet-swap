@@ -7,17 +7,20 @@
 
 #row-item {
     border: 1px solid transparent;
-}
-
-.Card {
     overflow: hidden;
-    border: 2px solid black;
 
 }
+
+.col-4.d-flex-row.flex-wrap {
+    overflow: hidden;
+}
+
 
 .Card {
     border: 1px solid transparent;
     border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid black;
 }
 
 .CardImg {
@@ -29,12 +32,14 @@
     transition: transform 300ms ease-in-out;
     overflow: hidden;
 
-
 }
 
+
+
 .card-img-top.CardImg:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
     transform-origin: center center;
+    overflow: hidden;
 
 }
 

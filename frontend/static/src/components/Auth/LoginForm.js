@@ -79,6 +79,7 @@ function LoginForm() {
                      placeholder="username"
                      value={user.username}
                      onChange={handleInput}
+                     id="username"
                   ></input>
                   <Form.Label htmlFor="password"></Form.Label>
                   <div className="input-group">
@@ -89,6 +90,7 @@ function LoginForm() {
                         placeholder="password"
                         value={user.password}
                         onChange={handleInput}
+                        id="password"
                      />
                      <span
                         className={`input-group-text ${
