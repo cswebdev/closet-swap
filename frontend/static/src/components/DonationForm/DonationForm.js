@@ -533,7 +533,7 @@ function DonationForm() {
                   <Container id="container-recommended-tags" className="w-100">
                      <section id="section-recommended-tags">
                         <h6 className="text-centered">
-                           Please Choose Recommended Tags
+                           Clothing descriptions powered by ClarfAI:
                         </h6>
                         <section id="recommended-tags">
                            <ul id="tag-list" className="d-flex">

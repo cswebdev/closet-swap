@@ -1,5 +1,5 @@
 nav.navbar.navbar-expand-md.navbar {
-    background-color: #f8fcff;
+    background-color: #ffffff;
     /* border-bottom: 5px solid #00aaff; */
 
     margin: auto;
@@ -11,8 +11,30 @@ nav.navbar.navbar-expand-md.navbar a {
 }
 
 .navbar {
-    height: 18vh;
+    height: 18vh
+}
 
+a.m-2#header {
+    color: #00acff;
+    /* border: 5px solid #00acff; */
+    padding: 5px 10px;
+    border-radius: 14px;
+}
+
+a.m-2#header:hover {
+    color: white;
+    /* border: 5px solid #00acff; */
+    background-color: #00acff;
+    padding: 5px 10px;
+    border-radius: 14px;
+}
+
+a.m-2#header:active {
+    color: white;
+    /* border: 5px solid #00acff; */
+    background-color: #0a9be3;
+    padding: 5px 10px;
+    border-radius: 14px;
 }
 
 .navbar-brand {
@@ -33,7 +55,7 @@ nav.navbar.navbar-expand-md.navbar a {
 
 #header-dropdown {
     font-size: 55px;
-    color: rgb(0, 27, 102);
+    color: ##00acff;
 
 
 }

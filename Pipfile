@@ -18,6 +18,7 @@ django-storages = "~=1.13.2"
 boto3 = "~=1.26.91"
 django-phonenumber-field = {version = "~=7.0.2", extras = ["phonenumberslite"]}
 twilio = "~=7.16.5"
+django-twilio = "~=0.14.3.1"
 
 [dev-packages]
 

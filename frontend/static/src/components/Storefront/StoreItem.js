@@ -100,10 +100,10 @@ function StoreItem({ itemFilter, item }) {
                         <Card.Img
                            variant="top"
                            src={item.image}
-                           className="CardImg overflow-hidden"
+                           className="CardImg   "
                         />
                      </div>
-                     <Card.Body className="d-flex flex-column justify-content-center align-items-center overflow-hidden m-0 p-0">
+                     <Card.Body className="d-flex flex-column  m-0 p-0">
                         <div id="item-user-avatar">
                            <img
                               src={item.user_avatar}
@@ -117,25 +117,25 @@ function StoreItem({ itemFilter, item }) {
                         <Card.Title className="p-1 m-1 text-center">
                            {item.title}
                         </Card.Title>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            brand: {item.brand}
                         </Card.Text>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            color: {item.color}
                         </Card.Text>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            size: {item.size}
                         </Card.Text>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            condition: {item.condition}
                         </Card.Text>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            gender: {item.gender}
                         </Card.Text>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            category: {item.category}
                         </Card.Text>
-                        <Card.Text className="p-0 m-0">
+                        <Card.Text className="ps-1 m-0">
                            style: {item.style}
                         </Card.Text>
                         <Button

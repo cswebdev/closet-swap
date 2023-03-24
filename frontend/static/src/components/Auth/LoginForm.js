@@ -7,6 +7,7 @@ import "../Styles/LoginStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
 import { useOutletContext } from "react-router-dom";
+import MediaAsset from "../../media/HuaJuly_08Transparent.png";
 
 function LoginForm() {
    const [isAuth, setAuth] = useState(false);
@@ -64,53 +65,62 @@ function LoginForm() {
    };
 
    return (
-      <Container id="container-login">
-         <div id="form-styling">
-            <h2 className="text-center">Login!</h2>
+      <>
+         <Container id="container-login">
+            <div id="form-styling">
+               <h2 className="text-center">Login!</h2>
 
-            <Form onSubmit={handleSubmit}>
-               <Form.Group className="w-50 m-auto">
-                  <Form.Label htmlFor="username"></Form.Label>
-                  <input
-                     id="text"
-                     className="form-control"
-                     name="username"
-                     type="text"
-                     placeholder="username"
-                     value={user.username}
-                     onChange={handleInput}
-                  ></input>
-                  <Form.Label htmlFor="password"></Form.Label>
-                  <div className="input-group">
+               <Form onSubmit={handleSubmit}>
+                  <Form.Group className="w-50 m-auto">
+                     <Form.Label htmlFor="username"></Form.Label>
                      <input
+                        id="text"
                         className="form-control"
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        placeholder="password"
-                        value={user.password}
+                        name="username"
+                        type="text"
+                        placeholder="username"
+                        value={user.username}
                         onChange={handleInput}
-                        id="password"
-                     />
-                     <span
-                        className={`input-group-text ${
-                           showPassword ? "show-password" : ""
-                        }`}
-                        onClick={handleShowPassword}
+                     ></input>
+                     <Form.Label htmlFor="password"></Form.Label>
+                     <div className="input-group">
+                        <input
+                           className="form-control"
+                           type={showPassword ? "text" : "password"}
+                           name="password"
+                           placeholder="password"
+                           value={user.password}
+                           onChange={handleInput}
+                           id="password"
+                        />
+                        <span
+                           className={`input-group-text ${
+                              showPassword ? "show-password" : ""
+                           }`}
+                           onClick={handleShowPassword}
+                        >
+                           <IconEye />
+                        </span>
+                     </div>
+                     <Button
+                        className="btn btn-primary float-end mt-5"
+                        type="submit"
+                        id="login-button"
                      >
-                        <IconEye />
-                     </span>
-                  </div>
-                  <Button
-                     className="btn btn-primary float-end mt-5"
-                     type="submit"
-                     id="login-button"
-                  >
-                     Login
-                  </Button>
-               </Form.Group>
-            </Form>
-         </div>
-      </Container>
+                        Login
+                     </Button>
+                  </Form.Group>
+               </Form>
+            </div>
+            <img
+               src={MediaAsset}
+               alt="logo"
+               className="p-0 m-0 g-0 position-absolute bottom-0"
+               id="logo"
+               style={{ height: "10rem" }}
+            />
+         </Container>
+      </>
    );
 }
 

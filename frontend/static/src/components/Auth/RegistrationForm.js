@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import EulaAgreement from "../EULA/Eula";
+import mediaAsset from "../../media/Shiny-Happy.png";
 
 const selectState = {
    AL: "Alabama",
@@ -79,7 +80,6 @@ function RegistrationForm() {
    const [showPassword, setShowPassword] = useState(false);
    const [isAuth, setAuth] = useState(false);
 
-
    const handleInput = (event) => {
       const { name, value } = event.target;
 
@@ -100,12 +100,9 @@ function RegistrationForm() {
       setShowPassword(!showPassword);
    };
 
-  
    const handleError = (err) => {
       console.warn.log(err);
    };
-
-  
 
    const handleSubmit = async (event) => {
       event.preventDefault();
@@ -240,9 +237,6 @@ function RegistrationForm() {
                         <option value="TM">Trans Male</option>
                         <option value="TF">Trans Female</option>
                         <option value="NB">Non Binary</option>
-                        <option value="GNC">Gender Non Conforming</option>
-                        <option value="GF">Gender Fluid</option>
-                        <option value="IS">Intersex</option>
                      </Form.Control>
                   </Form.Group>
                   <Form.Group className="d-flex mt-4 m-auto">
@@ -261,9 +255,8 @@ function RegistrationForm() {
                      <Form.Label htmlFor="state"></Form.Label>
                      <Form.Control
                         as="select"
-                        type="select"
                         name="state"
-                        className="form-control ms-1"
+                        className="ms-1"
                         value={user.state}
                         //  onChange={handleStateInput}
                         onChange={handleInput}
@@ -295,6 +288,12 @@ function RegistrationForm() {
                </Form.Group>
             </Form>
          </div>
+         <img
+            src={mediaAsset}
+            alt="media assets"
+            id="media-assets"
+            className="float-end"
+         />
       </Container>
    );
 }

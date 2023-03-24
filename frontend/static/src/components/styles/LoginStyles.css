@@ -1,14 +1,14 @@
 #container-login {
 
     background-color: #00acff;
-    height: 100vh;
+    height: 90vh;
     max-width: 70%;
     padding: 10% 0% 0% 0%;
 }
 
 #form-styling {
     padding-top: 10%;
-    background-color: rgb(235, 246, 255);
+    background-color: rgb(251, 251, 251);
     border: 1px solid transparent;
     border-radius: 14px;
     height: 80%;

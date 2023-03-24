@@ -2,10 +2,18 @@ import boto3
 from django.conf import settings
 from django.shortcuts import render
 from rest_framework import generics, status
-from rest_framework.response import Response
+
 from django.urls import path, include
 from .models import  ClothingItem, Order, CheckOut
+from accounts.models import User
 from .serializers import  ClothingItemSerializer, ImageSerializer, CheckOutSerializer, OrderSerializer
+from accounts.send_sms import client
+from twilio.rest import Client
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+
+
 
 # Create your views here.
 class ClothingItemListAPIView(generics.ListCreateAPIView):
@@ -74,3 +82,24 @@ class OrderListAPIView(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+def send_order_sms(request, UserId):
+ if request.method == 'POST':
+    from_user = request.user
+    to_user = User.objects.get(id=UserId)
+    Order, created = Order.objects.get_or_create(from_user=from_user, to_user=to_user)
+    if created:
+        # send sms to to_user phone number here using twilio client
+        if to_user.phone_number is not None:
+            message = "You have a new order from {}.".format(from_user.username)
+            to_phone_number = to_user.phone_number.as_e164
+            from_phone_number = "+18888147157"
+            client.messages.create(
+                to=to_user.phone_number,
+                from_=from_phone_number,
+                body= message
+            )
+            return Response({'message': 'Order sent successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'message': 'Order not sent successfully'}, status=status.HTTP_200_OK)

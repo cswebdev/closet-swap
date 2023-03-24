@@ -5,6 +5,7 @@ import Container from "react-bootstrap/esm/Container";
 import { IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
+import MediaAsset from "../../media/playful-vector.png";
 
 const genderChoices = {
    Male: "Male",
@@ -302,6 +303,12 @@ function StoreFront() {
                                  />
                               )
                            )}
+                           <img
+                              src={MediaAsset}
+                              alt="MediaAsset"
+                              className="display-absolute bottom-0 end-100 m-0 p-0"
+                              style={{ height: "14rem" }}
+                           />
                         </div>
                      </section>
                   </section>

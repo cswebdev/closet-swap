@@ -39,7 +39,7 @@ function Header(user) {
       <Navbar expand="md">
          <Container>
             <Navbar.Brand>
-               <NavLink to="/home" className="m-2">
+               <NavLink to="/home" className="m-2" id="header">
                   Closet Swap
                </NavLink>
             </Navbar.Brand>
@@ -57,18 +57,18 @@ function Header(user) {
                   </NavLink>
                </Nav>
                <Nav>
-                  <NavLink to="/chat" className="m-2">
+                  {/* <NavLink to="/chat" className="m-2">
                      <IconMessageCircle2Filled
                         style={{
                            width: "40px",
                            height: "40px",
 
-                           color: "#39ff5a",
+                          
                         }}
                         className="m-2"
                         type="button"
                      />
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink to="/checkout" className="m-2">
                      <IconShoppingBag
                         style={{ width: "40px", height: "40px" }}
@@ -95,11 +95,11 @@ function Header(user) {
                               Profile
                            </div>
                         </Dropdown.Item>
-                        <Dropdown.Item className="p-3">
+                        {/* <Dropdown.Item className="p-3">
                            <div type="btn" onClick={() => navigate("/orders")}>
                               Orders
                            </div>
-                        </Dropdown.Item>
+                        </Dropdown.Item> */}
 
                         <Dropdown.Item className="p-3" onClick={handleLogout}>
                            logout

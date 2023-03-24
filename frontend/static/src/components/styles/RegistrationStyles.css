@@ -1,7 +1,7 @@
 #container-registration {
 
     background-color: #00acff;
-    height: 140vh;
+    height: 125vh;
     max-width: 70%;
 
     padding: 10% 0% 0% 0%;
@@ -96,4 +96,8 @@ span.input-group-text:active {
     background-color: white;
     padding: 5px;
     margin-top: 5%;
+    border: 2px solid #8eb1df;
+    border-radius: 5px;
+
+
 }

@@ -8,10 +8,11 @@ import "./PageFooterStyles.css";
 
 function PageFooter() {
    return (
-      <Container fluid className="footer-container">
+      <Container fluid className="footer-container d-flex align-items-center">
          <Row className="footer-row">
-            <Col className="col-3-md footer-col text-muted">
-               <h5 className="footer-title">About Us</h5>
+            <Col className="col-3-md footer-col text-muted ">
+               <h3 className="footer-title">Created by Chelsea Snider</h3>
+               <h7>@ Carolina Code School 2023</h7>
             </Col>
          </Row>
       </Container>

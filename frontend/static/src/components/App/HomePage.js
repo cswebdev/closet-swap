@@ -5,6 +5,7 @@ import Container from "react-bootstrap/esm/Container";
 import { Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../Footer/PageFooter";
+import heroImage from "../../media/7153929.jpg";
 
 function HomePage() {
    const navigate = useNavigate();
@@ -14,7 +15,7 @@ function HomePage() {
             <Container id="hero-container">
                <div className="hero-container">
                   <img
-                     src="https://img.freepik.com/free-vector/had-drawn-flat-lgbt-pride-day-background_23-2149393281.jpg?w=2000&t=st=1678852239~exp=1678852839~hmac=bbd796ae22848aeca96681fd30b5a51630ec607fbe091e2f63f6b4818b94c1a5"
+                     src={heroImage}
                      alt="Diverse community"
                      className="hero-image"
                   />
@@ -39,11 +40,12 @@ function HomePage() {
                <Row className="align-items-center justify-content-center">
                   <p
                      id="mission-top-text"
-                     className="text-center font-weight-bold"
+                     className="text-center font-weight-bold homepage-text position-relative z-index-1"
                   >
-                     Our Mission at Closet Swap is to help lgbtq community and
-                     our allies to become the best version of themselves!
-                     Express yourself to the fullest with style!
+                     Closet Swap is a platform that empowers the LGBTQ+
+                     community to express their unique identities through
+                     fashion without breaking the bank. We we blelieve in
+                     sustainability, affordibility, and inclusivity.
                   </p>
                </Row>
                {/* </Container> */}
@@ -54,15 +56,19 @@ function HomePage() {
                />
 
                {/* <Container id="container-mission-bottom" className="d-flex-column"> */}
-               <Row className="align-items-center justify-content-center">
+               <Row className="align-items-center justify-content-center homepage-text">
                   <p id="mission-text-bottom" className="text-center">
-                     We encourage you to donate your clothes with others and
-                     help our communities.
+                     Finding clothes that fit your unique style can be a hassle.
+                     Closet Swap's goal is to make it easier for you to find
+                     your authentic style.
                   </p>
+               </Row>
+               <Row className="align-items-center justify-content-center homepage-text">
+                  {/* <img src={MediaAssetHands} alt="hands" id="hands-image" /> */}
                </Row>
             </Container>
          </Container>
-         {/* <Footer /> */}
+         <Footer />
       </>
    );
 }

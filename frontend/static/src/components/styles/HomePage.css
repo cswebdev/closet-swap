@@ -1,7 +1,6 @@
 body {
-    background-color: #ecf7ff;
+    background-color: #ffeaf7;
 }
-
 
 
 #container-homepage {
@@ -85,6 +84,20 @@ div#hero-container.container {
 }
 
 
+
+
+
+#mission-image {
+    max-height: 450px;
+    min-width: 100%;
+    object-fit: cover;
+
+    object-position: 0px 70%;
+
+
+    padding: 0;
+}
+
 #mission-top-text {
     background-color: #fff7fe;
     max-width: 70%;
@@ -98,26 +111,15 @@ div#hero-container.container {
 
 }
 
-
-#mission-image {
-    max-height: 450px;
-    min-width: 100%;
-    object-fit: cover;
-
-    object-position: 0px 70%;
-
-
-    padding: 0;
-
-}
-
 #mission-text-bottom {
     background-color: #fff7fe;
-    max-width: 90%;
+    max-width: 70%;
     font-size: 30px;
     padding: 40px;
     border: 40px solid transparent;
     border-radius: 15px;
+    margin: 10% 0%;
+    color: #3688db;
 
     margin: 10% 0%;
 
@@ -132,4 +134,10 @@ div#hero-container.container {
     padding: 0;
     margin: auto;
 
+}
+
+#hands-image {
+    max-height: 550px;
+    width: 100%;
+    object-fit: cover;
 }

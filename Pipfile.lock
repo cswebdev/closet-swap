@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9d65dade17801bc330039043d6cd14ebe9c3458f65955e3e51b9f3f8b7abd27f"
+            "sha256": "735517af13fa136bfcfdf3ab32a0c0dbfa496a09a5738cf72e6fa2aeb7190f37"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -26,19 +26,19 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:7017102c58b9984749bef3b9f476940593c311504354b9ee9dd7bb0b4657a77d",
-                "sha256:f961aa704bd7aeefc186ede52cabc3ef4c336979bb4098d3aad7ca922d55fc27"
+                "sha256:983ec9e539431c29b5265e435b91af7c0d77a75809e173427798edb4ede1d69c",
+                "sha256:f35a42c6d0130a75e58485efa94383256d9b8c72c3a31ad872807873a8800363"
             ],
             "index": "pypi",
-            "version": "==1.26.96"
+            "version": "==1.26.98"
         },
         "botocore": {
             "hashes": [
-                "sha256:b9781108810e33f8406942c3e3aab748650c59d5cddb7c9d323f4e2682e7b0b6",
-                "sha256:c449d7050e9bc4a8b8a62ae492cbdc931b786bf5752b792867f1276967fadaed"
+                "sha256:ae906c1feb56063a38ffd2280232fa44d634057825470d3beed274925088cb42",
+                "sha256:b74283ff71eb4e57edfa5cf6dc36d959b1eec618a2b1e5e781643184857dd1c4"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==1.29.96"
+            "version": "==1.29.98"
         },
         "certifi": {
             "hashes": [
@@ -291,6 +291,14 @@
             "index": "pypi",
             "version": "==1.13.2"
         },
+        "django-twilio": {
+            "hashes": [
+                "sha256:13976287223b139bbabfe504d4e45498967625ffca3006f4151c69c409fd4f07",
+                "sha256:7686fb80dad9b17c9140295ec4efe138c5e444710dae9aeaac3416e3e7810ce4"
+            ],
+            "index": "pypi",
+            "version": "==0.14.3.1"
+        },
         "djangorestframework": {
             "hashes": [
                 "sha256:579a333e6256b09489cbe0a067e66abe55c6595d8926be6b99423786334350c8",
@@ -389,6 +397,13 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==3.2.2"
+        },
+        "phonenumbers": {
+            "hashes": [
+                "sha256:253bb0e01250d21a11f2b42b3e6e161b7f6cb2ac440e2e2a95c1da71d221ee1a",
+                "sha256:d3e3555b38c89b121f5b2e917847003bdd07027569d758d5f40156c01aeac089"
+            ],
+            "version": "==8.13.7"
         },
         "phonenumberslite": {
             "hashes": [

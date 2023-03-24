@@ -53,6 +53,7 @@ class OrderSerializer(serializers.ModelSerializer):
             # pdb.set_trace()
             instance = ClothingItem.objects.get(id=item['id'])
             instance.is_active = False
+            # call that method and send the method the buyer, seller, and item
             instance.save()
         return Order.objects.create(**validated_data)
 

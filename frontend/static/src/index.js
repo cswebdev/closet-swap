@@ -42,7 +42,7 @@ root.render(
                <Route path="profile" element={<ProfileForm />} />
                <Route path="checkout" element={<CheckOut />} />
                <Route path="chat" element={<ChatPage />} />
-               <Route path="orders" element={<UserOrdersPage />} />
+               {/* <Route path="orders" element={<UserOrdersPage />} /> */}
                <Route path="users">
                   <Route path=":userId" element={<UsersProfiles />} />
                </Route>
