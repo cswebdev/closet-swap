@@ -65,13 +65,13 @@
 }
 
 #recommended-tags {
-    background-color: white;
+    /* background-color: white; */
     height: fit-content;
-
+    display: flex;
     border: 1px solid transparent;
     border-radius: 14px;
     margin: auto;
-    padding: 2px;
+    padding: 4px;
     max-width: 100%;
 }
 

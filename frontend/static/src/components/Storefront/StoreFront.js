@@ -2,7 +2,6 @@ import "../Styles/StoreFrontStyles.css";
 import { useState, useEffect, useContext } from "react";
 import { useOutletContext } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
-import { IconSearch } from "@tabler/icons-react";
 import Form from "react-bootstrap/Form";
 import StoreItem from "./StoreItem";
 import MediaAsset from "../../media/playful-vector.png";
@@ -117,10 +116,14 @@ function StoreFront() {
       Yellow: false,
    });
    const [itemFilter, setItemFilter] = useState("");
-   const [storeItems, setStoreItems] = useState([]);
+   // const [storeItems, setStoreItems] = useState([]);
    const { cartItems, setCartItems } = useOutletContext();
-   console.log(itemFilter);
 
+   const [genderFilter, setGenderFilter] = useState();
+   const [categoryFilter, setCategoryFilter] = useState();
+   const [sizeFilter, setSizeFilter] = useState();
+   const [styleFilter, setStyleFilter] = useState();
+   const [colorFilter, setColorFilter] = useState();
    // research flat map
 
    // exmple filter method provided by instructor
@@ -169,6 +172,13 @@ function StoreFront() {
    };
 
    console.log("cartItems", { cartItems });
+   const myFilter = {
+      genderFilter,
+      categoryFilter,
+      sizeFilter,
+      styleFilter,
+      colorFilter,
+   };
    return (
       <Container id="container-storefront">
          {/* <div id="searchbar" className="col-9 d-flex p-5 float-end">
@@ -192,8 +202,12 @@ function StoreFront() {
                                  type="checkbox"
                                  label={name}
                                  name={code}
-                                 checked={isChecked[code]}
-                                 onChange={handleFilterInput}
+                                 checked={genderFilter === name}
+                                 onChange={() =>
+                                    genderFilter === name
+                                       ? setGenderFilter()
+                                       : setGenderFilter(name)
+                                 }
                               />
                            )
                         )}
@@ -201,7 +215,7 @@ function StoreFront() {
                   </section>
                   <section id="filter-section2">
                      <h6>Filter item here</h6>
-                     <div className="ps-3">
+                     <div className="ps-3 pb-3">
                         <p className="m-0">Category:</p>
                         {Object.entries(categoryChoices).map(
                            ([code, name], index) => (
@@ -210,8 +224,12 @@ function StoreFront() {
                                  type="checkbox"
                                  label={name}
                                  name={code}
-                                 checked={isChecked[code]}
-                                 onChange={handleFilterInput}
+                                 checked={categoryFilter === name}
+                                 onChange={() =>
+                                    categoryFilter === name
+                                       ? setCategoryFilter()
+                                       : setCategoryFilter(name)
+                                 }
                               />
                            )
                         )}
@@ -227,8 +245,12 @@ function StoreFront() {
                                  type="checkbox"
                                  label={name}
                                  name={code}
-                                 checked={isChecked[code]}
-                                 onChange={handleFilterInput}
+                                 checked={sizeFilter === name}
+                                 onChange={() =>
+                                    sizeFilter === name
+                                       ? setSizeFilter()
+                                       : setSizeFilter(name)
+                                 }
                               />
                            )
                         )}
@@ -237,7 +259,7 @@ function StoreFront() {
                   <section id="filter-section4">
                      <h6>Filter item here</h6>
                      <div className="ps-3">
-                        <p className="m-0">Category:</p>
+                        <p className="m-0 bg">Category:</p>
                         {Object.entries(subCategoryChoicesTops).map(
                            ([code, name], index) => (
                               <Form.Check
@@ -245,8 +267,12 @@ function StoreFront() {
                                  type="checkbox"
                                  label={name}
                                  name={code}
-                                 checked={isChecked[code]}
-                                 onChange={handleFilterInput}
+                                 checked={styleFilter === name}
+                                 onChange={() =>
+                                    styleFilter === name
+                                       ? setStyleFilter()
+                                       : setStyleFilter(name)
+                                 }
                               />
                            )
                         )}
@@ -262,8 +288,12 @@ function StoreFront() {
                                     type="checkbox"
                                     label={name}
                                     name={code}
-                                    checked={isChecked[code]}
-                                    onChange={handleFilterInput}
+                                    checked={styleFilter === name}
+                                    onChange={() =>
+                                       styleFilter === name
+                                          ? setStyleFilter()
+                                          : setStyleFilter(name)
+                                    }
                                  />
                               )
                            )}
@@ -280,8 +310,12 @@ function StoreFront() {
                                     type="checkbox"
                                     label={name}
                                     name={code}
-                                    checked={isChecked[code]}
-                                    onChange={handleFilterInput}
+                                    checked={styleFilter === name}
+                                    onChange={() =>
+                                       styleFilter === name
+                                          ? setStyleFilter()
+                                          : setStyleFilter(name)
+                                    }
                                  />
                               )
                            )}
@@ -298,8 +332,12 @@ function StoreFront() {
                                     type="checkbox"
                                     label={name}
                                     name={code}
-                                    checked={isChecked[code]}
-                                    onChange={handleFilterInput}
+                                    checked={colorFilter === name}
+                                    onChange={() =>
+                                       colorFilter === name
+                                          ? setColorFilter()
+                                          : setColorFilter(name)
+                                    }
                                  />
                               )
                            )}
@@ -323,9 +361,10 @@ function StoreFront() {
                >
                   {/* store items are rendered here */}
                   <StoreItem
-                     itemFilter={itemFilter}
+                     // itemFilter={itemFilter}
                      cartItems={cartItems}
                      setCartItems={setCartItems}
+                     myFilter={myFilter}
                      className="d-flex flex-wrap justify-content-center"
                   />
                   {/* * */}

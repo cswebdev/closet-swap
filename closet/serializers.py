@@ -47,6 +47,7 @@ class OrderSerializer(serializers.ModelSerializer):
     
     #using create method to update item.is_active to false
     def create(self, validated_data):
+        
         items = validated_data['order_items']
         for item in items:
             # import pdb 

@@ -50,7 +50,7 @@ class ClothingItem(models.Model):
     )
    
     STYLE_CHOICES = (
-        ('BL', 'Blouses'), 
+        ('Blouses', 'Blouses'), 
         ('BDS', 'Button Down Shirts'), 
         ('KT', 'Knit Tops'), 
         ('TS', 'T Shirt'), 
@@ -66,10 +66,10 @@ class ClothingItem(models.Model):
 
     CONDITION_CHOICES = (
         ('New', 'New'),
-        ('VG', 'Very Good'), 
-        ('G', 'Good'), 
-        ('F', 'Fair'), 
-        ('P', 'Poor'),
+        ('Very Good', 'Very Good'), 
+        ('Good', 'Good'), 
+        ('Fair', 'Fair'), 
+        ('Poor', 'Poor'),
     )
 
     GENDER_CHOICES   = (
@@ -80,12 +80,12 @@ class ClothingItem(models.Model):
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, related_name="clothing_items")
     title = models.CharField(max_length=255)
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     style = models.CharField(max_length=20, choices=STYLE_CHOICES)
     brand = models.CharField(max_length=255) 
-    color = models.CharField(max_length=10, choices=COLOR_CHOICES)
-    size = models.CharField(max_length=3, choices=SIZE_CHOICES)
-    condition = models.CharField(max_length=3, choices=CONDITION_CHOICES)
+    color = models.CharField(max_length=20, choices=COLOR_CHOICES)
+    size = models.CharField(max_length=20, choices=SIZE_CHOICES)
+    condition = models.CharField(max_length=20, choices=CONDITION_CHOICES)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     is_active = models.BooleanField(default=True)
     selectedTags = models.JSONField(null=True)

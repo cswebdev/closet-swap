@@ -536,7 +536,7 @@ function DonationForm() {
                            Clothing descriptions powered by ClarfAI:
                         </h6>
                         <section id="recommended-tags">
-                           <ul id="tag-list" className="d-flex">
+                           <ul id="tag-list" className="d-flex ">
                               {tagsHTML}
                            </ul>
                         </section>

@@ -56,8 +56,11 @@ svg#report {
 
 #container-userinfo {
     height: 15vh;
-
-    background-color: white;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    /* background-color: white; */
 
 }
 
@@ -74,6 +77,20 @@ svg#report {
     display: flex;
 
 } */
+
+#update-profile {
+    background-color: white;
+    border: 1px solid #00acff;
+    border-radius: 14px;
+    color: #00acff;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 20px;
+
+    margin: 10px 10px 10px 10px;
+    float: right;
+
+}
 
 #user-closet-item {
     width: 25%;

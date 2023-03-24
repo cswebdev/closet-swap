@@ -4,6 +4,7 @@ from .views import ClothingItemListAPIView, ClothingItemDetailAPIView, ImageCrea
 urlpatterns = [
     path('closet/orders/<int:pk>/', OrderListAPIView.as_view()),
     path('closet/orders/', OrderListAPIView.as_view()),
+    path('closet/orders/complete<int:pk>/', OrderListAPIView.as_view()),
     path('closet/checkout/delete/<int:pk>/', CheckOutDetailAPIView.as_view()),
     path('closet/checkout/<int:pk>/', CheckOutAPIView.as_view()),
     path('closet/checkout/', CheckOutAPIView.as_view()),

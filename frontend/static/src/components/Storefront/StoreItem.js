@@ -2,15 +2,14 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 import "../Styles/StoreItemStyles.css";
 import { useOutletContext } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 
-function StoreItem({ itemFilter, item }) {
-   console.log("this is item filter", itemFilter);
+function StoreItem({ myFilter }) {
+   // console.log("this is item filter", itemFilter);
    const [itemListings, setItemListings] = useState([]);
    const { cartItems, setCartItems } = useOutletContext();
    // const [userProfile, setUserProfile] = useState();
@@ -36,28 +35,27 @@ function StoreItem({ itemFilter, item }) {
          if (!response.ok) {
             throw new Error("Network response not ok");
          }
+
          const data = await response.json();
 
-         let result = data;
+         // console.log("also", itemFilter);
 
-         console.log("also", itemFilter);
-
-         result = result.filter(
-            (item) =>
-               item.gender === itemFilter ||
-               item.category === itemFilter ||
-               item.size === itemFilter ||
-               item.color === itemFilter ||
-               item.style === itemFilter ||
-               item.condition === itemFilter ||
-               !item
-         );
+         // result = result.filter(
+         //    (item) =>
+         //       item.gender === itemFilter ||
+         //       item.category === itemFilter ||
+         //       item.size === itemFilter ||
+         //       item.color === itemFilter ||
+         //       item.style === itemFilter ||
+         //       item.condition === itemFilter ||
+         //       !item
+         // );
 
          // console.log(setCartItems);
-         return setItemListings(result);
+         setItemListings(data);
       };
       getItems();
-   }, [itemFilter, cartItems]);
+   }, []);
 
    // const getItemUserProfile = async (userProfile) => {
    //    navigate(`/profile/user/${userProfile}`);
@@ -79,16 +77,48 @@ function StoreItem({ itemFilter, item }) {
 
    const itemListingsHTML = [];
 
-   for (let i = 0; i < itemListings.length; i += 3) {
+   // const data = [
+   //    { color: "red", size: "S", gender: "M" },
+   //    { color: "blue", size: "M", gender: "F" },
+   //    { color: "green", size: "L", gender: "M" },
+   //    { color: "red", size: "M", gender: "F" },
+   // ];
+
+   const {
+      genderFilter,
+      categoryFilter,
+      sizeFilter,
+      styleFilter,
+      colorFilter,
+   } = myFilter;
+
+   // let color = "red";
+   // let size = "M";
+   // let gender; // gender filter is not set (value is undefined)
+
+   console.log({ itemListings });
+
+   const filteredData = itemListings.filter((item) => {
+      if (
+         (colorFilter !== undefined && item.color !== colorFilter) ||
+         (sizeFilter !== undefined && item.size !== sizeFilter) ||
+         (genderFilter !== undefined && item.gender !== genderFilter) ||
+         (categoryFilter !== undefined && item.category !== categoryFilter) ||
+         (styleFilter !== undefined && item.style !== styleFilter)
+      ) {
+         return false;
+      }
+      return true;
+   });
+
+   console.log({ filteredData });
+
+   for (let i = 0; i < filteredData.length; i += 3) {
       itemListingsHTML.push(
-         <Row
-            className="overflow-hidden justify-content-center"
-            key={nanoid()}
-            id="row-item"
-         >
-            {itemListings.slice(i, i + 3).map((item) => (
+         <Row className="overflow-hidden m-auto" key={nanoid()} id="row-item">
+            {filteredData.slice(i, i + 3).map((item) => (
                <Col
-                  className="col p-0 mt-1 ms-2 me-2 mb-2 g-0 overflow-hidden"
+                  className="col p-0 mt-1 ms-3 me-3 mb-2 g-0 overflow-hidden "
                   key={item.id}
                   id="col-item"
                >

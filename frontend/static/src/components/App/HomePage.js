@@ -44,7 +44,7 @@ function HomePage() {
                   >
                      Closet Swap is a platform that empowers the LGBTQ+
                      community to express their unique identities through
-                     fashion without breaking the bank. We we blelieve in
+                     fashion without breaking the bank. We we believe in
                      sustainability, affordibility, and inclusivity.
                   </p>
                </Row>

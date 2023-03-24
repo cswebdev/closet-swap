@@ -8,9 +8,7 @@ import Col from "react-bootstrap/Col";
 import { Card, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { IconFlagFilled } from "@tabler/icons-react";
-import { IconUser } from "@tabler/icons-react";
-import { IconMail } from "@tabler/icons-react";
-import Cookies from "js-cookie";
+
 import { useParams } from "react-router-dom";
 
 function UserProfile() {
@@ -96,13 +94,13 @@ function UserProfile() {
                            </div>
                         </Container>
                         <Container id="container-buttons">
-                           <Button
+                           {/* <Button
                               id="chat-button"
                               className="m-2"
                               onClick={() => navigate("/chat")}
                            >
                               Chat
-                           </Button>
+                           </Button> */}
                         </Container>
                      </Container>
                   </Row>

@@ -10,12 +10,14 @@ import StoreItem from "../Storefront/StoreItem";
 import { useOutletContext } from "react-router-dom";
 import { IconTrash } from "@tabler/icons-react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 function CheckOut() {
    const { cartItems, setCartItems } = useOutletContext();
    const [isActive, setIsActive] = useState(true);
    const [order_Items, setOrder_Items] = useState([]);
    const numItems = cartItems.length;
+   const navigate = useNavigate();
 
    //using slice to remove cart item from cartItems array
    const removeCartItem = async (id) => {
@@ -42,7 +44,8 @@ function CheckOut() {
       const data = await response.json();
       console.log("checkout data:", data);
 
-      //setCartItems([]); // clear cartItems after successful checkout
+      setCartItems([]); // clear cartItems after successful checkout
+      navigate("/home");
    };
 
    // const handleCheckout = async () => {

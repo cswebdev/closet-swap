@@ -5,3 +5,15 @@
     background-color: white;
 
 }
+
+#footer-img {
+
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 10% 20%;
+
+}

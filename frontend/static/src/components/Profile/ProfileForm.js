@@ -6,9 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Card, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { IconFlagFilled } from "@tabler/icons-react";
-import { IconUser } from "@tabler/icons-react";
-import { IconMail } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 import { nanoid } from "nanoid";
 
@@ -198,7 +195,7 @@ function ProfileForm() {
    const userClosetHTML = userProfile.clothing_items?.map((item) => {
       return (
          <div className="col-4  mt-1 mb-1 d-flex-row flex-wrap" key={nanoid()}>
-            <Card className="">
+            <Card className="overflow-hidden">
                <div className="">
                   <Card.Img
                      variant="top"
@@ -206,11 +203,6 @@ function ProfileForm() {
                      className="CardImg "
                   />
                </div>
-               <Card.Body className="d-flex flex-column justify-content-center  m-0 p-0">
-                  <Card.Title className="p-1 m-1 text-center">
-                     {item.title}
-                  </Card.Title>
-               </Card.Body>
             </Card>
          </div>
       );
@@ -310,11 +302,6 @@ function ProfileForm() {
                                  <option value="TM">Trans Male</option>
                                  <option value="TF">Trans Female</option>
                                  <option value="NB">Non Binary</option>
-                                 <option value="GNC">
-                                    Gender Non Conforming
-                                 </option>
-                                 <option value="GF">Gender Fluid</option>
-                                 <option value="IS">Intersex</option>
                               </Form.Control>
                            </Form.Group>
                            <Container className="d-flex" id="update-location">
@@ -353,8 +340,7 @@ function ProfileForm() {
                      </Container>
                      <Button
                         type="submit"
-                        className="bottom-0 end-0"
-                        variant="outline-primary"
+                        className="w-25 float-end"
                         id="update-profile"
                         onClick={handleSubmit}
                      >
@@ -363,10 +349,9 @@ function ProfileForm() {
                   </Row>
                </Form>
             </Container>
-            <Container id="container-closet" className="d-flex">
-               <div className="text-center mt-1">
-                  <h3>My closet</h3>
-                  <div className="row">{userClosetHTML}</div>
+            <Container id="container-closet" className="d-flex bg-light">
+               <div className="text-center mt-1 bg-light">
+                  <div className="row bg-light">{userClosetHTML}</div>
                </div>
             </Container>
          </Container>
