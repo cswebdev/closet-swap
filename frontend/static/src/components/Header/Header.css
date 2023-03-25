@@ -22,19 +22,18 @@ a.m-2#header {
 }
 
 a.m-2#header:hover {
-    color: white;
-    /* border: 5px solid #00acff; */
-    background-color: #00acff;
+
+    color: #0095e0;
     padding: 5px 10px;
     border-radius: 14px;
 }
 
 a.m-2#header:active {
-    color: white;
-    /* border: 5px solid #00acff; */
-    background-color: #0a9be3;
+
+    color: #0a9be3;
     padding: 5px 10px;
     border-radius: 14px;
+
 }
 
 .navbar-brand {

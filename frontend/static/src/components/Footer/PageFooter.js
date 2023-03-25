@@ -13,19 +13,18 @@ function PageFooter() {
          className="footer-container d-flex align-items-center justify-content-center"
       >
          <Row className="footer-row">
-            <Col className="col-3-md footer-col text-muted d-flex">
+            <Col className="text-muted d-flex mt-0">
                <img
                   src={SelfPortrait}
                   alt="self-portrait"
                   id="footer-img"
                   className="footer-img"
                />
-               <Row className="flex-column">
-                  <h3 className="footer-title pt-4">
+               <Row className="flex-column p-0 mb-0 mt-4">
+                  <h3 className="footer-title pt-1 mb-0 mt-0 pb-0">
                      Created by Chelsea Snider
                   </h3>
-
-                  <h6>@ Carolina Code School 2023</h6>
+                  <h6 className="m-0 p-0 ">@ Carolina Code School 2023</h6>
                </Row>
             </Col>
          </Row>
