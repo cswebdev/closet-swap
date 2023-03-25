@@ -44,18 +44,19 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order   
         fields = '__all__'
+
+   
     
     #using create method to update item.is_active to false
-    def create(self, validated_data):
-        
-        items = validated_data['order_items']
-        for item in items:
-            # import pdb 
-            # pdb.set_trace()
-            instance = ClothingItem.objects.get(id=item['id'])
-            instance.is_active = False
-            # call that method and send the method the buyer, seller, and item
-            instance.save()
-        return Order.objects.create(**validated_data)
+    # def create(self, validated_data):
+    #     items = validated_data['order_items']
+    #     for item in items:
+    #         # import pdb 
+    #         # pdb.set_trace()
+    #         instance = ClothingItem.objects.get(id=item['id'])
+    #         instance.is_active = False
+    #         # call that method and send the method the buyer, seller, and item
+    #         instance.save()
+    #     return Order.objects.create(**validated_data)
 
 
