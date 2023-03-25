@@ -1,8 +1,8 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+//import { useState, useEffect } from "react";
 import "../Styles/HomePage.css";
 import Container from "react-bootstrap/esm/Container";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../Footer/PageFooter";
 import heroImage from "../../media/7153929.jpg";
@@ -20,7 +20,6 @@ function HomePage() {
                      className="hero-image"
                   />
                   <div className="hero-content">
-                     <h1 className="hero-title"></h1>
                      <p className="hero-text">
                         We strive to create an inclusive environment for
                         everyone. Join us and be a part of our mission to
@@ -53,6 +52,7 @@ function HomePage() {
                <img
                   src="https://images.unsplash.com/photo-1593091430196-2433358501df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
                   id="mission-image"
+                  alt="mission"
                />
 
                {/* <Container id="container-mission-bottom" className="d-flex-column"> */}

@@ -1,16 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/DonationFormStyles.css";
-import { IconPhotoPlus } from "@tabler/icons-react";
-import { IconShirt } from "@tabler/icons-react";
 import Cookies from "js-cookie";
 import Resizer from "react-image-file-resizer";
-import Badge from "react-bootstrap/Badge";
 import { nanoid } from "nanoid";
-import { DropdownButton, Dropdown } from "react-bootstrap";
 
 const styleChoices = {
    BL: "Blouses",
@@ -56,15 +52,15 @@ const INITIAL_STATE = {
    selectedTags: null,
    is_active: true,
 };
-
+//const [outputData, setoutputData] = useState([]);
+// const [image, setImage] = useState(null);
 function DonationForm() {
    const [clothingItem, setClothingItem] = useState(INITIAL_STATE);
 
-   // const [image, setImage] = useState(null);
    const [preview, setPreview] = useState("");
 
    const [setError] = useState(null);
-   // const [outputData, setoutputData] = useState([]);
+
    const [selectedTags, setSelectedTags] = useState([]);
 
    const handleInput = (event) => {

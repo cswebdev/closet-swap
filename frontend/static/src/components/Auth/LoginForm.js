@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../Styles/LoginStyles.css";
 import Cookies from "js-cookie";
 import { IconEye } from "@tabler/icons-react";
-import { useOutletContext } from "react-router-dom";
 import MediaAsset from "../../media/HuaJuly_08Transparent.png";
 
 function LoginForm() {
-   const [isAuth, setAuth] = useState(false);
+   const [ setAuth] = useState(false);
    const navigate = useNavigate();
    const [user, setUser] = useState({
       username: "",
