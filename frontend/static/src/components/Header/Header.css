@@ -16,7 +16,6 @@ nav.navbar.navbar-expand-md.navbar a {
 
 a.m-2#header {
     color: #00acff;
-    /* border: 5px solid #00acff; */
     padding: 5px 10px;
     border-radius: 14px;
 }
@@ -54,7 +53,7 @@ a.m-2#header:active {
 
 #header-dropdown {
     font-size: 55px;
-    color: ##00acff;
+    color: #00acff;
 
 
 }
