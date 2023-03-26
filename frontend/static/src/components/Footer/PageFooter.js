@@ -22,7 +22,7 @@ function PageFooter() {
                />
                <Row className="flex-column p-0 mb-0 mt-4">
                   <h3 className="footer-title pt-1 mb-0 mt-0 pb-0">
-                     Created by Christian
+                     Created by Christian Snider
                   </h3>
                   <h6 className="m-0 p-0 ">@ Carolina Code School 2023</h6>
                </Row>
