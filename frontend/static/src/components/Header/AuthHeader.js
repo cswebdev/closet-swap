@@ -1,12 +1,13 @@
 import { Navigate, NavLink } from "react-router-dom";
-import { useNavigate, useOutlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Navbar";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
-import { IconTextSize, IconUserCircle } from "@tabler/icons-react";
+import { IconUserCircle } from "@tabler/icons-react";
 import { IconShoppingBag } from "@tabler/icons-react";
 import { IconMessageCircle2Filled } from "@tabler/icons-react";
 import Button from "react-bootstrap/esm/Button";
@@ -15,6 +16,9 @@ import Cookies from "js-cookie";
 
 function AuthHeader(user) {
    const [isAuth, setAuth] = useState(false);
+   const { cartItems, setCartItems } = useOutletContext();
+   const numItems = cartItems.length;
+
    const navigate = useNavigate();
    const handleLogout = async () => {
       const response = await fetch("/dj-rest-auth/logout/", {
@@ -68,11 +72,14 @@ function AuthHeader(user) {
                      />
                   </NavLink>
                   <NavLink to="/checkout" className="m-2">
-                     <IconShoppingBag
-                        style={{ width: "40px", height: "40px" }}
-                        className="m-2"
-                        type="button"
-                     />
+                     <span className="badge badge-light">
+                        {numItems}
+                        <IconShoppingBag
+                           style={{ width: "40px", height: "40px" }}
+                           className="m-2"
+                           type="button"
+                        />
+                     </span>
                   </NavLink>
                   <Dropdown>
                      <Dropdown.Toggle

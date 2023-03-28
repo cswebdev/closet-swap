@@ -102,12 +102,11 @@ function CheckOut() {
    ));
 
    return (
-      <Container id="container-checkout" className="bg-light">
+      <Container id="container-checkout">
          <h1 className="text-center mt-5 mb-0 pb-0">Checkout</h1>
 
          <section id="section-checkout-form">
             <Row className="mt-2">
-               <h3 className="mt-0 pt-0">items</h3>
                <Col className="d-flex">
                   <Container id="container-checkout-items" className="">
                      <Row>
