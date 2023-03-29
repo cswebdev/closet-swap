@@ -75,24 +75,27 @@ class User(AbstractUser):
         ('WY', 'Wyoming'),
     )
 
-    phone_number=PhoneNumberField(blank=True)
+    phone_number=PhoneNumberField(blank=True, null=True,)
     gender=models.CharField(max_length=3, choices=GENDER_CHOICES)
     state=models.CharField(max_length=2, choices=STATE_CHOICES, blank=True, null=True)
     city=models.CharField(max_length=255, blank=True, null=True)
     display_name=models.CharField(max_length=255, blank=True, null=True)
     avatar=models.ImageField(upload_to="media/avatars/", blank=True, null=True)
+
+    
     
 
     
 class Profile(models.Model):
     
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     display_name = models.CharField(max_length=255)
     avatar = models.ImageField(upload_to="media/avatars/", blank=True, null=True)
     gender = models.CharField(max_length=3, choices=User.GENDER_CHOICES, blank=True, null=True)
+
   
     def __str__(self):
-       return self.user.username
+       return self.user
 
     # avatar:models.ImageField(upload_to="profiles/")   

@@ -167,7 +167,7 @@ function ProfileForm() {
       formData.append("gender", gender);
 
       const options = {
-         method: "PUT",
+         method: "PATCH",
          headers: {
             "X-CSRFToken": Cookies.get("csrftoken"),
          },
@@ -277,7 +277,7 @@ function ProfileForm() {
                               <Form.Label htmlFor="displayname"></Form.Label>
                               <div className="input-group" id="displayname">
                                  <input
-                                    className=" form-control"
+                                    className="form-control me-1"
                                     type="text"
                                     id="displayname"
                                     name="displayname"
@@ -289,7 +289,7 @@ function ProfileForm() {
                               <Form.Label htmlFor="gender"></Form.Label>
                               <Form.Control
                                  as="select"
-                                 className="form-select"
+                                 className="form-select ms-1"
                                  value={user.gender}
                                  onChange={handleGenderInput}
                                  id="gender-select-box"
@@ -305,27 +305,37 @@ function ProfileForm() {
                               </Form.Control>
                            </Form.Group>
                            <Container className="d-flex" id="update-location">
-                              <Form.Group className="d-flex mt-4 ">
+                              <Form.Group className="d-flex mt-3 ">
                                  <Form.Label htmlFor="city"></Form.Label>
-                                 <div className="input-group">
+                                 <div className="input-group" id="city">
                                     <input
-                                       type="form-control"
-                                       className="form-control "
-                                       placeholder="city"
+                                       className="form-control me-1"
+                                       type="text"
+                                       id="city-input-box"
                                        name="city"
-                                       value={userProfile.city}
+                                       placeholder="City"
+                                       value={user.city}
                                        onChange={handleCityInput}
-                                    />
+                                    ></input>
                                  </div>
 
                                  <Form.Label htmlFor="state"></Form.Label>
                                  <Form.Control
                                     as="select"
-                                    className="form-select"
+                                    className="form-select ms-1"
+                                    value={user.state}
+                                    onChange={handleStateInput}
+                                    id="gender-select-box"
+                                 >
+                                    {/* <Form.Label htmlFor="state"></Form.Label>
+                                 <Form.Control
+                                    as="select"
+                                    className="form-select ms-1"
+                                    name="state"
                                     value={userProfile.state}
                                     onChange={handleStateInput}
                                     id="state-select-box"
-                                 >
+                                 > */}
                                     {Object.entries(selectState).map(
                                        ([code, name], index) => (
                                           <option key={index} value={code}>
@@ -337,15 +347,15 @@ function ProfileForm() {
                               </Form.Group>
                            </Container>
                         </Container>
+                        <Button
+                           type="submit"
+                           className="w-25 "
+                           id="update-profile"
+                           onClick={handleSubmit}
+                        >
+                           Save
+                        </Button>
                      </Container>
-                     <Button
-                        type="submit"
-                        className="w-25 float-end"
-                        id="update-profile"
-                        onClick={handleSubmit}
-                     >
-                        Save
-                     </Button>
                   </Row>
                </Form>
             </Container>

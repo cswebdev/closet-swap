@@ -1,12 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import "../Styles/CheckoutStyles.css";
 import Button from "react-bootstrap/Button";
-import StoreItem from "../Storefront/StoreItem";
 import { useOutletContext } from "react-router-dom";
 import { IconTrash } from "@tabler/icons-react";
 import Cookies from "js-cookie";
@@ -15,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 function CheckOut() {
    const { cartItems, setCartItems } = useOutletContext();
    const [isActive, setIsActive] = useState(true);
-   const [order_Items, setOrder_Items] = useState([]);
    const numItems = cartItems.length;
    const navigate = useNavigate();
 

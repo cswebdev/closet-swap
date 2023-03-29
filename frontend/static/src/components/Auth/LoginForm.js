@@ -9,7 +9,7 @@ import { IconEye } from "@tabler/icons-react";
 import MediaAsset from "../../media/HuaJuly_08Transparent.png";
 
 function LoginForm() {
-   const [ setAuth] = useState(false);
+   const [setAuth] = useState(false);
    const navigate = useNavigate();
    const [user, setUser] = useState({
       username: "",
@@ -57,9 +57,12 @@ function LoginForm() {
       if (!response.ok) {
          throw new Error("Network Response was not Ok");
       }
+      if (response.ok) {
+         console.log("Login Successful");
+      }
       const data = await response.json();
       Cookies.set("Authorization", `Token ${data.key}`); // Added space after "Token"
-      setAuth(true);
+      // setAuth(true);
       navigate("/profile");
    };
 

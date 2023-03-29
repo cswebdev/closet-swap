@@ -6,12 +6,13 @@ from phonenumber_field.serializerfields import PhoneNumberField
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    phone_number = PhoneNumberField(source='user.phone_number')
+    phone_number = PhoneNumberField(source='user.phone_number', required=False)
     city = serializers.ReadOnlyField(source='user.city')
     state = serializers.ReadOnlyField(source='user.state')
     clothing_items = ClothingItemSerializer(source='user.clothing_items', many=True, read_only=True)
     username = serializers.StringRelatedField(source='user.username', read_only=True)
-   
+    avatar = serializers.ImageField(source='user.profile.avatar', read_only=True, required=False)
+    display_name = serializers.StringRelatedField(source='user.profile.display_name', read_only=True, required=False)
 
 
     class Meta: 
