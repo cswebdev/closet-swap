@@ -19,7 +19,6 @@ import ProfileForm from "./components/Profile/ProfileForm";
 import CheckOut from "./components/Checkout/Checkout";
 import ChatPage from "./components/Chat/ChatPage";
 import UsersProfiles from "./components/Profile/UsersProfiles";
-import UserOrdersPage from "./components/UserOrders/UserOrdersPage";
 import { Outlet } from "react-router-dom";
 
 /*  */

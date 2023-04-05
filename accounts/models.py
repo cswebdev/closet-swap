@@ -10,16 +10,12 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class User(AbstractUser):
     GENDER_CHOICES= (
-        ('M', 'Male'), 
-        ('F', 'Female'), 
-        ('TM', 'Trans Male'), 
-        ('TF', 'Trans Female'),
-        ('NB', 'Non Binary'),
-        ('GNC', 'Gender Non Conforming'), 
-        ('GF', 'Gender Fluid'), 
-        ('GQ', 'Gender Queer'),
-        ('IS', 'Intersex'),
-        ('NA', 'Other'), 
+        ('Male', 'Male'), 
+        ('Female', 'Female'), 
+        ('Trans Male', 'Trans Male'), 
+        ('Trans Female', 'Trans Female'),
+        ('Non Binary', 'Non Binary'),
+        ('Other', 'Other'), 
     )
     STATE_CHOICES = (
         ('AL', 'Alabama'),
@@ -76,7 +72,7 @@ class User(AbstractUser):
     )
 
     phone_number=PhoneNumberField(blank=True, null=True,)
-    gender=models.CharField(max_length=3, choices=GENDER_CHOICES)
+    gender=models.CharField(max_length=20, choices=GENDER_CHOICES)
     state=models.CharField(max_length=2, choices=STATE_CHOICES, blank=True, null=True)
     city=models.CharField(max_length=255, blank=True, null=True)
     display_name=models.CharField(max_length=255, blank=True, null=True)
@@ -92,7 +88,7 @@ class Profile(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     display_name = models.CharField(max_length=255)
     avatar = models.ImageField(upload_to="media/avatars/", blank=True, null=True)
-    gender = models.CharField(max_length=3, choices=User.GENDER_CHOICES, blank=True, null=True)
+    gender = models.CharField(max_length=20, choices=User.GENDER_CHOICES, blank=True, null=True)
 
   
     def __str__(self):

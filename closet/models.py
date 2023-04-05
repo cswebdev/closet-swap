@@ -42,26 +42,47 @@ class ClothingItem(models.Model):
         ('Tops', 'Tops'), 
         ('Sweaters','Sweaters'),
         ('Bottoms', 'Bottoms'),
+        ('Pants', 'Pants'),
         ('Dresses', 'Dresses'),
         ('Skirts', 'Skirts'), 
-        ('AW', 'Active Wear'),
-        ('SW', 'Swim Wear'), 
+        ('Active Wear', 'Active Wear'),
+        ('Swim Wear', 'Swim Wear'), 
         ('Shoes', 'Shoes'),
     )
    
     STYLE_CHOICES = (
         ('Blouses', 'Blouses'), 
-        ('BDS', 'Button Down Shirts'), 
-        ('KT', 'Knit Tops'), 
-        ('TS', 'T Shirt'), 
-        ('TT', 'Tank Top'), 
-        ('SweatS', 'Sweat Shirt'), 
-        ('ST', 'Silk Top'), 
-        ('Sless', 'Strapless'), 
-        ('HT', 'Halter Tops'), 
-        ('Turt', 'Turtlenecks'), 
-        ('BS', 'Bodysuits'), 
-        ('CROP', 'Cropped')
+        ('Button Down Shirts', 'Button Down Shirts'), 
+        ('T-Shirt', 'T Shirt'), 
+        ('Tank Tops', 'Tank Top'), 
+        ('Short Sleeve', 'Short Sleeve'),
+        ('Long Sleeve', 'Long Sleeve'),
+        ('Sweat Shirts', 'Sweat Shirt'), 
+        ('Sweaters', 'Sweater'),
+        ('Cardigans', 'Cardigan'),
+        ('Jackets', 'Jacket'),
+        ('Coats', 'Coat'),
+        ('Strapless', 'Strapless'), 
+        ('Halter Tops', 'Halter Tops'), 
+        ('Turtlenecks', 'Turtlenecks'), 
+        ('Crop Tops', 'Crop Tops'),
+        ('Pants', 'Pants'),
+        ('Jeans', 'Jeans'),
+        ('Shorts', 'Shorts'),
+        ('Skirts', 'Skirts'),
+        ('Dresses', 'Dresses'),
+        ('Leggings', 'Leggings'),
+        ('Joggers', 'Joggers'),
+        ('Sweat Pants', 'Sweat Pants'),
+        ('Sweat Shorts', 'Sweat Shorts'),
+        ('Sweat Suits', 'Sweat Suit'),
+        ('Swim Suits', 'Swim Suit'),
+        ('Bikinis', 'Bikini'),
+        ('One Piece', 'One Piece'),
+        ('Cover Ups', 'Cover Up'),
+    
+        
+
     )
 
     CONDITION_CHOICES = (
@@ -77,6 +98,8 @@ class ClothingItem(models.Model):
         ('Female', 'Female'),
         ('Unisex', 'Unisex'),
     )
+
+    
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, related_name="clothing_items")
     title = models.CharField(max_length=255)

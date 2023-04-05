@@ -531,6 +531,10 @@ function DonationForm() {
                         <h6 className="text-centered">
                            Clothing descriptions powered by ClarfAI:
                         </h6>
+                        <p className="text-centered">
+                           {" "}
+                           tags may not be accurate
+                        </p>
                         <section id="recommended-tags">
                            <ul id="tag-list" className="d-flex ">
                               {tagsHTML}
