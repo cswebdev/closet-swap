@@ -45,19 +45,20 @@ class ClothingItem(models.Model):
         ('Pants', 'Pants'),
         ('Dresses', 'Dresses'),
         ('Skirts', 'Skirts'), 
-        ('Active Wear', 'Active Wear'),
-        ('Swim Wear', 'Swim Wear'), 
+        ('Active_Wear', 'Active Wear'),
+        ('Swim_Wear', 'Swim Wear'), 
         ('Shoes', 'Shoes'),
     )
    
     STYLE_CHOICES = (
+        # tops 
         ('Blouses', 'Blouses'), 
-        ('Button Down Shirts', 'Button Down Shirts'), 
-        ('T-Shirt', 'T Shirt'), 
-        ('Tank Tops', 'Tank Top'), 
-        ('Short Sleeve', 'Short Sleeve'),
-        ('Long Sleeve', 'Long Sleeve'),
-        ('Sweat Shirts', 'Sweat Shirt'), 
+        ('Button_Down_Shirts', 'Button Down Shirts'), 
+        ('T_Shirt', 'T Shirt'), 
+        ('Tank_Tops', 'Tank Top'), 
+        ('Short_Sleeve', 'Short Sleeve'),
+        ('Long_Sleeve', 'Long Sleeve'),
+        ('Sweat_Shirts', 'Sweat Shirt'), 
         ('Sweaters', 'Sweater'),
         ('Cardigans', 'Cardigan'),
         ('Jackets', 'Jacket'),
@@ -65,23 +66,53 @@ class ClothingItem(models.Model):
         ('Strapless', 'Strapless'), 
         ('Halter Tops', 'Halter Tops'), 
         ('Turtlenecks', 'Turtlenecks'), 
-        ('Crop Tops', 'Crop Tops'),
+        ('Crop_Tops', 'Crop Tops'),
+        # bottoms
         ('Pants', 'Pants'),
         ('Jeans', 'Jeans'),
         ('Shorts', 'Shorts'),
         ('Skirts', 'Skirts'),
+        # dresses
         ('Dresses', 'Dresses'),
+        ('Mini_Dresses', 'Mini Dresses'),
+        ('Maxi_Dresses', 'Maxi Dresses'),
+        ('Midi_Dresses', 'Midi Dresses'),
+        ('Sheath_Dresses', 'Sheath Dresses'),
+        ('Shift_Dresses', 'Shift Dresses'),
+        ('Wrap_Dresses', 'Wrap Dresses'),
+        ('T_Shirt_Dresses', 'T Shirt Dresses'),
+        ('Sweater_Dresses', 'Sweater Dresses'),
+        # active wear
         ('Leggings', 'Leggings'),
         ('Joggers', 'Joggers'),
-        ('Sweat Pants', 'Sweat Pants'),
-        ('Sweat Shorts', 'Sweat Shorts'),
-        ('Sweat Suits', 'Sweat Suit'),
-        ('Swim Suits', 'Swim Suit'),
+        ('Sweat_Pants', 'Sweat Pants'),
+        ('Sweat_Shorts', 'Sweat Shorts'),
+        # rompers
+        ('Rompers', 'Rompers'),
+        # swim wear
+        ('Swim_Suits', 'Swim Suit'),
         ('Bikinis', 'Bikini'),
-        ('One Piece', 'One Piece'),
-        ('Cover Ups', 'Cover Up'),
-    
-        
+        ('One_Piece', 'One Piece'),
+        ('Cover_Up', 'Cover Up'),
+        ('Beach_Dresses', 'Beach Dresses'),
+        # shoes
+        ('Boots', 'Boots'),
+        ('Heels', 'Heels'),
+        ('Sandals', 'Sandals'),
+        ('Flats', 'Flats'),
+        ('Sneakers', 'Sneakers'),
+        ('Slippers', 'Slippers'),
+        ('Flip_Flops', 'Flip Flops'),
+        ('Wedges', 'Wedges'),
+        ('high_Heels', 'High Heels'),
+        ('high_tops', 'High Tops'),
+        ('low_tops', 'Low Tops'),
+        ('mid_tops', 'Mid Tops'),
+        ('wing_tips', 'Wing Tips'),
+        ('oxfords', 'Oxfords'),
+        ('loafers', 'Loafers'),
+        ('moccasins', 'Moccasins'),
+        ('slip_ons', 'Slip Ons'),
 
     )
 
@@ -99,7 +130,7 @@ class ClothingItem(models.Model):
         ('Unisex', 'Unisex'),
     )
 
-    
+
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, related_name="clothing_items")
     title = models.CharField(max_length=255)

@@ -8,20 +8,15 @@ import Cookies from "js-cookie";
 import Resizer from "react-image-file-resizer";
 import { nanoid } from "nanoid";
 
-const styleChoices = {
-   BL: "Blouses",
-   BDS: "Button Down Shirts",
-   KT: "Knit Tops",
-   TS: "T Shirt",
-   TT: "Tank Top",
-   SweatS: "Sweat Shirt",
-   ST: "Silk Top",
-   Sless: "Strapless",
-   HT: "Halter Tops",
-   Turt: "Turtlenecks",
-   BS: "Bodysuits",
-   CROP: "Cropped",
+const categoryChoices = {
+   Tops: "Tops",
+   Bottoms: "Bottoms",
+   Dresses: "Dresses",
+   Active_Wear: "Active Wear",
+   Swim_Wear: "Swim Wear",
+   Shoes: "Shoes",
 };
+
 
 const colorChoices = {
    Black: "Black",
@@ -52,8 +47,7 @@ const INITIAL_STATE = {
    selectedTags: null,
    is_active: true,
 };
-//const [outputData, setoutputData] = useState([]);
-// const [image, setImage] = useState(null);
+
 function DonationForm() {
    const [clothingItem, setClothingItem] = useState(INITIAL_STATE);
 
@@ -63,6 +57,55 @@ function DonationForm() {
 
    const [selectedTags, setSelectedTags] = useState([]);
 
+   var styleChoices = "";
+
+   if (clothingItem.category === "Tops") {
+      var styleChoices = {
+         Blouses: "Blouses",
+         Button_Down_Shirts: "Button Down Shirts",
+         T_Shirt: "T Shirt",
+         Tank_Top: "Tank Top",
+         Short_Sleeve: "Short Sleeve",
+         Long_Sleeve: "Long Sleeve",
+         Sweat_Shirt: "Sweat Shirt",
+         Sweaters: "Sweaters",
+         Cardigans: "Cardigans",
+         Jackets: "Jackets",
+         Coats: "Coats",
+         Strapless: "Strapless",
+         Halter_Tops: "Halter Tops",
+         Turtlenecks: "Turtlenecks",
+         Crop_Tops: "Crop Tops",
+      };
+   } else if (clothingItem.category === "Bottoms") {
+      var styleChoices = {
+         Pants: "Pants",
+         Jeans: "Jeans",
+         Shorts: "Shorts",
+         Skirts: "Skirts",
+         Leggings: "Leggings",
+         Joggers: "Joggers",
+         Sweat_Pants: "Sweat Pants",
+         Sweat_Shorts: "Sweat Shorts",
+      };
+   } else if (clothingItem.category === "Dresses") {
+      var styleChoices = {
+         Dresses: "Dresses",
+         Rompers: "Rompers",
+      };
+   } else if (clothingItem.category === "Active_Wear") {
+      var styleChoices = {
+         Active_Wear: "Active Wear",
+      };
+   } else if (clothingItem.category === "Swim_Wear") {
+      var styleChoices = {
+         Swim_Suits: "Swim Suits",
+      };
+   } else if (clothingItem.category === "Shoes") {
+      var styleChoices = {
+         Shoes: "Shoes",
+      };
+   }
    const handleInput = (event) => {
       const { name, value } = event.target;
 
@@ -410,16 +453,14 @@ function DonationForm() {
                         value={clothingItem.category}
                         onChange={handleCategoryInput}
                      >
-                        <option value="" disabled>
-                           Category select
-                        </option>
-                        <option value="Tops">Tops</option>
-                        <option value="Bottoms">Bottoms</option>
-                        <option value="Dresses">Dresses</option>
-                        <option value="Skirts">Skirts</option>
-                        <option value="AW">Active Wear</option>
-                        <option value="SW">Swim Wear</option>
-                        <option value="Shoes">Shoes</option>
+                        <option value="">Select Category</option>
+                        {Object.entries(categoryChoices).map(
+                           ([code, name], index) => (
+                              <option key={index} value={code}>
+                                 {name}
+                              </option>
+                           )
+                        )}
                      </Form.Control>
                      <Form.Label htmlFor="style"></Form.Label>
                      <Form.Control

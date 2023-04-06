@@ -299,9 +299,12 @@ function ProfileForm() {
                                  </option>
                                  <option value="M">Male</option>
                                  <option value="F">Female</option>
-                                 <option value="TM">Trans Male</option>
-                                 <option value="TF">Trans Female</option>
-                                 <option value="NB">Non Binary</option>
+                                 <option value="Trans Male">Trans Male</option>
+                                 <option value="Trans Female">
+                                    Trans Female
+                                 </option>
+                                 <option value="Non Binary">Non Binary</option>
+                                 <option value="Other">Other</option>
                               </Form.Control>
                            </Form.Group>
                            <Container className="d-flex" id="update-location">
