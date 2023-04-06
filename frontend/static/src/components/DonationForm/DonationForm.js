@@ -17,7 +17,6 @@ const categoryChoices = {
    Shoes: "Shoes",
 };
 
-
 const colorChoices = {
    Black: "Black",
    Gray: "Gray",
@@ -60,7 +59,7 @@ function DonationForm() {
    var styleChoices = "";
 
    if (clothingItem.category === "Tops") {
-      var styleChoices = {
+      styleChoices = {
          Blouses: "Blouses",
          Button_Down_Shirts: "Button Down Shirts",
          T_Shirt: "T Shirt",
@@ -78,7 +77,7 @@ function DonationForm() {
          Crop_Tops: "Crop Tops",
       };
    } else if (clothingItem.category === "Bottoms") {
-      var styleChoices = {
+      styleChoices = {
          Pants: "Pants",
          Jeans: "Jeans",
          Shorts: "Shorts",
@@ -89,21 +88,52 @@ function DonationForm() {
          Sweat_Shorts: "Sweat Shorts",
       };
    } else if (clothingItem.category === "Dresses") {
-      var styleChoices = {
+      styleChoices = {
+         Casual_Dresses: "Casual Dresses",
+         Cocktail_Dresses: "Cocktail Dresses",
+         Formal_Dresses: "Formal Dresses",
+         Evening_Dresses: "Evening Dresses",
          Dresses: "Dresses",
          Rompers: "Rompers",
+         Mini_Dresses: "Mini Dresses",
+         Midi_Dresses: "Midi Dresses",
+         Maxi_Dresses: "Maxi Dresses",
+         Shift_Dresses: "Shift Dresses",
+         Wrap_Dresses: "Wrap Dresses",
       };
    } else if (clothingItem.category === "Active_Wear") {
-      var styleChoices = {
+      styleChoices = {
          Active_Wear: "Active Wear",
       };
    } else if (clothingItem.category === "Swim_Wear") {
-      var styleChoices = {
+      styleChoices = {
          Swim_Suits: "Swim Suits",
+         Bikinis: "Bikinis",
+         One_Piece: "One Piece",
+         Cover_Up: "Cover Up",
+         Beach_Dresses: "Beach Dresses",
+         Beach_Tops: "Beach Tops",
+         Beach_Bottoms: "Beach Bottoms",
       };
    } else if (clothingItem.category === "Shoes") {
-      var styleChoices = {
-         Shoes: "Shoes",
+      styleChoices = {
+         Boots: "Boots",
+         Heels: "Heels",
+         Sandals: "Sandals",
+         Flats: "Flats",
+         Sneakers: "Sneakers",
+         Slippers: "Slippers",
+         Flip_Flops: "Flip Flops",
+         Wedges: "Wedges",
+         High_Heels: "High Heels",
+         High_Tops: "High Tops",
+         Mid_Tops: "Mid Tops",
+         Low_Tops: "Low Tops",
+         Wing_Tips: "Wing Tips",
+         Oxfords: "Oxfords",
+         Loafers: "Loafers",
+         Moccasins: "Moccasins",
+         Slip_Ons: "Slip Ons",
       };
    }
    const handleInput = (event) => {
@@ -394,9 +424,9 @@ function DonationForm() {
    const tagsHTML = selectedTags.map((tag) => (
       <li id="tag" key={nanoid()}>
          <Button
-            variant="outline-primary"
+            variant="primary"
             id="tag-button"
-            className={`btn-toggle${
+            className={`btn-toggle m-1${
                clothingItem.selectedTags?.includes(tag) ? " active" : ""
             }`}
             onClick={(tag) => addTag(tag)}
@@ -569,13 +599,10 @@ function DonationForm() {
                   </Button>
                   <Container id="container-recommended-tags" className="w-100">
                      <section id="section-recommended-tags">
-                        <h6 className="text-centered">
-                           Clothing descriptions powered by ClarfAI:
-                        </h6>
-                        <p className="text-centered">
-                           {" "}
-                           tags may not be accurate
-                        </p>
+                        <div className="text-center">
+                           <h6 className="mb-0 pb-0">Clothing descriptions powered by ClarfAI:</h6>
+                           <p className="text-center mt-0 pt-0">Disclaimer: descriptions may not be accurate</p>
+                        </div>
                         <section id="recommended-tags">
                            <ul id="tag-list" className="d-flex ">
                               {tagsHTML}

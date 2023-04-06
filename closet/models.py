@@ -73,20 +73,25 @@ class ClothingItem(models.Model):
         ('Shorts', 'Shorts'),
         ('Skirts', 'Skirts'),
         # dresses
+        ('Casual_Dresses', 'Casual Dresses'),
+        ('Formal_Dresses', 'Formal Dresses'),
+        ('Cocktail_Dresses', 'Cocktail Dresses'),
         ('Dresses', 'Dresses'),
+        ('Evening_Dresses', 'Evening Dresses'),
         ('Mini_Dresses', 'Mini Dresses'),
         ('Maxi_Dresses', 'Maxi Dresses'),
         ('Midi_Dresses', 'Midi Dresses'),
-        ('Sheath_Dresses', 'Sheath Dresses'),
         ('Shift_Dresses', 'Shift Dresses'),
         ('Wrap_Dresses', 'Wrap Dresses'),
-        ('T_Shirt_Dresses', 'T Shirt Dresses'),
-        ('Sweater_Dresses', 'Sweater Dresses'),
+        ('A_line_Dresses', 'A line Dresses'),
+        
+
         # active wear
         ('Leggings', 'Leggings'),
         ('Joggers', 'Joggers'),
         ('Sweat_Pants', 'Sweat Pants'),
         ('Sweat_Shorts', 'Sweat Shorts'),
+      
         # rompers
         ('Rompers', 'Rompers'),
         # swim wear
@@ -95,6 +100,8 @@ class ClothingItem(models.Model):
         ('One_Piece', 'One Piece'),
         ('Cover_Up', 'Cover Up'),
         ('Beach_Dresses', 'Beach Dresses'),
+        ('Beach_Tops', 'Beach Tops'),
+        ('Beach_Bottoms', 'Beach Bottoms'),
         # shoes
         ('Boots', 'Boots'),
         ('Heels', 'Heels'),
@@ -104,15 +111,15 @@ class ClothingItem(models.Model):
         ('Slippers', 'Slippers'),
         ('Flip_Flops', 'Flip Flops'),
         ('Wedges', 'Wedges'),
-        ('high_Heels', 'High Heels'),
-        ('high_tops', 'High Tops'),
-        ('low_tops', 'Low Tops'),
-        ('mid_tops', 'Mid Tops'),
-        ('wing_tips', 'Wing Tips'),
-        ('oxfords', 'Oxfords'),
-        ('loafers', 'Loafers'),
-        ('moccasins', 'Moccasins'),
-        ('slip_ons', 'Slip Ons'),
+        ('High_Heels', 'High Heels'),
+        ('High_Tops', 'High Tops'),
+        ('Low_Tops', 'Low Tops'),
+        ('Mid_Tops', 'Mid Tops'),
+        ('Wing_Tips', 'Wing Tips'),
+        ('Oxfords', 'Oxfords'),
+        ('Loafers', 'Loafers'),
+        ('Moccasins', 'Moccasins'),
+        ('Slip_ons', 'Slip Ons'),
 
     )
 
