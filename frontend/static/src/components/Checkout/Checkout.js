@@ -45,25 +45,6 @@ function CheckOut() {
       navigate("/home");
    };
 
-   // const handleCheckout = async () => {
-   //    const setOrder_Items = [...cartItems];
-   //    const options = {
-   //       method: "POST",
-   //       headers: {
-   //          "Content-Type": "application/json",
-   //          "X-CSRFToken": Cookies.get("csrftoken"),
-   //       },
-   //       body: JSON.stringify(...setOrder_Items),
-   //    };
-   //    const response = await fetch("/api_v1/closet/orders/", options);
-   //    if (!response.ok) {
-   //       throw new Error("Network response not okay - order not saved");
-   //    }
-   //    const data = await response.json();
-   //    console.log("checkout data:", data);
-
-   //    //setCartItems([]);
-   // };
    console.log("checkout test:", { cartItems });
 
    const cartItemsHTML = cartItems.map((item) => (

@@ -15,20 +15,6 @@ function StoreItem({ myFilter }) {
    // const [userProfile, setUserProfile] = useState();
    const navigate = useNavigate();
 
-   // useEffect((user, id) => {
-   //    const getItemUserProfile = async () => {
-   //       const response = await fetch(`/api_v1/profiles/`);
-   //       if (!response.ok) {
-   //          throw new Error("Network response not ok");
-   //       }
-   //       console.log("this is the response", response);
-   //       const data = await response.json();
-   //       console.log("this is the data", data);
-   //       return setUserProfile(data);
-   //    };
-   //    getItemUserProfile();
-   // }, []);
-
    useEffect(() => {
       const getItems = async () => {
          const response = await fetch(`/api_v1/closet/items/`);
@@ -38,51 +24,17 @@ function StoreItem({ myFilter }) {
 
          const data = await response.json();
 
-         // console.log("also", itemFilter);
-
-         // result = result.filter(
-         //    (item) =>
-         //       item.gender === itemFilter ||
-         //       item.category === itemFilter ||
-         //       item.size === itemFilter ||
-         //       item.color === itemFilter ||
-         //       item.style === itemFilter ||
-         //       item.condition === itemFilter ||
-         //       !item
-         // );
-
          // console.log(setCartItems);
          setItemListings(data);
       };
       getItems();
    }, []);
 
-   // const getItemUserProfile = async (userProfile) => {
-   //    navigate(`/profile/user/${userProfile}`);
-   //    try {
-   //       const response = await fetch(`/api_v1/profiles/users/${userProfile}`);
-   //       if (!response.ok) {
-   //          throw new Error("Network response not ok");
-   //       }
-   //       const data = await response.json();
-   //       setUserProfile(data);
-   //    } catch (err) {
-   //       handleError(err);
-   //    }
-   // };
-
    const handleError = (err) => {
       console.warn.log(err);
    };
 
    const itemListingsHTML = [];
-
-   // const data = [
-   //    { color: "red", size: "S", gender: "M" },
-   //    { color: "blue", size: "M", gender: "F" },
-   //    { color: "green", size: "L", gender: "M" },
-   //    { color: "red", size: "M", gender: "F" },
-   // ];
 
    const {
       genderFilter,
@@ -91,10 +43,6 @@ function StoreItem({ myFilter }) {
       styleFilter,
       colorFilter,
    } = myFilter;
-
-   // let color = "red";
-   // let size = "M";
-   // let gender; // gender filter is not set (value is undefined)
 
    console.log({ itemListings });
 

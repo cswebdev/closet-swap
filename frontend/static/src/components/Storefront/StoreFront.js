@@ -124,31 +124,7 @@ function StoreFront() {
    const [sizeFilter, setSizeFilter] = useState();
    const [styleFilter, setStyleFilter] = useState();
    const [colorFilter, setColorFilter] = useState();
-   // research flat map
 
-   // exmple filter method provided by instructor
-   // const data = [
-   //    { color: "red", size: "S", gender: "M" },
-   //    { color: "blue", size: "M", gender: "F" },
-   //    { color: "green", size: "L", gender: "M" },
-   //    { color: "red", size: "M", gender: "F" },
-   // ];
-
-   // let color = "red";
-   // let size = "M";
-   // let gender; // gender filter is not set (value is undefined)
-
-   // const filteredData = data.filter((item) => {
-   //    if (
-   //       (color !== undefined && item.color !== color) ||
-   //       (size !== undefined && item.size !== size) ||
-   //       (gender !== undefined && item.gender !== gender)
-   //    ) {
-   //       return false;
-   //    }
-   //    return true;
-   // });
-   // end of example
    const data = [
       { color: "red", size: "S", gender: "M" },
       { color: "blue", size: "M", gender: "F" },
@@ -181,12 +157,6 @@ function StoreFront() {
    };
    return (
       <Container id="container-storefront">
-         {/* <div id="searchbar" className="col-9 d-flex p-5 float-end">
-            <input type="text" className="form-control"></input>
-            <span>
-               <IconSearch className="ms-2" />
-            </span>
-         </div> */}
          {/* Left  Side Panel*/}
          <Container className="d-flex pt-4">
             <Form className="w-25 bg-info">
@@ -361,7 +331,6 @@ function StoreFront() {
                >
                   {/* store items are rendered here */}
                   <StoreItem
-                     // itemFilter={itemFilter}
                      cartItems={cartItems}
                      setCartItems={setCartItems}
                      myFilter={myFilter}

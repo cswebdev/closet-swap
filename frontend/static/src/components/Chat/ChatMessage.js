@@ -12,9 +12,6 @@ function ChatMessage(props) {
       setTimestamp(props.timestamp);
    }, [props.message, props.user, props.timestamp]);
 
-//    useEffect(() => {
-//     const getMessages = async () => {
-//         const response = await fetch("/api_v1/messages/");
 
 
    return (

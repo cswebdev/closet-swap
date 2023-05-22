@@ -57,18 +57,6 @@ function Header(user) {
                   </NavLink>
                </Nav>
                <Nav>
-                  {/* <NavLink to="/chat" className="m-2">
-                     <IconMessageCircle2Filled
-                        style={{
-                           width: "40px",
-                           height: "40px",
-
-                          
-                        }}
-                        className="m-2"
-                        type="button"
-                     />
-                  </NavLink> */}
                   <NavLink to="/checkout" className="m-2">
                      <IconShoppingBag
                         style={{ width: "40px", height: "40px" }}
@@ -89,17 +77,11 @@ function Header(user) {
                         />
                      </Dropdown.Toggle>
                      <Dropdown.Menu>
-                        {/* <p>hello${user.username}</p> */}
                         <Dropdown.Item className="p-3">
                            <div type="btn" onClick={() => navigate("/profile")}>
                               Profile
                            </div>
                         </Dropdown.Item>
-                        {/* <Dropdown.Item className="p-3">
-                           <div type="btn" onClick={() => navigate("/orders")}>
-                              Orders
-                           </div>
-                        </Dropdown.Item> */}
 
                         <Dropdown.Item className="p-3" onClick={handleLogout}>
                            logout

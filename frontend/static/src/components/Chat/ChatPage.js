@@ -43,22 +43,7 @@ function ChatPage() {
 
    return (
       <>
-         {/* <Container id="container-chatpage" className="d-flex">
-            <Container id="container-userlist" className="bg-info w-25">
-               <Row>
-                  <Col>
-                     <h3>Users</h3>
-                  </Col>
-               </Row>
-            </Container>
-            <Container id="container-chatroom" className="bg-primary">
-               <Row>
-                  <Col>
-                     <h3>Chat Room</h3>
-                  </Col>
-               </Row>
-            </Container>
-         </Container> */}
+  
 
          <Container className="text-center my-5">
             <h1>Page Under Construction</h1>
